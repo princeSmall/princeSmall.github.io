@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-07-25T08:21:07.000Z</updated>
+  <updated>2017-07-25T08:27:55.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2017/07/25/Hexo%E7%AE%80%E5%8D%95%E6%93%8D%E4%BD%9C/"/>
     <id>http://yoursite.com/2017/07/25/Hexo简单操作/</id>
     <published>2017-07-25T08:00:42.000Z</published>
-    <updated>2017-07-25T08:21:07.000Z</updated>
+    <updated>2017-07-25T08:27:55.000Z</updated>
     
     <content type="html"><![CDATA[<h3 id="Welcome-to-my-blog-Thanks"><a href="#Welcome-to-my-blog-Thanks" class="headerlink" title="Welcome to my blog. Thanks."></a>Welcome to my blog. Thanks.</h3><p>打开themes/next/source/css/_custom/custom.styl.<br>参考样式:<a href="https://princesmall.cn" target="_blank" rel="external">博客地址</a></p>
 <p><img src="/2017/07/25/Hexo简单操作/css.png" alt="logo"></p>
@@ -98,17 +98,7 @@ charset=&quot;utf-8&quot; homePageUrl=&quot;http://www.princesmall.cn&quot;
 </ol>
 <h3 id="文章末尾追加版权信息"><a href="#文章末尾追加版权信息" class="headerlink" title="文章末尾追加版权信息"></a>文章末尾追加版权信息</h3><ol>
 <li>找到themes/next/layout/_macro/reward.swig</li>
-<li><p>在最上面添加如下代码：（最上面）</p>
-<pre><code>&lt;div align=&quot;center&quot;&gt;
- {% if not is_index %}
-         <div class="">
-          <p><span>
-         <b>本文地址：</b><a href="{{ url_for(page.path) }}" title="{{ page.title }}">{{ page.permalink }}</a><br><b>转载请注明出处，谢谢！</b>
-        </span></p>
-        </div>
-        {% endif %}
-&lt;/div&gt;
-</code></pre></li>
+<li>在最上面添加如下代码：（最上面）<br><img src="/2017/07/25/Hexo简单操作/permalink.png" alt="permalink">   </li>
 </ol>
 <h3 id="Hexo插入图片"><a href="#Hexo插入图片" class="headerlink" title="Hexo插入图片"></a>Hexo插入图片</h3><ol>
 <li>首先确认根目录下_config.yml 中有 post_asset_folder:true</li>

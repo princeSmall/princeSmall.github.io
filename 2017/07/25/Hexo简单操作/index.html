@@ -106,7 +106,8 @@
 <meta property="og:description" content="Welcome to my blog. Thanks.打开themes/next/source/css/_custom/custom.styl.参考样式:博客地址  /*标题  */ .post-title{ color: red; }     /*内容  */ .post-body{ color: green; } /*author  */ .author{ text-align: center">
 <meta property="og:image" content="http://yoursite.com/2017/07/25/Hexo简单操作/css.png">
 <meta property="og:image" content="http://yoursite.com/2017/07/25/Hexo简单操作/404.png">
-<meta property="og:updated_time" content="2017-07-25T08:21:07.000Z">
+<meta property="og:image" content="http://yoursite.com/2017/07/25/Hexo简单操作/permalink.png">
+<meta property="og:updated_time" content="2017-07-25T08:27:55.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo简单操作">
 <meta name="twitter:description" content="Welcome to my blog. Thanks.打开themes/next/source/css/_custom/custom.styl.参考样式:博客地址  /*标题  */ .post-title{ color: red; }     /*内容  */ .post-body{ color: green; } /*author  */ .author{ text-align: center">
@@ -494,17 +495,7 @@ charset=&quot;utf-8&quot; homePageUrl=&quot;http://www.princesmall.cn&quot;
 </ol>
 <h3 id="文章末尾追加版权信息"><a href="#文章末尾追加版权信息" class="headerlink" title="文章末尾追加版权信息"></a>文章末尾追加版权信息</h3><ol>
 <li>找到themes/next/layout/_macro/reward.swig</li>
-<li><p>在最上面添加如下代码：（最上面）</p>
-<pre><code>&lt;div align=&quot;center&quot;&gt;
- {% if not is_index %}
-         <div class="">
-          <p><span>
-         <b>本文地址：</b><a href="{{ url_for(page.path) }}" title="{{ page.title }}">{{ page.permalink }}</a><br><b>转载请注明出处，谢谢！</b>
-        </span></p>
-        </div>
-        {% endif %}
-&lt;/div&gt;
-</code></pre></li>
+<li>在最上面添加如下代码：（最上面）<br><img src="/2017/07/25/Hexo简单操作/permalink.png" alt="permalink">   </li>
 </ol>
 <h3 id="Hexo插入图片"><a href="#Hexo插入图片" class="headerlink" title="Hexo插入图片"></a>Hexo插入图片</h3><ol>
 <li>首先确认根目录下_config.yml 中有 post_asset_folder:true</li>
