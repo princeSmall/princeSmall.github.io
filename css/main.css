@@ -1693,7 +1693,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #62c6ac;
+  background: #f4b030;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2781,4 +2781,24 @@ hr {
   font-size: 120px;
   font-weight: bold;
   text-align: center;
+  color: #f00;
+}
+.post-title {
+  color: #f00;
+}
+.post-body {
+  color: #008000;
+}
+.author {
+  text-align: center;
+  color: #f00;
+}
+.with-love {
+  color: #f00;
+}
+.theme-link {
+  color: #f00;
+}
+.busuanzi-value {
+  color: #639;
 }
