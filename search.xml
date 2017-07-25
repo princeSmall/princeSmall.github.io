@@ -2,18 +2,18 @@
 <search>
   <entry>
     <title><![CDATA[iOS使用技巧]]></title>
-    <url>%2F2017%2F07%2F25%2F%E7%AB%A5%E4%B9%90One%2FiOS%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%2F</url>
+    <url>%2F2017%2F07%2F25%2FiOS%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%2F</url>
     <content type="text"><![CDATA[操作指南哦哦哦]]></content>
       <categories>
         <category>iOS</category>
       </categories>
   </entry>
   <entry>
-    <title><![CDATA[你是最帅气，最可爱的]]></title>
-    <url>%2F2017%2F07%2F24%2F%E7%AB%A5%E4%B9%90One%2F%E6%9C%80%E7%BE%8E%E4%B8%BD%E4%BA%BA%E7%9A%84%E4%BA%BA%2F</url>
-    <content type="text"><![CDATA[欢迎你你是最可爱的人]]></content>
+    <title><![CDATA[Hexo界面操作]]></title>
+    <url>%2F2017%2F07%2F24%2F%20Hexo%E7%95%8C%E9%9D%A2%E6%93%8D%E4%BD%9C%2F</url>
+    <content type="text"><![CDATA[Welcome to my blog. Thanks.打开themes/next/source/css/_custom/custom.styl.参考样式:博客地址 /*标题 */ .post-title{ color: red; } /*内容 */ .post-body{ color: green; } /*author */ .author{ text-align: center; color: red; } /*心photo */ .with-love{ color: red; } /*乐乐 */ .theme-link{ color: red; } .busuanzi-value{ color: rebeccapurple; }]]></content>
       <categories>
-        <category>cute</category>
+        <category>hexo</category>
       </categories>
       <tags>
         <tag>1</tag>
@@ -21,7 +21,7 @@
   </entry>
   <entry>
     <title><![CDATA[Hello World]]></title>
-    <url>%2F2017%2F07%2F17%2F%E7%AB%A5%E4%B9%90One%2Fhello-world%2F</url>
+    <url>%2F2017%2F07%2F17%2Fhello-world%2F</url>
     <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
   </entry>
 </search>

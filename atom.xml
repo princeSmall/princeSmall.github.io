@@ -17,8 +17,8 @@
   
   <entry>
     <title>iOS使用技巧</title>
-    <link href="http://yoursite.com/2017/07/25/%E7%AB%A5%E4%B9%90One/iOS%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/"/>
-    <id>http://yoursite.com/2017/07/25/童乐One/iOS使用技巧/</id>
+    <link href="http://yoursite.com/2017/07/25/iOS%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/"/>
+    <id>http://yoursite.com/2017/07/25/iOS使用技巧/</id>
     <published>2017-07-25T02:25:18.000Z</published>
     <updated>2017-07-25T02:29:30.000Z</updated>
     
@@ -38,23 +38,46 @@
   </entry>
   
   <entry>
-    <title>你是最帅气，最可爱的</title>
-    <link href="http://yoursite.com/2017/07/24/%E7%AB%A5%E4%B9%90One/%E6%9C%80%E7%BE%8E%E4%B8%BD%E4%BA%BA%E7%9A%84%E4%BA%BA/"/>
-    <id>http://yoursite.com/2017/07/24/童乐One/最美丽人的人/</id>
+    <title>Hexo界面操作</title>
+    <link href="http://yoursite.com/2017/07/24/%20Hexo%E7%95%8C%E9%9D%A2%E6%93%8D%E4%BD%9C/"/>
+    <id>http://yoursite.com/2017/07/24/ Hexo界面操作/</id>
     <published>2017-07-24T08:05:19.000Z</published>
-    <updated>2017-07-24T08:23:44.000Z</updated>
+    <updated>2017-07-25T07:07:53.000Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="欢迎你"><a href="#欢迎你" class="headerlink" title="欢迎你"></a>欢迎你</h3><p>你是最可爱的人</p>
-]]></content>
+    <content type="html"><![CDATA[<h3 id="Welcome-to-my-blog-Thanks"><a href="#Welcome-to-my-blog-Thanks" class="headerlink" title="Welcome to my blog. Thanks."></a>Welcome to my blog. Thanks.</h3><p>打开themes/next/source/css/_custom/custom.styl.<br>参考样式:<a href="https://princesmall.cn" target="_blank" rel="external">博客地址</a></p>
+<pre><code>/*标题  */
+  .post-title{
+       color: red;
+     }    
+/*内容  */
+ .post-body{
+     color: green;
+  }
+/*author  */
+.author{
+    text-align: center;
+    color: red;
+ }
+/*心photo  */
+.with-love{
+   color: red;
+}
+/*乐乐  */
+.theme-link{
+   color: red;
+}
+.busuanzi-value{
+   color: rebeccapurple;
+}
+</code></pre>]]></content>
     
     <summary type="html">
     
-      &lt;h3 id=&quot;欢迎你&quot;&gt;&lt;a href=&quot;#欢迎你&quot; class=&quot;headerlink&quot; title=&quot;欢迎你&quot;&gt;&lt;/a&gt;欢迎你&lt;/h3&gt;&lt;p&gt;你是最可爱的人&lt;/p&gt;
-
+      &lt;h3 id=&quot;Welcome-to-my-blog-Thanks&quot;&gt;&lt;a href=&quot;#Welcome-to-my-blog-Thanks&quot; class=&quot;headerlink&quot; title=&quot;Welcome to my blog. Thanks.&quot;&gt;&lt;/a&gt;Welcome t
     
     </summary>
     
-      <category term="cute" scheme="http://yoursite.com/categories/cute/"/>
+      <category term="hexo" scheme="http://yoursite.com/categories/hexo/"/>
     
     
       <category term="1" scheme="http://yoursite.com/tags/1/"/>
@@ -63,8 +86,8 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="http://yoursite.com/2017/07/17/%E7%AB%A5%E4%B9%90One/hello-world/"/>
-    <id>http://yoursite.com/2017/07/17/童乐One/hello-world/</id>
+    <link href="http://yoursite.com/2017/07/17/hello-world/"/>
+    <id>http://yoursite.com/2017/07/17/hello-world/</id>
     <published>2017-07-17T07:09:17.000Z</published>
     <updated>2017-07-17T07:09:17.000Z</updated>
     
