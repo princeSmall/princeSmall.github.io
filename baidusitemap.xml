@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+
+    
+  <url>
+    <loc>http://yoursite.com/2017/07/25/%E7%AB%A5%E4%B9%90One/iOS%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/</loc>
+    <lastmod>2017-07-25T02:29:30.000Z</lastmod>
+    <data>
+        <display>
+        <title>iOS使用技巧</title>
+        <pubTime>2017-07-25T02:25:18.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="iOS" url="http://yoursite.com/categories/iOS/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+    
+  <url>
+    <loc>http://yoursite.com/2017/07/24/%E7%AB%A5%E4%B9%90One/%E6%9C%80%E7%BE%8E%E4%B8%BD%E4%BA%BA%E7%9A%84%E4%BA%BA/</loc>
+    <lastmod>2017-07-24T08:23:44.000Z</lastmod>
+    <data>
+        <display>
+        <title>你是最帅气，最可爱的</title>
+        <pubTime>2017-07-24T08:05:19.000Z</pubTime>
+        
+        <tag>1</tag>
+         
+         
+           
+             
+              <breadCrumb title="cute" url="http://yoursite.com/categories/cute/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+    
+    
+  <url>
+    <loc>http://yoursite.com/2017/07/17/%E7%AB%A5%E4%B9%90One/hello-world/</loc>
+    <lastmod>2017-07-17T07:09:17.000Z</lastmod>
+    <data>
+        <display>
+        <title>Hello World</title>
+        <pubTime>2017-07-17T07:09:17.000Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+</urlset>
