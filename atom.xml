@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-07-17T07:09:17.000Z</updated>
+  <updated>2017-07-25T08:21:07.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,126 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hexo简单操作</title>
+    <link href="http://yoursite.com/2017/07/25/Hexo%E7%AE%80%E5%8D%95%E6%93%8D%E4%BD%9C/"/>
+    <id>http://yoursite.com/2017/07/25/Hexo简单操作/</id>
+    <published>2017-07-25T08:00:42.000Z</published>
+    <updated>2017-07-25T08:21:07.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="Welcome-to-my-blog-Thanks"><a href="#Welcome-to-my-blog-Thanks" class="headerlink" title="Welcome to my blog. Thanks."></a>Welcome to my blog. Thanks.</h3><p>打开themes/next/source/css/_custom/custom.styl.<br>参考样式:<a href="https://princesmall.cn" target="_blank" rel="external">博客地址</a></p>
+<p><img src="/2017/07/25/Hexo简单操作/css.png" alt="logo"></p>
+<pre>/*标题  */
+.post-title{
+color: red;
+}    
+/*内容  */
+.post-body{
+color: green;
+}
+/*author  */
+.author{
+text-align: center;
+color: red;
+}
+/*心photo  */
+.with-love{
+color: red;
+}
+/*乐乐  */
+.theme-link{
+color: red;
+}
+.busuanzi-value{
+color: rebeccapurple;
+}
+</pre>
+
+<h3 id="Next主题操作"><a href="#Next主题操作" class="headerlink" title="Next主题操作"></a>Next主题操作</h3><ol>
+<li>生成新页面 <pre> hexo g</pre></li>
+<li>发布代码  <pre> hexo d</pre></li>
+<li>开启调试服务  <pre> hexo  s –debug</pre></li>
+</ol>
+<h3 id="为next主题的主页文章添加阴影效果"><a href="#为next主题的主页文章添加阴影效果" class="headerlink" title="为next主题的主页文章添加阴影效果"></a>为next主题的主页文章添加阴影效果</h3><ol>
+<li>打开themes/next/source/css/_schemes/Mist/_posts-expanded.styl文件</li>
+<li>找到类.posts-expand下面的.post<pre>
+.post {
+margin-top: 120px;
+}
+改成:
+.post {
+margin-top: 60px;
+margin-bottom: 60px;
+padding: 25px;
+-webkit-box-shadow: 0 0 5px rgba(202, 203, 203, .5);
+-moz-box-shadow: 0 0 5px rgba(202, 203, 204, .5);
+}
+</pre>
+
+</li>
+</ol>
+<h3 id="添加“Fork-me-on-Github”-ribbon"><a href="#添加“Fork-me-on-Github”-ribbon" class="headerlink" title="添加“Fork me on Github” ribbon"></a>添加“Fork me on Github” ribbon</h3><ol>
+<li><p>打开themes\next\layout\layout.swig</p>
+<pre><code>&lt;a href=&quot;你的地址&quot;&gt;&lt;img style=&quot;position: absolute; top: 0; left: 0; border: 0;&quot; 
+src=&quot;https://camo.githubusercontent.com/82b228a3648bf44fc1163ef44c62fcc60081495e/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f7265645f6161303030302e706e67&quot; 
+alt=&quot;Fork me on GitHub&quot; 
+data-canonical-src=&quot;https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png&quot;&gt;&lt;/a&gt;
+</code></pre></li>
+</ol>
+<h3 id="404界面"><a href="#404界面" class="headerlink" title="404界面"></a>404界面</h3><ol>
+<li>找到根目录-source<br><img src="/2017/07/25/Hexo简单操作/404.png" alt="logo"></li>
+<li>创建HTML文件</li>
+<li><p>打开：commonweal: /404.html</p>
+<pre><code>&lt;html&gt;
+&lt;body&gt;
+&lt;script type=&quot;text/javascript&quot; 
+src=&quot;http://www.qq.com/404/search_children.js&quot;         
+charset=&quot;utf-8&quot; homePageUrl=&quot;http://www.princesmall.cn&quot;
+ homePageName=&quot;回到乐乐的主页&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+注：如果返回的还是qq主页，请参考我网页源码，毕竟有些长，这只是不body。然后copy到你的404.html下
+</code></pre></li>
+</ol>
+<h3 id="文章末尾追加版权信息"><a href="#文章末尾追加版权信息" class="headerlink" title="文章末尾追加版权信息"></a>文章末尾追加版权信息</h3><ol>
+<li>找到themes/next/layout/_macro/reward.swig</li>
+<li><p>在最上面添加如下代码：（最上面）</p>
+<pre><code>&lt;div align=&quot;center&quot;&gt;
+ {% if not is_index %}
+         <div class="">
+          <p><span>
+         <b>本文地址：</b><a href="{{ url_for(page.path) }}" title="{{ page.title }}">{{ page.permalink }}</a><br><b>转载请注明出处，谢谢！</b>
+        </span></p>
+        </div>
+        {% endif %}
+&lt;/div&gt;
+</code></pre></li>
+</ol>
+<h3 id="Hexo插入图片"><a href="#Hexo插入图片" class="headerlink" title="Hexo插入图片"></a>Hexo插入图片</h3><ol>
+<li>首先确认根目录下_config.yml 中有 post_asset_folder:true</li>
+<li>在hexo的目录下执行npm install <a href="https://github.com/CodeFalling/hexo-asset-image" target="_blank" rel="external">https://github.com/CodeFalling/hexo-asset-image</a> –save</li>
+<li>创建文件hexo new “文件名”</li>
+<li><p>在source下会生成一个和文件名一样的文件夹，图片放在该文件夹下</p>
+<pre><code>例如：
+  ![logo](文件名/logo.jpg)
+  是不是so easy！
+</code></pre></li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;Welcome-to-my-blog-Thanks&quot;&gt;&lt;a href=&quot;#Welcome-to-my-blog-Thanks&quot; class=&quot;headerlink&quot; title=&quot;Welcome to my blog. Thanks.&quot;&gt;&lt;/a&gt;Welcome t
+    
+    </summary>
+    
+      <category term="Hexo" scheme="http://yoursite.com/categories/Hexo/"/>
+    
+    
+      <category term="1" scheme="http://yoursite.com/tags/1/"/>
+    
+  </entry>
   
   <entry>
     <title>Hello World</title>

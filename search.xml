@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Hexo简单操作]]></title>
+    <url>%2F2017%2F07%2F25%2FHexo%E7%AE%80%E5%8D%95%E6%93%8D%E4%BD%9C%2F</url>
+    <content type="text"><![CDATA[Welcome to my blog. Thanks.打开themes/next/source/css/_custom/custom.styl.参考样式:博客地址 /*标题 */ .post-title{ color: red; } /*内容 */ .post-body{ color: green; } /*author */ .author{ text-align: center; color: red; } /*心photo */ .with-love{ color: red; } /*乐乐 */ .theme-link{ color: red; } .busuanzi-value{ color: rebeccapurple; } Next主题操作 生成新页面 hexo g 发布代码 hexo d 开启调试服务 hexo s –debug 为next主题的主页文章添加阴影效果 打开themes/next/source/css/_schemes/Mist/_posts-expanded.styl文件 找到类.posts-expand下面的.post .post { margin-top: 120px; } 改成: .post { margin-top: 60px; margin-bottom: 60px; padding: 25px; -webkit-box-shadow: 0 0 5px rgba(202, 203, 203, .5); -moz-box-shadow: 0 0 5px rgba(202, 203, 204, .5); } 添加“Fork me on Github” ribbon 打开themes\next\layout\layout.swig &lt;a href=&quot;你的地址&quot;&gt;&lt;img style=&quot;position: absolute; top: 0; left: 0; border: 0;&quot; src=&quot;https://camo.githubusercontent.com/82b228a3648bf44fc1163ef44c62fcc60081495e/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f7265645f6161303030302e706e67&quot; alt=&quot;Fork me on GitHub&quot; data-canonical-src=&quot;https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png&quot;&gt;&lt;/a&gt; 404界面 找到根目录-source 创建HTML文件 打开：commonweal: /404.html &lt;html&gt; &lt;body&gt; &lt;script type=&quot;text/javascript&quot; src=&quot;http://www.qq.com/404/search_children.js&quot; charset=&quot;utf-8&quot; homePageUrl=&quot;http://www.princesmall.cn&quot; homePageName=&quot;回到乐乐的主页&quot;&gt;&lt;/script&gt; &lt;/body&gt; &lt;/html&gt; 注：如果返回的还是qq主页，请参考我网页源码，毕竟有些长，这只是不body。然后copy到你的404.html下 文章末尾追加版权信息 找到themes/next/layout/_macro/reward.swig 在最上面添加如下代码：（最上面） &lt;div align=&quot;center&quot;&gt; {% if not is_index %} 本文地址：{{ page.permalink }}转载请注明出处，谢谢！ {% endif %} &lt;/div&gt; Hexo插入图片 首先确认根目录下_config.yml 中有 post_asset_folder:true 在hexo的目录下执行npm install https://github.com/CodeFalling/hexo-asset-image –save 创建文件hexo new “文件名” 在source下会生成一个和文件名一样的文件夹，图片放在该文件夹下 例如： ![logo](文件名/logo.jpg) 是不是so easy！]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>1</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Hello World]]></title>
     <url>%2F2017%2F07%2F17%2Fhello-world%2F</url>
     <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
