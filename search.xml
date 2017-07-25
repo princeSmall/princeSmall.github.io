@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title></title>
+    <title><![CDATA[iOS使用技巧]]></title>
     <url>%2F2017%2F07%2F25%2F%E7%AB%A5%E4%B9%90One%2FiOS%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%2F</url>
-    <content type="text"><![CDATA[title:iOS使用技巧categories:iOS tag:0操作指南哦哦哦]]></content>
+    <content type="text"><![CDATA[操作指南哦哦哦]]></content>
+      <categories>
+        <category>iOS</category>
+      </categories>
   </entry>
   <entry>
     <title><![CDATA[你是最帅气，最可爱的]]></title>
