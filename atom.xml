@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-07-25T08:27:55.000Z</updated>
+  <updated>2017-08-03T07:41:36.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,99 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>[自定义tarbar]</title>
+    <link href="http://yoursite.com/2017/08/03/%E8%87%AA%E5%AE%9A%E4%B9%89tarbar/"/>
+    <id>http://yoursite.com/2017/08/03/自定义tarbar/</id>
+    <published>2017-08-03T07:02:56.000Z</published>
+    <updated>2017-08-03T07:41:36.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to my blog. Thanks.</p>
+<p>Dome: <a href="https://github.com/princeSmall/REsideAndTarbar" target="_blank" rel="external"> github 地址</a></p>
+<h3 id="pod-RESideMenu"><a href="#pod-RESideMenu" class="headerlink" title="pod RESideMenu"></a>pod RESideMenu</h3><ol>
+<li><p>vim podfile</p>
+<pre><code>platform :ios,&apos;8.0&apos;
+target &apos;SideAndTarbar&apos; do
+pod &apos;RESideMenu&apos;, &apos;~&gt; 4.0.7&apos;
+</code></pre></li>
+</ol>
+<h3 id="AppDelegate-m"><a href="#AppDelegate-m" class="headerlink" title="AppDelegate.m"></a>AppDelegate.m</h3><pre><code>添加RESideMenuDelegate
+</code></pre><ol>
+<li><p>didFinishLaunchingWithOptions</p>
+<pre><code>self.window = [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen ]bounds]];
+TableViewController * viewController =  [[TableViewController alloc]init];
+TarBarViewController * barViewController = [[TarBarViewController alloc]init];
+RESideMenu * sideMenu = [[RESideMenu alloc]initWithContentViewController:barViewController leftMenuViewController:viewController rightMenuViewController:nil];
+sideMenu.delegate = self;
+sideMenu.contentViewShadowEnabled = YES;
+sideMenu.contentViewInPortraitOffsetCenterX = 100.f;
+sideMenu.contentViewScaleValue = 1.0;
+sideMenu.menuPreferredStatusBarStyle = UIStatusBarStyleLightContent;
+sideMenu.bouncesHorizontally = NO;
+self.window.rootViewController = sideMenu; 
+</code></pre></li>
+</ol>
+<h3 id="自定义tabbar"><a href="#自定义tabbar" class="headerlink" title="自定义tabbar"></a>自定义tabbar</h3><ol>
+<li><p>添加子控制器属性</p>
+<ul>
+<li>添加navgationbar</li>
+<li>去除tabbar分割线</li>
+<li>选中controller后图片和标题改变</li>
+</ul>
+</li>
+</ol>
+<pre>
+-(void)addChildViewController:(UIViewController *)childController title:(NSString *)title image:(UIImage *)image selecteImage:(UIImage *)selectedImage{
+
+    UINavigationController * controller = [[UINavigationController alloc]initWithRootViewController:childController];
+    childController.view.backgroundColor = [UIColor whiteColor];
+    childController.navigationItem.title = title;
+    [[UITabBar appearance] setShadowImage:[UIImage new]]; [[UITabBar appearance] setBackgroundImage:[[UIImage alloc]init]];
+    selectedImage = [selectedImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    self.tabBar.tintColor = [UIColor greenColor];  
+    controller.tabBarItem = [[UITabBarItem alloc]initWithTitle:title image:image selectedImage:selectedImage];
+    [self addChildViewController:controller];
+
+}  
+</pre>  
+
+<ol>
+<li>添加子控制器 <pre>
+-(void)setNewBar{
+OneViewController * one = [[OneViewController alloc]init];
+[self addChildViewController:one title:@"MainOne" image:[UIImage imageNamed:@"icon_home_normal"] selecteImage:[UIImage imageNamed:@"icon_home_selected"]];
+TwoViewController * two = [[TwoViewController alloc]init];
+[self addChildViewController:two title:@"MainTwo" image:[UIImage imageNamed:@"icon_door_normal"] selecteImage:[UIImage imageNamed:@"icon_door_selected"]];
+}
+</pre>
+
+</li>
+</ol>
+<h3 id="在各自类中进行操作就OK"><a href="#在各自类中进行操作就OK" class="headerlink" title="在各自类中进行操作就OK"></a>在各自类中进行操作就OK</h3><ol>
+<li>例如：<pre>
+self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"icon_sidebar"] style:UIBarButtonItemStylePlain target:self action:@selector(presentLeftMenuViewController:)];
+ UIButton * button = [[UIButton alloc]initWithFrame:CGRectMake(100, 100, 100, 100)];
+ button.backgroundColor = [UIColor greenColor];
+ [self.view addSubview:button];
+</pre>
+
+</li>
+</ol>
+<p><img src="/2017/08/03/自定义tarbar/main.png" alt=""><br><img src="/2017/08/03/自定义tarbar/mainTwo.png" alt=""><br><img src="/2017/08/03/自定义tarbar/left.png" alt=""></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Welcome to my blog. Thanks.&lt;/p&gt;
+&lt;p&gt;Dome: &lt;a href=&quot;https://github.com/princeSmall/REsideAndTarbar&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt; github 
+    
+    </summary>
+    
+      <category term="Ios" scheme="http://yoursite.com/categories/Ios/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>Hexo简单操作</title>
