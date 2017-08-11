@@ -1,35 +1,322 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search>
-  <entry>
-    <title><![CDATA[[增删移]]]></title>
-    <url>%2F2017%2F08%2F11%2F%E5%A2%9E%E5%88%A0%E7%A7%BB%2F</url>
-    <content type="text"><![CDATA[Welcome to my blog. Thanks. Dome: github 地址 今日看到某娱乐项目选择增删移很好玩，周五上午没事就写了一个。 利用CollectionViewCell，将数据持久化保存在infoplist。 再也不怕回到解放前了。主要分[已添加]–[待添加]–[未添加]–[删除添加] CollectionViewCell UIBarButtonItem * rightItem = [[UIBarButtonItem alloc]initWithTitle:@"新增加" style:UIBarButtonItemStylePlain target:self action:@selector(add)]; self.navigationItem.rightBarButtonItem = rightItem; UICollectionViewFlowLayout * layout = [[UICollectionViewFlowLayout alloc]init]; layout.itemSize = CGSizeMake(50, 50); layout.scrollDirection = UICollectionViewScrollDirectionVertical; self.collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) collectionViewLayout:layout]; self.collectionView.backgroundColor = [UIColor whiteColor]; self.collectionView.delegate = self; self.collectionView.dataSource = self; [self.collectionView registerNib:[UINib nibWithNibName:@"CollectionViewCell" bundle:nil] forCellWithReuseIdentifier:identifier]; [self.collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:headerId]; 两个数组用来存放已添加的和待添加的 if ([[NSUserDefaults standardUserDefaults]objectForKey:@"one"] == nil) { self.oneArray = [NSMutableArray arrayWithObjects:@"0",@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",@"13",@"14",@"15",@"16",@"17",@"18",@"19",nil]; }else{ id array = [[NSUserDefaults standardUserDefaults]objectForKey:@"one"]; [self.oneArray addObjectsFromArray:array]; } if ( [[NSUserDefaults standardUserDefaults]objectForKey:@"two"] == nil) { self.twoArray = [NSMutableArray arrayWithObjects:@"a",@"b",@"c",@"d",@"e",@"f",@"g",@"h",@"i",@"j", nil]; }else{ id array = [[NSUserDefaults standardUserDefaults]objectForKey:@"two"]; [self.twoArray addObjectsFromArray:array]; } 每次改变后刷新要防止复用 UICollectionReusableView *headerView = [self.collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:headerId forIndexPath:indexPath]; headerView.backgroundColor = [UIColor darkGrayColor]; [headerView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)]; _titleLab = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width - 50, 40)]; _titleLab.textAlignment = NSTextAlignmentLeft; _titleLab.textColor = [UIColor whiteColor]; [headerView addSubview:self.titleLab]; 编辑状态下进行移动和删除 -(void)edit{ for (CollectionViewCell * cell in self.collectionView.visibleCells) { if (cell.edit == NO) { cell.layer.masksToBounds = NO; cell.layer.shadowOpacity = 0.7f; cell.layer.shadowColor = [UIColor darkGrayColor].CGColor; cell.layer.shadowOffset = CGSizeMake(1.f, 1.f); cell.deleteBtn.hidden = NO; [self.editBtn setTitle:@"完成" forState:UIControlStateNormal]; cell.edit = YES; }else{ cell.edit = NO; cell.deleteBtn.hidden = YES; cell.layer.masksToBounds = YES; [self.editBtn setTitle:@"编辑" forState:UIControlStateNormal]; } } } 添加数据,持久化存储刷新界面 -(void)add{ SCLAlertView * alert = [[SCLAlertView alloc]init]; [alert setHorizontalButtons:YES]; SCLTextView * textField = [alert addTextField:@"Enter your name"]; [alert addButton:@"确定" actionBlock:^(void) { NSLog(@"Text value: %@", textField.text); [self.twoArray addObject:textField.text]; [self.collectionView reloadData]; [[NSUserDefaults standardUserDefaults]setObject:self.twoArray forKey:@"two"]; [[NSUserDefaults standardUserDefaults]synchronize]; }]; [alert showEdit:self title:nil subTitle:@"请输入名称" closeButtonTitle:@"取消" duration:0.0f]; 增删移随时保存数据 [[NSUserDefaults standardUserDefaults]setObject:self.oneArray forKey:@"one"]; [[NSUserDefaults standardUserDefaults]setObject:self.twoArray forKey:@"two"]; [[NSUserDefaults standardUserDefaults]synchronize];]]></content>
-      <categories>
-        <category>Ios</category>
-      </categories>
-  </entry>
-  <entry>
-    <title><![CDATA[[自定义tarbar]]]></title>
-    <url>%2F2017%2F08%2F03%2F%E8%87%AA%E5%AE%9A%E4%B9%89tarbar%2F</url>
-    <content type="text"><![CDATA[Welcome to my blog. Thanks. Dome: github 地址 pod RESideMenu vim podfile platform :ios,&apos;8.0&apos; target &apos;SideAndTarbar&apos; do pod &apos;RESideMenu&apos;, &apos;~&gt; 4.0.7&apos; AppDelegate.m添加RESideMenuDelegate didFinishLaunchingWithOptions self.window = [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen ]bounds]]; TableViewController * viewController = [[TableViewController alloc]init]; TarBarViewController * barViewController = [[TarBarViewController alloc]init]; RESideMenu * sideMenu = [[RESideMenu alloc]initWithContentViewController:barViewController leftMenuViewController:viewController rightMenuViewController:nil]; sideMenu.delegate = self; sideMenu.contentViewShadowEnabled = YES; sideMenu.contentViewInPortraitOffsetCenterX = 100.f; sideMenu.contentViewScaleValue = 1.0; sideMenu.menuPreferredStatusBarStyle = UIStatusBarStyleLightContent; sideMenu.bouncesHorizontally = NO; self.window.rootViewController = sideMenu; 自定义tabbar 添加子控制器属性 添加navgationbar 去除tabbar分割线 选中controller后图片和标题改变 -(void)addChildViewController:(UIViewController *)childController title:(NSString *)title image:(UIImage *)image selecteImage:(UIImage *)selectedImage{ UINavigationController * controller = [[UINavigationController alloc]initWithRootViewController:childController]; childController.view.backgroundColor = [UIColor whiteColor]; childController.navigationItem.title = title; [[UITabBar appearance] setShadowImage:[UIImage new]]; [[UITabBar appearance] setBackgroundImage:[[UIImage alloc]init]]; selectedImage = [selectedImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]; self.tabBar.tintColor = [UIColor greenColor]; controller.tabBarItem = [[UITabBarItem alloc]initWithTitle:title image:image selectedImage:selectedImage]; [self addChildViewController:controller]; } 添加子控制器 -(void)setNewBar{ OneViewController * one = [[OneViewController alloc]init]; [self addChildViewController:one title:@"MainOne" image:[UIImage imageNamed:@"icon_home_normal"] selecteImage:[UIImage imageNamed:@"icon_home_selected"]]; TwoViewController * two = [[TwoViewController alloc]init]; [self addChildViewController:two title:@"MainTwo" image:[UIImage imageNamed:@"icon_door_normal"] selecteImage:[UIImage imageNamed:@"icon_door_selected"]]; } 在各自类中进行操作就OK 例如： self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"icon_sidebar"] style:UIBarButtonItemStylePlain target:self action:@selector(presentLeftMenuViewController:)]; UIButton * button = [[UIButton alloc]initWithFrame:CGRectMake(100, 100, 100, 100)]; button.backgroundColor = [UIColor greenColor]; [self.view addSubview:button];]]></content>
-      <categories>
-        <category>Ios</category>
-      </categories>
-  </entry>
-  <entry>
-    <title><![CDATA[Hexo简单操作]]></title>
-    <url>%2F2017%2F07%2F25%2FHexo%E7%AE%80%E5%8D%95%E6%93%8D%E4%BD%9C%2F</url>
-    <content type="text"><![CDATA[Welcome to my blog. Thanks.打开themes/next/source/css/_custom/custom.styl.参考样式:博客地址 /*标题 */ .post-title{ color: red; } /*内容 */ .post-body{ color: green; } /*author */ .author{ text-align: center; color: red; } /*心photo */ .with-love{ color: red; } /*乐乐 */ .theme-link{ color: red; } .busuanzi-value{ color: rebeccapurple; } Next主题操作 生成新页面 hexo g 发布代码 hexo d 开启调试服务 hexo s –debug 为next主题的主页文章添加阴影效果 打开themes/next/source/css/_schemes/Mist/_posts-expanded.styl文件 找到类.posts-expand下面的.post .post { margin-top: 120px; } 改成: .post { margin-top: 60px; margin-bottom: 60px; padding: 25px; -webkit-box-shadow: 0 0 5px rgba(202, 203, 203, .5); -moz-box-shadow: 0 0 5px rgba(202, 203, 204, .5); } 添加“Fork me on Github” ribbon 打开themes\next\layout\layout.swig &lt;a href=&quot;你的地址&quot;&gt;&lt;img style=&quot;position: absolute; top: 0; left: 0; border: 0;&quot; src=&quot;https://camo.githubusercontent.com/82b228a3648bf44fc1163ef44c62fcc60081495e/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f7265645f6161303030302e706e67&quot; alt=&quot;Fork me on GitHub&quot; data-canonical-src=&quot;https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png&quot;&gt;&lt;/a&gt; 404界面 找到根目录-source 创建HTML文件 打开：commonweal: /404.html &lt;html&gt; &lt;body&gt; &lt;script type=&quot;text/javascript&quot; src=&quot;http://www.qq.com/404/search_children.js&quot; charset=&quot;utf-8&quot; homePageUrl=&quot;http://www.princesmall.cn&quot; homePageName=&quot;回到乐乐的主页&quot;&gt;&lt;/script&gt; &lt;/body&gt; &lt;/html&gt; 注：如果返回的还是qq主页，请参考我网页源码，毕竟有些长，这只是不body。然后copy到你的404.html下 文章末尾追加版权信息 找到themes/next/layout/_macro/reward.swig 在最上面添加如下代码：（最上面） Hexo插入图片 首先确认根目录下_config.yml 中有 post_asset_folder:true 在hexo的目录下执行npm install https://github.com/CodeFalling/hexo-asset-image –save 创建文件hexo new “文件名” 在source下会生成一个和文件名一样的文件夹，图片放在该文件夹下 例如： ![logo](文件名/logo.jpg) 是不是so easy！]]></content>
-      <categories>
-        <category>Hexo</category>
-      </categories>
-      <tags>
-        <tag>1</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Hello World]]></title>
-    <url>%2F2017%2F07%2F17%2Fhello-world%2F</url>
-    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
-  </entry>
+<search> 
+  
+    
+    <entry>
+      <title><![CDATA[[增删移]]]></title>
+      <url>/2017/08/11/%E5%A2%9E%E5%88%A0%E7%A7%BB/</url>
+      <content type="html"><![CDATA[<p>Welcome to my blog. Thanks.</p>
+<p>Dome: <a href="https://github.com/princeSmall/CollectionViewCell.git" target="_blank" rel="external"> github 地址</a></p>
+<p>   今日看到某娱乐项目选择增删移很好玩，周五上午没事就写了一个。<br>   利用CollectionViewCell，将数据持久化保存在infoplist。<br>   再也不怕回到解放前了。主要分[已添加]–[待添加]–[未添加]–[删除添加]</p>
+<h3 id="CollectionViewCell"><a href="#CollectionViewCell" class="headerlink" title="CollectionViewCell"></a>CollectionViewCell</h3><pre>
+ UIBarButtonItem * rightItem = [[UIBarButtonItem alloc]initWithTitle:@"新增加" style:UIBarButtonItemStylePlain target:self action:@selector(add)];
+    self.navigationItem.rightBarButtonItem = rightItem;
+    UICollectionViewFlowLayout * layout = [[UICollectionViewFlowLayout alloc]init];
+    layout.itemSize = CGSizeMake(50, 50);
+    layout.scrollDirection = UICollectionViewScrollDirectionVertical;
+    self.collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) collectionViewLayout:layout];
+    self.collectionView.backgroundColor = [UIColor whiteColor];
+    self.collectionView.delegate = self;
+    self.collectionView.dataSource = self;
+    [self.collectionView registerNib:[UINib nibWithNibName:@"CollectionViewCell" bundle:nil] forCellWithReuseIdentifier:identifier];
+    [self.collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:headerId];
+</pre> 
+
+<h3 id="两个数组用来存放已添加的和待添加的"><a href="#两个数组用来存放已添加的和待添加的" class="headerlink" title="两个数组用来存放已添加的和待添加的"></a>两个数组用来存放已添加的和待添加的</h3><pre> 
+   if ([[NSUserDefaults standardUserDefaults]objectForKey:@"one"] == nil) {
+   self.oneArray = [NSMutableArray arrayWithObjects:@"0",@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",@"13",@"14",@"15",@"16",@"17",@"18",@"19",nil];
+    }else{
+        id array = [[NSUserDefaults standardUserDefaults]objectForKey:@"one"];
+        [self.oneArray addObjectsFromArray:array];
+    }
+    if ( [[NSUserDefaults standardUserDefaults]objectForKey:@"two"] == nil) {
+        self.twoArray = [NSMutableArray arrayWithObjects:@"a",@"b",@"c",@"d",@"e",@"f",@"g",@"h",@"i",@"j", nil];
+    }else{
+        id array = [[NSUserDefaults standardUserDefaults]objectForKey:@"two"];
+        [self.twoArray addObjectsFromArray:array];
+    }
+</pre>
+
+<h3 id="每次改变后刷新要防止复用"><a href="#每次改变后刷新要防止复用" class="headerlink" title="每次改变后刷新要防止复用"></a>每次改变后刷新要防止复用</h3><pre>
+ UICollectionReusableView *headerView = [self.collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:headerId forIndexPath:indexPath];
+    headerView.backgroundColor = [UIColor darkGrayColor];
+    [headerView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    _titleLab = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width - 50, 40)];
+    _titleLab.textAlignment = NSTextAlignmentLeft;
+    _titleLab.textColor = [UIColor whiteColor];
+    [headerView addSubview:self.titleLab];
+</pre>
+
+<h3 id="编辑状态下进行移动和删除"><a href="#编辑状态下进行移动和删除" class="headerlink" title="编辑状态下进行移动和删除"></a>编辑状态下进行移动和删除</h3><pre>
+-(void)edit{
+    for (CollectionViewCell * cell in self.collectionView.visibleCells) {
+        if (cell.edit == NO) {
+            cell.layer.masksToBounds = NO;
+            cell.layer.shadowOpacity = 0.7f;
+            cell.layer.shadowColor = [UIColor darkGrayColor].CGColor;
+            cell.layer.shadowOffset = CGSizeMake(1.f, 1.f);
+            cell.deleteBtn.hidden = NO;
+            [self.editBtn setTitle:@"完成" forState:UIControlStateNormal];
+            cell.edit = YES;
+        }else{
+            cell.edit = NO;
+            cell.deleteBtn.hidden = YES;
+            cell.layer.masksToBounds = YES;
+            [self.editBtn setTitle:@"编辑" forState:UIControlStateNormal];
+        }
+    }
+
+}
+</pre>
+
+<h3 id="添加数据-持久化存储刷新界面"><a href="#添加数据-持久化存储刷新界面" class="headerlink" title="添加数据,持久化存储刷新界面"></a>添加数据,持久化存储刷新界面</h3><pre>
+-(void)add{
+    SCLAlertView * alert = [[SCLAlertView alloc]init];
+    [alert setHorizontalButtons:YES];
+    SCLTextView * textField = [alert addTextField:@"Enter your name"];
+    [alert addButton:@"确定" actionBlock:^(void) {
+        NSLog(@"Text value: %@", textField.text);
+        [self.twoArray addObject:textField.text];
+        [self.collectionView reloadData];
+        [[NSUserDefaults standardUserDefaults]setObject:self.twoArray forKey:@"two"];
+        [[NSUserDefaults standardUserDefaults]synchronize];
+
+    }];   
+  [alert showEdit:self title:nil subTitle:@"请输入名称" closeButtonTitle:@"取消" duration:0.0f];
+</pre>
+
+<h3 id="增删移随时保存数据"><a href="#增删移随时保存数据" class="headerlink" title="增删移随时保存数据"></a>增删移随时保存数据</h3><pre> 
+    [[NSUserDefaults standardUserDefaults]setObject:self.oneArray forKey:@"one"];
+    [[NSUserDefaults standardUserDefaults]setObject:self.twoArray forKey:@"two"];
+    [[NSUserDefaults standardUserDefaults]synchronize];
+
+</pre>
+
+
+
+<p><img src="/2017/08/11/增删移/main.png" alt="mian"><br><img src="/2017/08/11/增删移/add.png" alt="add"><br><img src="/2017/08/11/增删移/remove.png" alt="remove"></p>
+]]></content>
+      
+        <categories>
+            
+            <category> Ios </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[[自定义tarbar]]]></title>
+      <url>/2017/08/03/%E8%87%AA%E5%AE%9A%E4%B9%89tarbar/</url>
+      <content type="html"><![CDATA[<p>Welcome to my blog. Thanks.</p>
+<p>Dome: <a href="https://github.com/princeSmall/REsideAndTarbar" target="_blank" rel="external"> github 地址</a></p>
+<h3 id="pod-RESideMenu"><a href="#pod-RESideMenu" class="headerlink" title="pod RESideMenu"></a>pod RESideMenu</h3><ol>
+<li><p>vim podfile</p>
+<pre><code>platform :ios,&apos;8.0&apos;
+target &apos;SideAndTarbar&apos; do
+pod &apos;RESideMenu&apos;, &apos;~&gt; 4.0.7&apos;
+</code></pre></li>
+</ol>
+<h3 id="AppDelegate-m"><a href="#AppDelegate-m" class="headerlink" title="AppDelegate.m"></a>AppDelegate.m</h3><pre><code>添加RESideMenuDelegate
+</code></pre><ol>
+<li><p>didFinishLaunchingWithOptions</p>
+<pre><code>self.window = [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen ]bounds]];
+TableViewController * viewController =  [[TableViewController alloc]init];
+TarBarViewController * barViewController = [[TarBarViewController alloc]init];
+RESideMenu * sideMenu = [[RESideMenu alloc]initWithContentViewController:barViewController leftMenuViewController:viewController rightMenuViewController:nil];
+sideMenu.delegate = self;
+sideMenu.contentViewShadowEnabled = YES;
+sideMenu.contentViewInPortraitOffsetCenterX = 100.f;
+sideMenu.contentViewScaleValue = 1.0;
+sideMenu.menuPreferredStatusBarStyle = UIStatusBarStyleLightContent;
+sideMenu.bouncesHorizontally = NO;
+self.window.rootViewController = sideMenu; 
+</code></pre></li>
+</ol>
+<h3 id="自定义tabbar"><a href="#自定义tabbar" class="headerlink" title="自定义tabbar"></a>自定义tabbar</h3><ol>
+<li><p>添加子控制器属性</p>
+<ul>
+<li>添加navgationbar</li>
+<li>去除tabbar分割线</li>
+<li>选中controller后图片和标题改变</li>
+</ul>
+</li>
+</ol>
+<pre>
+-(void)addChildViewController:(UIViewController *)childController title:(NSString *)title image:(UIImage *)image selecteImage:(UIImage *)selectedImage{
+
+    UINavigationController * controller = [[UINavigationController alloc]initWithRootViewController:childController];
+    childController.view.backgroundColor = [UIColor whiteColor];
+    childController.navigationItem.title = title;
+    [[UITabBar appearance] setShadowImage:[UIImage new]]; [[UITabBar appearance] setBackgroundImage:[[UIImage alloc]init]];
+    selectedImage = [selectedImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    self.tabBar.tintColor = [UIColor greenColor];  
+    controller.tabBarItem = [[UITabBarItem alloc]initWithTitle:title image:image selectedImage:selectedImage];
+    [self addChildViewController:controller];
+
+}  
+</pre>  
+
+<ol>
+<li>添加子控制器 <pre>
+-(void)setNewBar{
+OneViewController * one = [[OneViewController alloc]init];
+[self addChildViewController:one title:@"MainOne" image:[UIImage imageNamed:@"icon_home_normal"] selecteImage:[UIImage imageNamed:@"icon_home_selected"]];
+TwoViewController * two = [[TwoViewController alloc]init];
+[self addChildViewController:two title:@"MainTwo" image:[UIImage imageNamed:@"icon_door_normal"] selecteImage:[UIImage imageNamed:@"icon_door_selected"]];
+}
+</pre>
+
+</li>
+</ol>
+<h3 id="在各自类中进行操作就OK"><a href="#在各自类中进行操作就OK" class="headerlink" title="在各自类中进行操作就OK"></a>在各自类中进行操作就OK</h3><ol>
+<li>例如：<pre>
+self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"icon_sidebar"] style:UIBarButtonItemStylePlain target:self action:@selector(presentLeftMenuViewController:)];
+ UIButton * button = [[UIButton alloc]initWithFrame:CGRectMake(100, 100, 100, 100)];
+ button.backgroundColor = [UIColor greenColor];
+ [self.view addSubview:button];
+</pre>
+
+</li>
+</ol>
+<p><img src="/2017/08/03/自定义tarbar/main.png" alt=""><br><img src="/2017/08/03/自定义tarbar/mainTwo.png" alt=""><br><img src="/2017/08/03/自定义tarbar/left.png" alt=""></p>
+]]></content>
+      
+        <categories>
+            
+            <category> Ios </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Hexo简单操作]]></title>
+      <url>/2017/07/25/Hexo%E7%AE%80%E5%8D%95%E6%93%8D%E4%BD%9C/</url>
+      <content type="html"><![CDATA[<h3 id="Welcome-to-my-blog-Thanks"><a href="#Welcome-to-my-blog-Thanks" class="headerlink" title="Welcome to my blog. Thanks."></a>Welcome to my blog. Thanks.</h3><p>打开themes/next/source/css/_custom/custom.styl.<br>参考样式:<a href="https://princesmall.cn" target="_blank" rel="external">博客地址</a></p>
+<p><img src="/2017/07/25/Hexo简单操作/css.png" alt="logo"></p>
+<pre>/*标题  */
+.post-title{
+color: red;
+}    
+/*内容  */
+.post-body{
+color: green;
+}
+/*author  */
+.author{
+text-align: center;
+color: red;
+}
+/*心photo  */
+.with-love{
+color: red;
+}
+/*乐乐  */
+.theme-link{
+color: red;
+}
+.busuanzi-value{
+color: rebeccapurple;
+}
+</pre>
+
+<h3 id="Next主题操作"><a href="#Next主题操作" class="headerlink" title="Next主题操作"></a>Next主题操作</h3><ol>
+<li>生成新页面 <pre> hexo g</pre></li>
+<li>发布代码  <pre> hexo d</pre></li>
+<li>开启调试服务  <pre> hexo  s –debug</pre></li>
+</ol>
+<h3 id="为next主题的主页文章添加阴影效果"><a href="#为next主题的主页文章添加阴影效果" class="headerlink" title="为next主题的主页文章添加阴影效果"></a>为next主题的主页文章添加阴影效果</h3><ol>
+<li>打开themes/next/source/css/_schemes/Mist/_posts-expanded.styl文件</li>
+<li>找到类.posts-expand下面的.post<pre>
+.post {
+margin-top: 120px;
+}
+改成:
+.post {
+margin-top: 60px;
+margin-bottom: 60px;
+padding: 25px;
+-webkit-box-shadow: 0 0 5px rgba(202, 203, 203, .5);
+-moz-box-shadow: 0 0 5px rgba(202, 203, 204, .5);
+}
+</pre>
+
+</li>
+</ol>
+<h3 id="添加“Fork-me-on-Github”-ribbon"><a href="#添加“Fork-me-on-Github”-ribbon" class="headerlink" title="添加“Fork me on Github” ribbon"></a>添加“Fork me on Github” ribbon</h3><ol>
+<li><p>打开themes\next\layout\layout.swig</p>
+<pre><code>&lt;a href=&quot;你的地址&quot;&gt;&lt;img style=&quot;position: absolute; top: 0; left: 0; border: 0;&quot; 
+src=&quot;https://camo.githubusercontent.com/82b228a3648bf44fc1163ef44c62fcc60081495e/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f7265645f6161303030302e706e67&quot; 
+alt=&quot;Fork me on GitHub&quot; 
+data-canonical-src=&quot;https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png&quot;&gt;&lt;/a&gt;
+</code></pre></li>
+</ol>
+<h3 id="404界面"><a href="#404界面" class="headerlink" title="404界面"></a>404界面</h3><ol>
+<li>找到根目录-source<br><img src="/2017/07/25/Hexo简单操作/404.png" alt="logo"></li>
+<li>创建HTML文件</li>
+<li><p>打开：commonweal: /404.html</p>
+<pre><code>&lt;html&gt;
+&lt;body&gt;
+&lt;script type=&quot;text/javascript&quot; 
+src=&quot;http://www.qq.com/404/search_children.js&quot;         
+charset=&quot;utf-8&quot; homePageUrl=&quot;http://www.princesmall.cn&quot;
+ homePageName=&quot;回到乐乐的主页&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+注：如果返回的还是qq主页，请参考我网页源码，毕竟有些长，这只是不body。然后copy到你的404.html下
+</code></pre></li>
+</ol>
+<h3 id="文章末尾追加版权信息"><a href="#文章末尾追加版权信息" class="headerlink" title="文章末尾追加版权信息"></a>文章末尾追加版权信息</h3><ol>
+<li>找到themes/next/layout/_macro/reward.swig</li>
+<li>在最上面添加如下代码：（最上面）<br><img src="/2017/07/25/Hexo简单操作/permalink.png" alt="permalink">   </li>
+</ol>
+<h3 id="Hexo插入图片"><a href="#Hexo插入图片" class="headerlink" title="Hexo插入图片"></a>Hexo插入图片</h3><ol>
+<li>首先确认根目录下_config.yml 中有 post_asset_folder:true</li>
+<li>在hexo的目录下执行npm install <a href="https://github.com/CodeFalling/hexo-asset-image" target="_blank" rel="external">https://github.com/CodeFalling/hexo-asset-image</a> –save</li>
+<li>创建文件hexo new “文件名”</li>
+<li><p>在source下会生成一个和文件名一样的文件夹，图片放在该文件夹下</p>
+<pre><code>例如：
+  ![logo](文件名/logo.jpg)
+  是不是so easy！
+</code></pre></li>
+</ol>
+]]></content>
+      
+        <categories>
+            
+            <category> Hexo </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 1 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Hello World]]></title>
+      <url>/2017/07/17/hello-world/</url>
+      <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+]]></content>
+      
+        
+    </entry>
+    
+  
+  
 </search>
