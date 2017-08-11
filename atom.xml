@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-08-03T07:41:36.000Z</updated>
+  <updated>2017-08-11T08:39:24.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,117 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>[增删移]</title>
+    <link href="http://yoursite.com/2017/08/11/%E5%A2%9E%E5%88%A0%E7%A7%BB/"/>
+    <id>http://yoursite.com/2017/08/11/增删移/</id>
+    <published>2017-08-11T08:34:35.000Z</published>
+    <updated>2017-08-11T08:39:24.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to my blog. Thanks.</p>
+<p>Dome: <a href="https://github.com/princeSmall/CollectionViewCell.git" target="_blank" rel="external"> github 地址</a></p>
+<p>   今日看到某娱乐项目选择增删移很好玩，周五上午没事就写了一个。<br>   利用CollectionViewCell，将数据持久化保存在infoplist。<br>   再也不怕回到解放前了。主要分[已添加]–[待添加]–[未添加]–[删除添加]</p>
+<h3 id="CollectionViewCell"><a href="#CollectionViewCell" class="headerlink" title="CollectionViewCell"></a>CollectionViewCell</h3><pre>
+ UIBarButtonItem * rightItem = [[UIBarButtonItem alloc]initWithTitle:@"新增加" style:UIBarButtonItemStylePlain target:self action:@selector(add)];
+    self.navigationItem.rightBarButtonItem = rightItem;
+    UICollectionViewFlowLayout * layout = [[UICollectionViewFlowLayout alloc]init];
+    layout.itemSize = CGSizeMake(50, 50);
+    layout.scrollDirection = UICollectionViewScrollDirectionVertical;
+    self.collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) collectionViewLayout:layout];
+    self.collectionView.backgroundColor = [UIColor whiteColor];
+    self.collectionView.delegate = self;
+    self.collectionView.dataSource = self;
+    [self.collectionView registerNib:[UINib nibWithNibName:@"CollectionViewCell" bundle:nil] forCellWithReuseIdentifier:identifier];
+    [self.collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:headerId];
+</pre> 
+
+<h3 id="两个数组用来存放已添加的和待添加的"><a href="#两个数组用来存放已添加的和待添加的" class="headerlink" title="两个数组用来存放已添加的和待添加的"></a>两个数组用来存放已添加的和待添加的</h3><pre> 
+   if ([[NSUserDefaults standardUserDefaults]objectForKey:@"one"] == nil) {
+   self.oneArray = [NSMutableArray arrayWithObjects:@"0",@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",@"13",@"14",@"15",@"16",@"17",@"18",@"19",nil];
+    }else{
+        id array = [[NSUserDefaults standardUserDefaults]objectForKey:@"one"];
+        [self.oneArray addObjectsFromArray:array];
+    }
+    if ( [[NSUserDefaults standardUserDefaults]objectForKey:@"two"] == nil) {
+        self.twoArray = [NSMutableArray arrayWithObjects:@"a",@"b",@"c",@"d",@"e",@"f",@"g",@"h",@"i",@"j", nil];
+    }else{
+        id array = [[NSUserDefaults standardUserDefaults]objectForKey:@"two"];
+        [self.twoArray addObjectsFromArray:array];
+    }
+</pre>
+
+<h3 id="每次改变后刷新要防止复用"><a href="#每次改变后刷新要防止复用" class="headerlink" title="每次改变后刷新要防止复用"></a>每次改变后刷新要防止复用</h3><pre>
+ UICollectionReusableView *headerView = [self.collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:headerId forIndexPath:indexPath];
+    headerView.backgroundColor = [UIColor darkGrayColor];
+    [headerView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    _titleLab = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width - 50, 40)];
+    _titleLab.textAlignment = NSTextAlignmentLeft;
+    _titleLab.textColor = [UIColor whiteColor];
+    [headerView addSubview:self.titleLab];
+</pre>
+
+<h3 id="编辑状态下进行移动和删除"><a href="#编辑状态下进行移动和删除" class="headerlink" title="编辑状态下进行移动和删除"></a>编辑状态下进行移动和删除</h3><pre>
+-(void)edit{
+    for (CollectionViewCell * cell in self.collectionView.visibleCells) {
+        if (cell.edit == NO) {
+            cell.layer.masksToBounds = NO;
+            cell.layer.shadowOpacity = 0.7f;
+            cell.layer.shadowColor = [UIColor darkGrayColor].CGColor;
+            cell.layer.shadowOffset = CGSizeMake(1.f, 1.f);
+            cell.deleteBtn.hidden = NO;
+            [self.editBtn setTitle:@"完成" forState:UIControlStateNormal];
+            cell.edit = YES;
+        }else{
+            cell.edit = NO;
+            cell.deleteBtn.hidden = YES;
+            cell.layer.masksToBounds = YES;
+            [self.editBtn setTitle:@"编辑" forState:UIControlStateNormal];
+        }
+    }
+
+}
+</pre>
+
+<h3 id="添加数据-持久化存储刷新界面"><a href="#添加数据-持久化存储刷新界面" class="headerlink" title="添加数据,持久化存储刷新界面"></a>添加数据,持久化存储刷新界面</h3><pre>
+-(void)add{
+    SCLAlertView * alert = [[SCLAlertView alloc]init];
+    [alert setHorizontalButtons:YES];
+    SCLTextView * textField = [alert addTextField:@"Enter your name"];
+    [alert addButton:@"确定" actionBlock:^(void) {
+        NSLog(@"Text value: %@", textField.text);
+        [self.twoArray addObject:textField.text];
+        [self.collectionView reloadData];
+        [[NSUserDefaults standardUserDefaults]setObject:self.twoArray forKey:@"two"];
+        [[NSUserDefaults standardUserDefaults]synchronize];
+
+    }];   
+  [alert showEdit:self title:nil subTitle:@"请输入名称" closeButtonTitle:@"取消" duration:0.0f];
+</pre>
+
+<h3 id="增删移随时保存数据"><a href="#增删移随时保存数据" class="headerlink" title="增删移随时保存数据"></a>增删移随时保存数据</h3><pre> 
+    [[NSUserDefaults standardUserDefaults]setObject:self.oneArray forKey:@"one"];
+    [[NSUserDefaults standardUserDefaults]setObject:self.twoArray forKey:@"two"];
+    [[NSUserDefaults standardUserDefaults]synchronize];
+
+</pre>
+
+
+
+<p><img src="/2017/08/11/增删移/main.png" alt="mian"><br><img src="/2017/08/11/增删移/add.png" alt="add"><br><img src="/2017/08/11/增删移/remove.png" alt="remove"></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Welcome to my blog. Thanks.&lt;/p&gt;
+&lt;p&gt;Dome: &lt;a href=&quot;https://github.com/princeSmall/CollectionViewCell.git&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt; 
+    
+    </summary>
+    
+      <category term="Ios" scheme="http://yoursite.com/categories/Ios/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>[自定义tarbar]</title>
