@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-08-23T09:02:12.000Z</updated>
+  <updated>2017-08-24T02:35:14.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,167 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>[iOS-绑定Amazon]</title>
+    <link href="http://yoursite.com/2017/08/23/iOS-%E7%BB%91%E5%AE%9AAmazon/"/>
+    <id>http://yoursite.com/2017/08/23/iOS-绑定Amazon/</id>
+    <published>2017-08-23T14:23:48.000Z</published>
+    <updated>2017-08-24T02:35:14.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to my blog. Thanks.</p>
+<p>为实现echo语音控制只能家居，所以需要绑定亚马逊账号</p>
+<h3 id="Install-the-Login-with-Amazon-SDK-for-iOS"><a href="#Install-the-Login-with-Amazon-SDK-for-iOS" class="headerlink" title="Install the Login with Amazon SDK for iOS"></a>Install the Login with Amazon SDK for iOS</h3><ol>
+<li>下载亚马逊SDK <a href="https://images-na.ssl-images-amazon.com/images/G/01/lwa/sdk/LoginWithAmazonSDKForiOS._TTH_.zip" target="_blank" rel="external">LoginWithAmazonSDKForiOS.zip</a> </li>
+<li>工程中拖入SDK LoginWithAmazon.framework </li>
+<li>Target - BuildPhases - Link Binary With Libraries中添加framework<br><img src="/2017/08/23/iOS-绑定Amazon/FrameWork.png" alt=""></li>
+</ol>
+<h3 id="Register-with-Login-with-Amazon"><a href="#Register-with-Login-with-Amazon" class="headerlink" title="Register with Login with Amazon"></a>Register with Login with Amazon</h3><h4 id="注册亚马逊账号"><a href="#注册亚马逊账号" class="headerlink" title="注册亚马逊账号"></a>注册亚马逊账号</h4><p><a href="https://www.amazon.com/ap/register?clientContext=168-8975905-4767102&amp;openid.pape.max_auth_age=18000&amp;openid.return_to=https%3A%2F%2Flogin.amazon.com%2Fap-post-redirect&amp;prevRID=8DS9KWNHYGC5AH3NEF6R&amp;openid.identity=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&amp;openid.assoc_handle=amzn_lwa_landing&amp;openid.mode=checkid_setup&amp;siteState=clientContext%3D146-3143884-7961460%2CsourceUrl%3Dhttps%253A%252F%252Flogin.amazon.com%252Fagreement%2Csignature%3DiKv2yHIcj2BRW7gb6EL42A4KfOU24j3D&amp;marketPlaceId=ATVPDKIKX0DER&amp;openid.claimed_id=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&amp;pageId=amzn_lwa_landing&amp;openid.ns=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0" target="_blank" rel="external">亚马逊注册</a></p>
+<p><img src="/2017/08/23/iOS-绑定Amazon/RegisterAmazon.png" alt=""></p>
+<h4 id="登录亚马逊账号"><a href="#登录亚马逊账号" class="headerlink" title="登录亚马逊账号"></a>登录亚马逊账号</h4><p><a href="https://www.amazon.com/ap/signin?clientContext=168-8975905-4767102&amp;openid.return_to=https%3A%2F%2Flogin.amazon.com%2Fap-post-redirect&amp;openid.identity=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&amp;openid.assoc_handle=amzn_lwa_landing&amp;openid.mode=checkid_setup&amp;marketPlaceId=ATVPDKIKX0DER&amp;openid.claimed_id=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&amp;pageId=amzn_lwa_landing&amp;openid.ns=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0&amp;openid.pape.max_auth_age=18000&amp;siteState=clientContext%3D146-3143884-7961460%2CsourceUrl%3Dhttps%253A%252F%252Flogin.amazon.com%252Fagreement%2Csignature%3DiKv2yHIcj2BRW7gb6EL42A4KfOU24j3D" target="_blank" rel="external">亚马逊登录</a></p>
+<p><img src="/2017/08/23/iOS-绑定Amazon/LoginAmazon.png" alt=""></p>
+<ol>
+<li>输入App的名称，链接和App图标等</li>
+<li>注册地址 <a href="https://login.amazon.com/agreement" target="_blank" rel="external">App Console</a>.前提是你有亚马逊账号<br><img src="/2017/08/23/iOS-绑定Amazon/Register.png" alt=""></li>
+</ol>
+<h3 id="Add-iOS-Settings-to-an-Application"><a href="#Add-iOS-Settings-to-an-Application" class="headerlink" title="Add iOS Settings to an Application"></a>Add iOS Settings to an Application</h3><ol>
+<li><a href="https://developer.amazon.com" target="_blank" rel="external">亚马逊</a> App应用界面，点击iOS设置，如果你的iOS App已经注册好，点击 API Key </li>
+<li>需要输入你的Bundle ID,target - General<br><img src="/2017/08/23/iOS-绑定Amazon/bunldID.png" alt=""></li>
+</ol>
+<h3 id="Add-Your-API-Key-to-Your-App-Property-List"><a href="#Add-Your-API-Key-to-Your-App-Property-List" class="headerlink" title="Add Your API Key to Your App Property List"></a>Add Your API Key to Your App Property List</h3><ol>
+<li>选择 project - Info.plist 添加APIKey ，选择copy，别出错<br><img src="/2017/08/23/iOS-绑定Amazon/API.png" alt=""></li>
+</ol>
+<h3 id="Add-a-URL-Scheme-to-Your-App-Property-List"><a href="#Add-a-URL-Scheme-to-Your-App-Property-List" class="headerlink" title="Add a URL Scheme to Your App Property List"></a>Add a URL Scheme to Your App Property List</h3><ol>
+<li>选择 project - Info.plist 添加URL types</li>
+<li>Item 0 Document Role 填写Editor。 Shames 填写 prefs</li>
+<li>Item 1 identifier 填写bundle ID。 Shames 填写amzn-bundle ID</li>
+<li>其他填写如下图<br><img src="/2017/08/23/iOS-绑定Amazon/URL.png" alt=""></li>
+</ol>
+<h3 id="Using-the-SDK-for-iOS-APIs"><a href="#Using-the-SDK-for-iOS-APIs" class="headerlink" title="Using the SDK for iOS APIs"></a>Using the SDK for iOS APIs</h3><p>创建亚马逊类，导入 #import&lt; LoginWithAmazon/LoginWithAmazon.h&gt;</p>
+<h4 id="Using-the-SDK-for-iOS-APIs-1"><a href="#Using-the-SDK-for-iOS-APIs-1" class="headerlink" title="Using the SDK for iOS APIs"></a>Using the SDK for iOS APIs</h4><ol>
+<li>在 AppDelegate 导入import &lt; LoginWithAmazon/LoginWithAmazon.h&gt;.</li>
+<li>添加以下方法,返回亚马逊URL</li>
+</ol>
+<pre>
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    #pragma unused(application,annotation)
+    // Pass on the url to the SDK to parse authorization code from the url.
+    BOOL isValidRedirectLogInURL = [AMZNAuthorizationManager handleOpenURL:url sourceApplication:(NSString *)sourceApplication];
+
+    if(!isValidRedirectLogInURL){
+        return NO;
+    }
+    // App may also want to handle url
+    return YES;
+}
+</pre>
+
+
+<h4 id="Handle-the-Login-Button-and-Get-Profile-Data"><a href="#Handle-the-Login-Button-and-Get-Profile-Data" class="headerlink" title="Handle the Login Button and Get Profile Data"></a>Handle the Login Button and Get Profile Data</h4><ol>
+<li>发出登录请求 userID ，profile，postalCode</li>
+<li>successful 成功登录返回数据result.token，result.user，user.userID</li>
+<li>error 回复错误</li>
+<li>userDidCancel 用户自动取消</li>
+</ol>
+<pre>
+- (IBAction)onLogInButtonClicked:(id)sender {
+  // Build an authorize request.
+  AMZNAuthorizeRequest *request = [[AMZNAuthorizeRequest alloc] init];
+        request.scopes = [NSArray arrayWithObjects: 
+        [AMZNProfileScope userID],
+        [AMZNProfileScope profile], 
+        [AMZNProfileScope postalCode]];
+
+  // Make an Authorize call to the Login with Amazon SDK.
+  [[AMZNAuthorizationManager sharedManager] authorize:request
+    withHandler:^(AMZNAuthorizeResult *result, BOOL 
+    userDidCancel, NSError *error) {
+          if (error) { 
+              // Handle errors from the SDK or authorization server. 
+          } else if (userDidCancel) {
+              // Handle errors caused when user cancels login.
+          } else {
+              // Authentication was successful.
+              // Obtain the access token and user profile data.
+              NSString *accessToken = result.token;
+              AMZNUser *user = result.user;
+              NSString *userID = user.userID;
+          }
+  }];
+}
+</pre>
+
+<h4 id="Fetch-User-Profile-Data"><a href="#Fetch-User-Profile-Data" class="headerlink" title="Fetch User Profile Data"></a>Fetch User Profile Data</h4><ol>
+<li>获取登录信息 user.userID，user.name，user.email，user.postalCode</li>
+<li>在error时可以添加重新登录方法</li>
+</ol>
+<pre>
+AMZNUser fetch:^(AMZNUser *user, NSError *error) {
+  if (error) {
+    // Error from the SDK, or no user has authorized to the app.
+  } else if (user) {
+    NSString *userID = user.userID;
+    //NSString *name = user.name;
+    //NSString *email = user.email;
+    //NSString *postalCode = user.postalCode;
+  }
+}];
+</pre>
+
+<h4 id="Check-for-User-Login-at-Startup"><a href="#Check-for-User-Login-at-Startup" class="headerlink" title="Check for User Login at Startup"></a>Check for User Login at Startup</h4><pre>
+// Build an authorize request.
+   AMZNAuthorizeRequest *request = [[AMZNAuthorizeRequest alloc] init];
+    request.scopes = [NSArray arrayWithObjects: 
+  // [AMZNProfileScope userID],
+     [AMZNProfileScope profile], 
+    [AMZNProfileScope postalCode]];
+
+   request.interactiveStrategy = AMZNInteractiveStrategyNever;
+
+   [[AMZNAuthorizationManager sharedManager] authorize:request
+     withHandler:^(AMZNAuthorizeResult *result, BOOL 
+      userDidCancel, NSError *error) {
+        if (error) { 
+             // Error from the SDK, indicating the user was not previously authorized to your app for the requested scopes. 
+         } else {
+             // The user was previously authorized to your app.
+             // Obtain the access token and user profile data.
+                 NSString *accessToken = result.token;
+             AMZNUser *user = result.user;
+             NSString *userID = user.userID;
+             }
+       }];
+</pre>
+
+<h4 id="Clear-Authorization-Data-and-Log-Out-a-User"><a href="#Clear-Authorization-Data-and-Log-Out-a-User" class="headerlink" title="Clear Authorization Data and Log Out a User"></a>Clear Authorization Data and Log Out a User</h4><ol>
+<li>退出登录</li>
+<li>清除亚马逊数据</li>
+</ol>
+<pre>
+[[AMZNAuthorizationManager sharedManager] signOut:^(NSError * _Nullable error) {
+  if (!error) {
+    // error from the SDK or Login with Amazon authorization server.
+  }
+}];
+</pre>
+
+<p>注：亚马逊账号绑定在本地存储，所以多手机登录需要存储userID到自己服务器，实现多手机登录状态回显</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Welcome to my blog. Thanks.&lt;/p&gt;
+&lt;p&gt;为实现echo语音控制只能家居，所以需要绑定亚马逊账号&lt;/p&gt;
+&lt;h3 id=&quot;Install-the-Login-with-Amazon-SDK-for-iOS&quot;&gt;&lt;a href=&quot;#Install-t
+    
+    </summary>
+    
+      <category term="Ios" scheme="http://yoursite.com/categories/Ios/"/>
+    
+    
+      <category term="2" scheme="http://yoursite.com/tags/2/"/>
+    
+  </entry>
   
   <entry>
     <title>[iOS-OpenGL图形绘制二]</title>
