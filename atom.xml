@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-08-25T07:43:58.000Z</updated>
+  <updated>2017-08-25T08:13:56.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,11 +16,99 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Swift popAnimation 初级</title>
+    <title>[Swift_popAnimation应用]</title>
+    <link href="http://yoursite.com/2017/08/25/Swift-popAnimation%E5%BA%94%E7%94%A8/"/>
+    <id>http://yoursite.com/2017/08/25/Swift-popAnimation应用/</id>
+    <published>2017-08-25T07:49:23.000Z</published>
+    <updated>2017-08-25T08:13:56.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to my blog. Thanks.</p>
+<p>Dome: <a href="https://github.com/princeSmall/TongPopInstall" target="_blank" rel="external">github地址</a></p>
+<p><img src="/2017/08/25/Swift-popAnimation应用/PopInstall.gif" alt="GIF"></p>
+<ol>
+<li>Pod pop如上篇文章</li>
+<li>创建UIbutton类对象与storyboard绑定</li>
+<li>应用touchesBegan ，touchesEnded</li>
+</ol>
+<h3 id="开始点击"><a href="#开始点击" class="headerlink" title="开始点击"></a>开始点击</h3><ol>
+<li>缩小0.5倍</li>
+<li>旋转半圈</li>
+</ol>
+<pre>
+  //缩放动画
+        var scale = self.pop_animation(forKey: TLscale)as?POPSpringAnimation
+        if scale != nil {
+            scale?.toValue = NSValue(cgPoint:CGPoint(x: 0.5, y: 0.5))
+        }else{
+       scale = POPSpringAnimation(propertyNamed: kPOPViewScaleXY)
+            scale?.toValue = NSValue(cgPoint:CGPoint(x: 0.5, y: 0.5))
+            scale?.springBounciness = 20
+            scale?.springSpeed = 5
+            self.pop_add(scale, forKey: TLscale)
+
+        }
+  //旋转动画
+        var rotate = self.layer.pop_animation(forKey: TLrotate)as? POPSpringAnimation
+        if rotate != nil {
+            rotate?.toValue = Double.pi / 2
+        }else{
+            rotate = POPSpringAnimation(propertyNamed: kPOPLayerRotation)
+            rotate?.toValue = Double.pi / 2
+            rotate?.springBounciness = 20
+            rotate?.springSpeed = 18
+            self.layer.pop_add(rotate, forKey: TLrotate)
+        }
+</pre>
+
+<h3 id="结束点击"><a href="#结束点击" class="headerlink" title="结束点击"></a>结束点击</h3><ol>
+<li>缩放1.0倍回到起始状态</li>
+<li>旋转到起始位置</li>
+</ol>
+<pre>
+  //缩放动画
+        var scale = self.pop_animation(forKey: TLscale)as?POPSpringAnimation
+        if scale != nil {
+            scale?.toValue = NSValue(cgPoint:CGPoint(x: 1, y: 1))
+        }else{
+            scale = POPSpringAnimation(propertyNamed: kPOPViewScaleXY)
+            scale?.toValue = NSValue(cgPoint:CGPoint(x: 1, y: 1))
+            scale?.springBounciness = 20
+            scale?.springSpeed = 5
+            self.pop_add(scale, forKey: TLscale)
+             }
+  //旋转动画
+        var rotate = self.layer.pop_animation(forKey: TLrotate)as? POPSpringAnimation
+        if rotate != nil {
+            rotate?.toValue = 0
+        }else{
+            rotate = POPSpringAnimation(propertyNamed: kPOPLayerRotation)
+            rotate?.toValue = 0
+            rotate?.springBounciness = 20
+            rotate?.springSpeed = 18
+            self.layer.pop_add(rotate, forKey: TLrotate)
+</pre>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Welcome to my blog. Thanks.&lt;/p&gt;
+&lt;p&gt;Dome: &lt;a href=&quot;https://github.com/princeSmall/TongPopInstall&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;github地址&lt;
+    
+    </summary>
+    
+      <category term="Swift" scheme="http://yoursite.com/categories/Swift/"/>
+    
+    
+      <category term="3" scheme="http://yoursite.com/tags/3/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>[Swift_popAnimation初级]</title>
     <link href="http://yoursite.com/2017/08/25/popAnimation%E5%88%9D%E7%BA%A7/"/>
     <id>http://yoursite.com/2017/08/25/popAnimation初级/</id>
     <published>2017-08-25T07:35:01.000Z</published>
-    <updated>2017-08-25T07:43:58.000Z</updated>
+    <updated>2017-08-25T08:16:33.000Z</updated>
     
     <content type="html"><![CDATA[<p>Welcome to my blog. Thanks.</p>
 <p>Dome: <a href="https://github.com/princeSmall/RedBall" target="_blank" rel="external">github地址</a></p>
