@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-08-25T08:13:56.000Z</updated>
+  <updated>2017-08-28T06:18:16.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,232 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>[Swift_popAnimation实例]</title>
+    <link href="http://yoursite.com/2017/08/28/Swift-popAnimation%E5%AE%9E%E4%BE%8B/"/>
+    <id>http://yoursite.com/2017/08/28/Swift-popAnimation实例/</id>
+    <published>2017-08-28T05:42:20.000Z</published>
+    <updated>2017-08-28T06:18:16.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to my blog. Thanks.</p>
+<p>Dome: <a href="https://github.com/princeSmall/hamburger" target="_blank" rel="external">github地址</a></p>
+<p>情人节在写博客也是蛮拼的</p>
+<ol>
+<li>Pod pop 如 [Swift_popAnimation初级]</li>
+</ol>
+<h3 id="动画思路"><a href="#动画思路" class="headerlink" title="动画思路"></a>动画思路</h3><pre>
+   三条杠变叉：中间杠的消失和两边杠的偏移。
+   叉变三条杠：两边杠的偏移和中间杠的出现。
+</pre>
+
+<ol>
+<li><p>三条杠用三个view来代替，添加在一个button上。声明全局属性</p>
+<pre>
+ var  hamburger = true
+ var  hamburgerButton : UIButton?
+ var  top:UIView?
+ var  middle:UIView?
+ var  bottom:UIView?
+</pre>
+</li>
+<li><p>实例化对象</p>
+<pre><code>self.hamburgerButton = UIButton()
+self.hamburgerButton?.backgroundColor = UIColor.black
+self.hamburgerButton?.frame = CGRect(x: 100, y: 200, width: 150, height: 150)     
+self.hamburgerButton?.layer.cornerRadius = 75
+self.view.addSubview(hamburgerButton!)
+self.hamburgerButton?.addTarget(self, action:#selector(didTapHamburgerButton), for: UIControlEvents.touchUpInside)
+//三道杠
+let sectionWidth:CGFloat = 80.0
+let sectionHeight:CGFloat = 11.0
+//top
+top = UIView(frame: CGRect(x: (self.hamburgerButton?.bounds.size.width)! / 2 - sectionWidth / 2, y: 40, width: sectionWidth, height: sectionHeight))
+top?.backgroundColor = UIColor.white
+top?.isUserInteractionEnabled = false
+top?.layer.cornerRadius = sectionHeight / 2
+self.hamburgerButton?.addSubview(top!)
+//middle
+middle = UIView(frame: CGRect(x: (self.hamburgerButton?.bounds.size.width)! / 2 - sectionWidth / 2, y: 69, width: sectionWidth, height: sectionHeight))
+middle?.backgroundColor = UIColor.white
+middle?.isUserInteractionEnabled = false
+middle?.layer.cornerRadius = sectionHeight / 2
+self.hamburgerButton?.addSubview(middle!)
+//bottom
+bottom = UIView(frame: CGRect(x: (self.hamburgerButton?.bounds.size.width)! / 2 - sectionWidth / 2, y: 99, width: sectionWidth, height: sectionHeight))
+bottom?.backgroundColor = UIColor.white
+bottom?.isUserInteractionEnabled = false
+bottom?.layer.cornerRadius = sectionHeight / 2
+self.hamburgerButton?.addSubview(bottom!)
+</code></pre></li>
+</ol>
+<h3 id="pop对象复用"><a href="#pop对象复用" class="headerlink" title="pop对象复用"></a>pop对象复用</h3><ol>
+<li>颜色动画：<pre>
+     var topColor = self.top?.pop_animation(forKey: "topColor") as! POPSpringAnimation?
+     var bottomColor = self.top?.pop_animation(forKey: "bottomColor") as! POPSpringAnimation?
+</pre></li>
+<li>旋转动画：<pre>
+     var topRotate = self.top?.layer.pop_animation(forKey: "topRotate") as! POPSpringAnimation?
+     var bottomRotate = self.top?.layer.pop_animation(forKey: "bottomRotate") as! POPSpringAnimation?
+</pre></li>
+<li>位置动画：<pre>
+     var topPosition = self.top?.layer.pop_animation(forKey: "topPosition")as!POPSpringAnimation?
+     var bottomPosition = self.top?.layer.pop_animation(forKey: "bottomPosition")as!POPSpringAnimation?
+</pre>
+
+</li>
+</ol>
+<h3 id="三道杠变红叉叉"><a href="#三道杠变红叉叉" class="headerlink" title="三道杠变红叉叉"></a>三道杠变红叉叉</h3><pre>
+ hamburger = false
+            UIView.animate(withDuration: 0.2, animations: {
+                self.middle?.alpha = 0
+            })
+            //变色
+            if topColor != nil {
+                topColor?.toValue = UIColor.red
+            }else{
+                topColor = POPSpringAnimation(propertyNamed: kPOPViewBackgroundColor)
+                topColor?.toValue = UIColor.red
+                topColor?.springBounciness = 0
+                topColor?.springSpeed = 18
+                top?.pop_add(topColor, forKey: "topColor")
+            }
+            if bottomColor != nil {
+                bottomColor?.toValue = UIColor.red
+            }else{
+                bottomColor = POPSpringAnimation(propertyNamed: kPOPViewBackgroundColor)
+                bottomColor?.toValue = UIColor.red
+                bottomColor?.springBounciness = 0
+                bottomColor?.springSpeed = 18
+                bottom?.pop_add(topColor, forKey: "bottomColor")
+            }
+            //旋转
+            if topRotate != nil {
+                topRotate?.toValue = -Double.pi / 4
+            }else{
+                topRotate = POPSpringAnimation(propertyNamed: kPOPLayerRotation)
+                topRotate?.toValue = -Double.pi / 4
+                topRotate?.springBounciness = 11
+                topRotate?.springSpeed = 18
+                top?.layer.pop_add(topRotate, forKey: "topRotate")
+            }
+            if bottomRotate != nil {
+                bottomRotate?.toValue = Double.pi / 4
+            }else{
+                bottomRotate = POPSpringAnimation(propertyNamed: kPOPLayerRotation)
+                bottomRotate?.toValue = Double.pi / 4
+                bottomRotate?.springBounciness = 11
+                bottomRotate?.springSpeed = 18
+                bottom?.layer.pop_add(bottomRotate, forKey: "bottomRotate")
+            }
+            //移动
+            if topPosition != nil {
+                topPosition?.toValue = 29
+            }else{
+                topPosition = POPSpringAnimation(propertyNamed: kPOPLayerTranslationY)
+                topPosition?.toValue = 29
+                topPosition?.springBounciness = 11
+                topPosition?.springSpeed = 18
+                top?.layer.pop_add(topPosition, forKey: "topPosition")
+            }
+            if bottomPosition != nil {
+                bottomPosition?.toValue = -29
+            }else{
+                bottomPosition = POPSpringAnimation(propertyNamed: kPOPLayerTranslationY)
+                bottomPosition?.toValue = -29
+                bottomPosition?.springBounciness = 11
+                bottomPosition?.springSpeed = 18
+                bottom?.layer.pop_add(bottomPosition, forKey: "bottomPosition")
+            }
+
+}
+</pre>
+
+<h3 id="红叉叉变三道杠-逆向-gt-就还原一起改变值"><a href="#红叉叉变三道杠-逆向-gt-就还原一起改变值" class="headerlink" title="红叉叉变三道杠:逆向-&gt;就还原一起改变值"></a>红叉叉变三道杠:逆向-&gt;就还原一起改变值</h3><pre>
+   hamburger = true
+            UIView.animate(withDuration: 0.2, animations: {
+                self.middle?.alpha = 1
+            })
+            //变色
+            if topColor != nil {
+                topColor?.toValue = UIColor.white
+            }else{
+                topColor = POPSpringAnimation(propertyNamed: kPOPViewBackgroundColor)
+                topColor?.toValue = UIColor.white
+                topColor?.springBounciness = 0
+                topColor?.springSpeed = 18
+                top?.pop_add(topColor, forKey: "topColor")
+            }
+            if bottomColor != nil {
+                bottomColor?.toValue = UIColor.white
+            }else{
+                bottomColor = POPSpringAnimation(propertyNamed: kPOPViewBackgroundColor)
+                bottomColor?.toValue = UIColor.white
+                bottomColor?.springBounciness = 0
+                bottomColor?.springSpeed = 18
+                bottom?.pop_add(topColor, forKey: "bottomColor")
+            }
+            //旋转
+            if topRotate != nil {
+                topRotate?.toValue = 0
+            }else{
+                topRotate = POPSpringAnimation(propertyNamed: kPOPLayerRotation)
+                topRotate?.toValue = 0
+                topRotate?.springBounciness = 11
+                topRotate?.springSpeed = 18
+                top?.layer.pop_add(topRotate, forKey: "topRotate")
+            }
+            if bottomRotate != nil {
+                bottomRotate?.toValue = 0
+            }else{
+                bottomRotate = POPSpringAnimation(propertyNamed: kPOPLayerRotation)
+                bottomRotate?.toValue = 0
+                bottomRotate?.springBounciness = 11
+                bottomRotate?.springSpeed = 18
+                bottom?.layer.pop_add(bottomRotate, forKey: "bottomRotate")
+            }
+            //移动
+            if topPosition != nil {
+                topPosition?.toValue = 0
+            }else{
+                topPosition = POPSpringAnimation(propertyNamed: kPOPLayerTranslationY)
+                topPosition?.toValue = 0
+                topPosition?.springBounciness = 11
+                topPosition?.springSpeed = 18
+                top?.layer.pop_add(topPosition, forKey: "topPosition")
+            }
+            if bottomPosition != nil {
+                bottomPosition?.toValue = 0
+            }else{
+                bottomPosition = POPSpringAnimation(propertyNamed: kPOPLayerTranslationY)
+                bottomPosition?.toValue = 0
+                bottomPosition?.springBounciness = 11
+                bottomPosition?.springSpeed = 18
+                bottom?.layer.pop_add(bottomPosition, forKey: "bottomPosition")
+            }
+
+
+        }
+
+    }
+</pre>
+
+<p>so easy<br><img src="/2017/08/28/Swift-popAnimation实例/san.png" alt=""><br><img src="/2017/08/28/Swift-popAnimation实例/hong.png" alt=""></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Welcome to my blog. Thanks.&lt;/p&gt;
+&lt;p&gt;Dome: &lt;a href=&quot;https://github.com/princeSmall/hamburger&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;github地址&lt;/a&gt;&lt;/
+    
+    </summary>
+    
+      <category term="Swift" scheme="http://yoursite.com/categories/Swift/"/>
+    
+    
+      <category term="3" scheme="http://yoursite.com/tags/3/"/>
+    
+  </entry>
   
   <entry>
     <title>[Swift_popAnimation应用]</title>
