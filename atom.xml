@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-09-11T01:15:58.000Z</updated>
+  <updated>2017-09-12T07:22:44.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,11 +16,252 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>[iOS_CellAnimation]</title>
+    <link href="http://yoursite.com/2017/09/12/iOS-CellAnimation/"/>
+    <id>http://yoursite.com/2017/09/12/iOS-CellAnimation/</id>
+    <published>2017-09-12T07:17:55.000Z</published>
+    <updated>2017-09-12T07:22:44.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to my blog. Thanks.</p>
+<p>Dome: <a href="https://github.com/princeSmall/CellAnimation" target="_blank" rel="external">github地址</a></p>
+<p>最近在用cell动画，就研究修改了别人的cell动画，整理了一下。</p>
+<p><img src="/2017/09/12/iOS-CellAnimation/CellAnimation.gif" alt="CellAnimation"></p>
+<h3 id="使用："><a href="#使用：" class="headerlink" title="使用："></a>使用：</h3><p>导入Animation类，直接用类调用,输入要动画的tableview和动画type，即可</p>
+<pre>
+ [Animation addAnimationWithTableView:tableView andRow:self.type];
+</pre>
+
+<h3 id="UITableViewCell-出场动画："><a href="#UITableViewCell-出场动画：" class="headerlink" title="UITableViewCell 出场动画："></a>UITableViewCell 出场动画：</h3><p>简而明了的说就是利用cell的contentView来做一下出场动画animation</p>
+<pre>
+ CGFloat width = [[UIScreen mainScreen] bounds].size.width - 40;
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(20, 10, width, 60)];
+    view.backgroundColor = [UIColor redColor];
+    view.layer.masksToBounds = YES;
+    view.layer.cornerRadius = 9.0;
+    [cell.contentView addSubview:view];
+</pre>
+
+<h3 id="UIView"><a href="#UIView" class="headerlink" title="UIView"></a>UIView</h3><h4 id="move动画"><a href="#move动画" class="headerlink" title="move动画"></a>move动画</h4><pre>
++ (void)moveAnimationWithTableView:(UITableView *)tableView {
+
+    NSArray *cells = tableView.visibleCells;
+    for (int i = 0; i < cells.count; i++) {
+        CGFloat totalTime = 0.4;
+        UITableViewCell *cell = [tableView.visibleCells objectAtIndex:i];
+        cell.transform = CGAffineTransformMakeTranslation(-XS_SCREEN_WIDTH, 0);
+        [UIView animateWithDuration:0.4 delay:i*(totalTime/cells.count) usingSpringWithDamping:0.7 initialSpringVelocity:1/0.7 options:UIViewAnimationOptionCurveEaseIn animations:^{
+            cell.transform = CGAffineTransformIdentity;
+        } completion:^(BOOL finished) {
+
+        }];
+    }
+}
+</pre>
+
+<h4 id="alpha动画"><a href="#alpha动画" class="headerlink" title="alpha动画"></a>alpha动画</h4><pre>
++ (void)alphaAnimationWithTableView:(UITableView *)tableView {
+
+    NSArray *cells = tableView.visibleCells;
+    for (int i = 0; i < cells.count; i++) {
+        UITableViewCell *cell = [tableView.visibleCells objectAtIndex:i];
+        cell.alpha = 0.0;
+        [UIView animateWithDuration:0.3 delay:i*0.05 options:0 animations:^{
+            cell.alpha = 1.0;
+        } completion:^(BOOL finished) {
+
+        }];
+    }
+}
+</pre>
+
+<h4 id="fall动画"><a href="#fall动画" class="headerlink" title="fall动画"></a>fall动画</h4><pre>
++ (void)fallAnimationWithTableView:(UITableView *)tableView {
+
+    NSArray *cells = tableView.visibleCells;
+
+    NSTimeInterval totalTime = 0.8;
+
+    for (int i = 0; i < cells.count; i++) {
+        UITableViewCell *cell = [tableView.visibleCells objectAtIndex:i];
+        cell.transform = CGAffineTransformMakeTranslation(0, - XS_SCREEN_HEIGHT);
+        [UIView animateWithDuration:0.3 delay:(cells.count - i)*(totalTime/cells.count) options:0 animations:^{
+            cell.transform = CGAffineTransformIdentity;
+        } completion:^(BOOL finished) {
+
+        }];
+    }
+}
+</pre>
+
+<h4 id="shake动画"><a href="#shake动画" class="headerlink" title="shake动画"></a>shake动画</h4><pre>
++ (void)shakeAnimationWithTableView:(UITableView *)tableView {
+
+    NSArray *cells = tableView.visibleCells;
+    for (int i = 0; i < cells.count; i++) {
+        UITableViewCell *cell = [cells objectAtIndex:i];
+        if (i%2 == 0) {
+            cell.transform = CGAffineTransformMakeTranslation(-XS_SCREEN_WIDTH,0);
+        }else {
+            cell.transform = CGAffineTransformMakeTranslation(XS_SCREEN_WIDTH,0);
+        }
+        [UIView animateWithDuration:0.4 delay:i*0.03 usingSpringWithDamping:0.75 initialSpringVelocity:1/0.75 options:0 animations:^{
+            cell.transform = CGAffineTransformIdentity;
+        } completion:^(BOOL finished) {
+
+        }];
+    }
+}
+</pre>
+
+<h4 id="overTurn动画"><a href="#overTurn动画" class="headerlink" title="overTurn动画"></a>overTurn动画</h4><pre>
++ (void)overTurnAnimationWithTableView:(UITableView *)tableView {
+
+    NSArray *cells = tableView.visibleCells;
+    for (int i = 0; i < cells.count; i++) {
+        UITableViewCell *cell = [cells objectAtIndex:i];
+        cell.layer.opacity = 0.0;
+        cell.layer.transform = CATransform3DMakeRotation(M_PI, 1, 0, 0);
+        NSTimeInterval totalTime = 0.7;
+        [UIView animateWithDuration:0.3 delay:i*(totalTime/cells.count) options:0 animations:^{
+            cell.layer.opacity = 1.0;
+            cell.layer.transform = CATransform3DIdentity;
+        } completion:^(BOOL finished) {
+
+        }];
+
+    }
+}
+</pre>
+
+<h4 id="toTop动画"><a href="#toTop动画" class="headerlink" title="toTop动画"></a>toTop动画</h4><pre>
++ (void)toTopAnimationWithTableView:(UITableView *)tableView {
+
+
+    NSArray *cells = tableView.visibleCells;
+
+    NSTimeInterval totalTime = 0.8;
+
+    for (int i = 0; i < cells.count; i++) {
+        UITableViewCell *cell = [tableView.visibleCells objectAtIndex:i];
+        cell.transform = CGAffineTransformMakeTranslation(0,  XS_SCREEN_HEIGHT);
+        [UIView animateWithDuration:0.35 delay:i*(totalTime/cells.count) options:UIViewAnimationOptionCurveEaseOut animations:^{
+            cell.transform = CGAffineTransformIdentity;
+        } completion:^(BOOL finished) {
+
+        }];
+    }
+}
+</pre>
+
+<h4 id="spring动画"><a href="#spring动画" class="headerlink" title="spring动画"></a>spring动画</h4><pre>
++ (void)springListAnimationWithTableView:(UITableView *)tableView {
+
+    NSArray *cells = tableView.visibleCells;
+    for (int i = 0; i < cells.count; i++) {
+        UITableViewCell *cell = [cells objectAtIndex:i];
+        cell.layer.opacity = 0.7;
+        cell.layer.transform = CATransform3DMakeTranslation(0, -XS_SCREEN_HEIGHT, 20);
+        NSTimeInterval totalTime = 1.0;
+
+        [UIView animateWithDuration:0.4 delay:i*(totalTime/cells.count) usingSpringWithDamping:0.65 initialSpringVelocity:1/0.65 options:UIViewAnimationOptionCurveEaseIn animations:^{
+            cell.layer.opacity = 1.0;
+            cell.layer.transform = CATransform3DMakeTranslation(0, 0, 20);
+        } completion:^(BOOL finished) {
+
+        }];
+    }
+}
+</pre>
+
+<h4 id="shrink动画"><a href="#shrink动画" class="headerlink" title="shrink动画"></a>shrink动画</h4><pre>
++ (void)shrinkToTopAnimationWithTableView:(UITableView *)tableView {
+    NSArray *cells = tableView.visibleCells;
+    for (int i = 0; i < cells.count; i++) {
+        UITableViewCell *cell = [cells objectAtIndex:i];
+        CGRect rect = [cell convertRect:cell.bounds fromView:tableView];
+        cell.transform = CGAffineTransformMakeTranslation(0, -rect.origin.y);
+        [UIView animateWithDuration:0.5 animations:^{
+            cell.transform = CGAffineTransformIdentity;
+        }];
+    }
+}
+</pre>
+
+<h3 id="laydown动画"><a href="#laydown动画" class="headerlink" title="laydown动画"></a>laydown动画</h3><pre>
++ (void)layDownAnimationWithTableView:(UITableView *)tableView {
+    NSArray *cells = tableView.visibleCells;
+    NSMutableArray *rectArr = [[NSMutableArray alloc] init];
+    for (int i = 0; i < cells.count; i++) {
+        UITableViewCell *cell = [cells objectAtIndex:i];
+        CGRect rect = cell.frame;
+        [rectArr addObject:[NSValue valueWithCGRect:rect]];
+        rect.origin.y = i * 10;
+        cell.frame = rect;
+        cell.layer.transform = CATransform3DMakeTranslation(0, 0, i*5);
+    }
+    NSTimeInterval totalTime = 0.8;
+    for (int i = 0; i < cells.count; i++) {
+        UITableViewCell *cell = [cells objectAtIndex:i];
+        CGRect rect = [[rectArr objectAtIndex:i] CGRectValue];
+        [UIView animateWithDuration:(totalTime/cells.count) * i animations:^{
+            cell.frame = rect;
+        } completion:^(BOOL finished) {
+            cell.layer.transform = CATransform3DIdentity;
+        }];
+    }
+
+}
+</pre>
+
+<h4 id="rote动画"><a href="#rote动画" class="headerlink" title="rote动画"></a>rote动画</h4><pre>
++ (void)roteAnimationWithTableView:(UITableView *)tableView {
+
+    NSArray *cells = tableView.visibleCells;
+    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.y"];
+    animation.fromValue = @(-M_PI);
+    animation.toValue = 0;
+    animation.duration = 0.3;
+    animation.removedOnCompletion = NO;
+    animation.repeatCount = 3;
+    animation.fillMode = kCAFillModeForwards;
+    animation.autoreverses = NO;
+
+    for (int i = 0; i < cells.count; i++) {
+        UITableViewCell *cell = [cells objectAtIndex:i];
+
+        cell.alpha = 0.0;
+        [UIView animateWithDuration:0.1 delay:i*0.25 options:0 animations:^{
+            cell.alpha = 1.0;
+        } completion:^(BOOL finished) {
+            [cell.layer addAnimation:animation forKey:@"rotationYkey"];
+        }];
+    }
+}
+</pre>
+
+
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Welcome to my blog. Thanks.&lt;/p&gt;
+&lt;p&gt;Dome: &lt;a href=&quot;https://github.com/princeSmall/CellAnimation&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;github地址&lt;/
+    
+    </summary>
+    
+      <category term="iOS" scheme="http://yoursite.com/categories/iOS/"/>
+    
+    
+      <category term="2" scheme="http://yoursite.com/tags/2/"/>
+    
+  </entry>
+  
+  <entry>
     <title>[iOS-QRCodeImage]</title>
     <link href="http://yoursite.com/2017/09/11/iOS-QRCodeImage/"/>
     <id>http://yoursite.com/2017/09/11/iOS-QRCodeImage/</id>
     <published>2017-09-11T01:08:33.000Z</published>
-    <updated>2017-09-11T01:15:58.000Z</updated>
+    <updated>2017-09-12T07:20:45.000Z</updated>
     
     <content type="html"><![CDATA[<p>Welcome to my blog. Thanks.</p>
 <p>Dome: <a href="https://github.com/princeSmall/QRCodeImage" target="_blank" rel="external">github地址</a></p>
@@ -321,7 +562,7 @@ void ProviderReleaseData (void *info, const void *data, size_t size){
     
     </summary>
     
-      <category term="Ios" scheme="http://yoursite.com/categories/Ios/"/>
+      <category term="iOS" scheme="http://yoursite.com/categories/iOS/"/>
     
     
       <category term="2" scheme="http://yoursite.com/tags/2/"/>
@@ -333,7 +574,7 @@ void ProviderReleaseData (void *info, const void *data, size_t size){
     <link href="http://yoursite.com/2017/09/05/iOS%E7%89%A9%E7%90%86%E5%8A%A8%E7%94%BB%E5%BC%95%E6%93%8E-UIDynamic/"/>
     <id>http://yoursite.com/2017/09/05/iOS物理动画引擎-UIDynamic/</id>
     <published>2017-09-05T05:52:22.000Z</published>
-    <updated>2017-09-05T05:58:28.000Z</updated>
+    <updated>2017-09-12T07:20:59.000Z</updated>
     
     <content type="html"><![CDATA[<h3 id="Welcome-to-my-blog-Thanks"><a href="#Welcome-to-my-blog-Thanks" class="headerlink" title="Welcome to my blog. Thanks."></a>Welcome to my blog. Thanks.</h3><p>Dome: <a href="https://github.com/princeSmall/UIDynamic" target="_blank" rel="external">github地址</a></p>
 <p>iOS物理动画引擎-UIDynamic</p>
@@ -674,7 +915,7 @@ self.animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
     
     </summary>
     
-      <category term="Ios" scheme="http://yoursite.com/categories/Ios/"/>
+      <category term="iOS" scheme="http://yoursite.com/categories/iOS/"/>
     
     
       <category term="1" scheme="http://yoursite.com/tags/1/"/>
@@ -1124,7 +1365,7 @@ self.view .addSubview(segmentedControl);
     <link href="http://yoursite.com/2017/08/23/iOS-%E7%BB%91%E5%AE%9AAmazon/"/>
     <id>http://yoursite.com/2017/08/23/iOS-绑定Amazon/</id>
     <published>2017-08-23T14:23:48.000Z</published>
-    <updated>2017-08-24T02:55:35.000Z</updated>
+    <updated>2017-09-12T07:21:20.000Z</updated>
     
     <content type="html"><![CDATA[<p>Welcome to my blog. Thanks.</p>
 <p>Dome: <a href="https://github.com/princeSmall/iOS_Amazon" target="_blank" rel="external">github地址</a></p>
@@ -1273,7 +1514,7 @@ AMZNUser fetch:^(AMZNUser *user, NSError *error) {
     
     </summary>
     
-      <category term="Ios" scheme="http://yoursite.com/categories/Ios/"/>
+      <category term="iOS" scheme="http://yoursite.com/categories/iOS/"/>
     
     
       <category term="2" scheme="http://yoursite.com/tags/2/"/>
@@ -1285,7 +1526,7 @@ AMZNUser fetch:^(AMZNUser *user, NSError *error) {
     <link href="http://yoursite.com/2017/08/23/iOS-OpenGL%E5%9B%BE%E5%BD%A2%E7%BB%98%E5%88%B6%E4%BA%8C/"/>
     <id>http://yoursite.com/2017/08/23/iOS-OpenGL图形绘制二/</id>
     <published>2017-08-23T06:57:25.000Z</published>
-    <updated>2017-08-23T09:02:12.000Z</updated>
+    <updated>2017-09-12T07:20:34.000Z</updated>
     
     <content type="html"><![CDATA[<h3 id="Welcome-to-my-blog-Thanks"><a href="#Welcome-to-my-blog-Thanks" class="headerlink" title="Welcome to my blog. Thanks."></a>Welcome to my blog. Thanks.</h3><p>Dome: <a href="https://github.com/princeSmall/iOS_OpenGL_layer" target="_blank" rel="external">github地址</a></p>
 <p>本章讲如何用原生OpenGL绘制图形及渲染图片</p>
@@ -1509,7 +1750,7 @@ if (image) {
     
     </summary>
     
-      <category term="Ios" scheme="http://yoursite.com/categories/Ios/"/>
+      <category term="iOS" scheme="http://yoursite.com/categories/iOS/"/>
     
     
       <category term="1" scheme="http://yoursite.com/tags/1/"/>
@@ -1521,7 +1762,7 @@ if (image) {
     <link href="http://yoursite.com/2017/08/22/iOS-OpenGL%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%92%8C%E5%9B%BE%E5%BD%A2%E7%BB%98%E5%88%B6/"/>
     <id>http://yoursite.com/2017/08/22/iOS-OpenGL环境搭建和图形绘制/</id>
     <published>2017-08-22T08:28:41.000Z</published>
-    <updated>2017-08-22T08:50:57.000Z</updated>
+    <updated>2017-09-12T07:20:24.000Z</updated>
     
     <content type="html"><![CDATA[<h3 id="Welcome-to-my-blog-Thanks"><a href="#Welcome-to-my-blog-Thanks" class="headerlink" title="Welcome to my blog. Thanks."></a>Welcome to my blog. Thanks.</h3><p>Dome: <a href="https://github.com/princeSmall/iOS_OpenGL" target="_blank" rel="external">github地址</a></p>
 <p>个人觉得OpenGl图形绘制很酷所以专研了一段时间，记录供以后自己使用和小白学习。</p>
@@ -1700,7 +1941,7 @@ glDrawArrays(GL_TRIANGLES, 0, 3);
     
     </summary>
     
-      <category term="Ios" scheme="http://yoursite.com/categories/Ios/"/>
+      <category term="iOS" scheme="http://yoursite.com/categories/iOS/"/>
     
     
       <category term="1" scheme="http://yoursite.com/tags/1/"/>
@@ -1712,7 +1953,7 @@ glDrawArrays(GL_TRIANGLES, 0, 3);
     <link href="http://yoursite.com/2017/08/18/%E5%AE%9A%E6%97%B6%E5%99%A8timer/"/>
     <id>http://yoursite.com/2017/08/18/定时器timer/</id>
     <published>2017-08-18T08:20:47.000Z</published>
-    <updated>2017-08-18T09:08:46.000Z</updated>
+    <updated>2017-09-12T07:23:34.000Z</updated>
     
     <content type="html"><![CDATA[<p>Welcome to my blog. Thanks.</p>
 <p>Dome: <a href="https://github.com/princeSmall/Timer" target="_blank" rel="external">github 地址</a></p>
@@ -1918,7 +2159,7 @@ glDrawArrays(GL_TRIANGLES, 0, 3);
     
     </summary>
     
-      <category term="Ios" scheme="http://yoursite.com/categories/Ios/"/>
+      <category term="iOS" scheme="http://yoursite.com/categories/iOS/"/>
     
     
   </entry>
@@ -1928,7 +2169,7 @@ glDrawArrays(GL_TRIANGLES, 0, 3);
     <link href="http://yoursite.com/2017/08/11/%E5%A2%9E%E5%88%A0%E7%A7%BB/"/>
     <id>http://yoursite.com/2017/08/11/增删移/</id>
     <published>2017-08-11T08:34:35.000Z</published>
-    <updated>2017-08-11T08:39:24.000Z</updated>
+    <updated>2017-09-12T07:23:48.000Z</updated>
     
     <content type="html"><![CDATA[<p>Welcome to my blog. Thanks.</p>
 <p>Dome: <a href="https://github.com/princeSmall/CollectionViewCell.git" target="_blank" rel="external"> github 地址</a></p>
@@ -2029,7 +2270,7 @@ glDrawArrays(GL_TRIANGLES, 0, 3);
     
     </summary>
     
-      <category term="Ios" scheme="http://yoursite.com/categories/Ios/"/>
+      <category term="iOS" scheme="http://yoursite.com/categories/iOS/"/>
     
     
   </entry>
