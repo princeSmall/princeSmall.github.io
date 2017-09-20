@@ -2489,7 +2489,7 @@ glDrawArrays(GL_TRIANGLES, 0, 3);
     <link href="http://yoursite.com/2017/08/03/%E8%87%AA%E5%AE%9A%E4%B9%89tarbar/"/>
     <id>http://yoursite.com/2017/08/03/自定义tarbar/</id>
     <published>2017-08-03T07:02:56.000Z</published>
-    <updated>2017-08-03T07:41:36.000Z</updated>
+    <updated>2017-09-20T01:16:03.000Z</updated>
     
     <content type="html"><![CDATA[<p>Welcome to my blog. Thanks.</p>
 <p>Dome: <a href="https://github.com/princeSmall/REsideAndTarbar" target="_blank" rel="external"> github 地址</a></p>
@@ -2572,7 +2572,7 @@ self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[U
     
     </summary>
     
-      <category term="Ios" scheme="http://yoursite.com/categories/Ios/"/>
+      <category term="iOS" scheme="http://yoursite.com/categories/iOS/"/>
     
     
   </entry>

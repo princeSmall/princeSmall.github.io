@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2017/08/03/%E8%87%AA%E5%AE%9A%E4%B9%89tarbar/</loc>
+    
+    <lastmod>2017-09-20T01:16:03.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2017/09/20/Python-mlmodel/</loc>
     
     <lastmod>2017-09-20T00:55:44.000Z</lastmod>
@@ -82,13 +89,6 @@
     <loc>http://yoursite.com/2017/08/25/Swift-popAnimation%E5%BA%94%E7%94%A8/</loc>
     
     <lastmod>2017-08-25T08:13:56.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/08/03/%E8%87%AA%E5%AE%9A%E4%B9%89tarbar/</loc>
-    
-    <lastmod>2017-08-03T07:41:36.000Z</lastmod>
     
   </url>
   
