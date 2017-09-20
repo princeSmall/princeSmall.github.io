@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://yoursite.com/2017/09/11/iOS-QRCodeImage/</loc>
+    <lastmod>2017-09-20T01:35:37.000Z</lastmod>
+    <data>
+        <display>
+        <title>[iOS-QRCodeImage]</title>
+        <pubTime>2017-09-11T01:08:33.000Z</pubTime>
+        
+        <tag>2</tag>
+         
+         
+           
+             
+              <breadCrumb title="ios" url="http://yoursite.com/categories/ios/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2017/09/12/iOS-CellAnimation/</loc>
     <lastmod>2017-09-20T01:32:27.000Z</lastmod>
     <data>
@@ -126,26 +146,6 @@
         <pubTime>2017-09-05T05:52:22.000Z</pubTime>
         
         <tag>1</tag>
-         
-         
-           
-             
-              <breadCrumb title="iOS" url="http://yoursite.com/categories/iOS/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/2017/09/11/iOS-QRCodeImage/</loc>
-    <lastmod>2017-09-12T07:20:45.000Z</lastmod>
-    <data>
-        <display>
-        <title>[iOS-QRCodeImage]</title>
-        <pubTime>2017-09-11T01:08:33.000Z</pubTime>
-        
-        <tag>2</tag>
          
          
            
