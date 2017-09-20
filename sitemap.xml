@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2017/09/20/Python-mlmodel/</loc>
+    
+    <lastmod>2017-09-20T01:41:08.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2017/09/11/iOS-QRCodeImage/</loc>
     
     <lastmod>2017-09-20T01:41:05.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/09/05/iOS%E7%89%A9%E7%90%86%E5%8A%A8%E7%94%BB%E5%BC%95%E6%93%8E-UIDynamic/</loc>
+    
+    <lastmod>2017-09-20T01:40:53.000Z</lastmod>
     
   </url>
   
@@ -16,23 +30,9 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2017/09/05/iOS%E7%89%A9%E7%90%86%E5%8A%A8%E7%94%BB%E5%BC%95%E6%93%8E-UIDynamic/</loc>
-    
-    <lastmod>2017-09-20T01:35:59.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://yoursite.com/2017/08/03/%E8%87%AA%E5%AE%9A%E4%B9%89tarbar/</loc>
     
     <lastmod>2017-09-20T01:16:03.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/09/20/Python-mlmodel/</loc>
-    
-    <lastmod>2017-09-20T00:55:44.000Z</lastmod>
     
   </url>
   
