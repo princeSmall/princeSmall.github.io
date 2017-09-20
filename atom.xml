@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-09-20T02:35:42.000Z</updated>
+  <updated>2017-09-20T02:45:03.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,93 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>[Python_CoreML_MobileNet]</title>
+    <link href="http://yoursite.com/2017/09/20/Python-CoreML-MobileNet/"/>
+    <id>http://yoursite.com/2017/09/20/Python-CoreML-MobileNet/</id>
+    <published>2017-09-20T02:40:12.000Z</published>
+    <updated>2017-09-20T02:45:03.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to my blog. Thanks.</p>
+<p>Dome:<a href="https://github.com/princeSmall/CoreML_MobileNet" target="_blank" rel="external">github地址</a></p>
+<h1 id="CoreML-MobileNet"><a href="#CoreML-MobileNet" class="headerlink" title="CoreML_MobileNet"></a>CoreML_MobileNet</h1><p>接着上面再写一个MobileNet.mlmodel,这次这个直接拿来用。</p>
+<p>GoogLeNetPlaces.mlmodel 和 Resnet50都可以识别人物和静态物体。不过这个才24M，小多了，所以就简尔处理给张特定的image，然后输出结果</p>
+<p><img src="/2017/09/20/Python-CoreML-MobileNet/pool.png" alt=""></p>
+<h3 id="Download-Core-ML-Model"><a href="#Download-Core-ML-Model" class="headerlink" title="Download Core ML Model"></a>Download Core ML Model</h3><p><a href="https://developer.apple.com/machine-learning/" target="_blank" rel="external">GoogLeNetPlaces.mlmodel下载地址</a></p>
+<h3 id="导入头文件"><a href="#导入头文件" class="headerlink" title="导入头文件"></a>导入头文件</h3><pre>
+ #import < CoreML/CoreML.h>
+ #import < Vision/Vision.h>
+ #import "GoogLeNetPlaces.h"
+</pre>
+
+
+<h3 id="图片识别"><a href="#图片识别" class="headerlink" title="图片识别"></a>图片识别</h3><ol>
+<li><p>创建Resnet对象，加载CoreMLModel</p>
+<pre>
+GoogLeNetPlaces *googleModel = [[GoogLeNetPlaces alloc] init];
+VNCoreMLModel * vnCoreModel = [VNCoreMLModel modelForMLModel:googleModel.model error:nil];
+</pre>
+</li>
+<li><p>创建Vision请求，带有completion handle</p>
+<pre>
+VNCoreMLRequest * vnCoreMlRequest = [[VNCoreMLRequest alloc] initWithModel:vnCoreModel completionHandler:^(VNRequest * _Nonnull request, NSError * _Nullable error) {
+   CGFloat confidence = 0.0f;
+   VNClassificationObservation * tempClassification = nil;
+   for (VNClassificationObservation *classification in request.results) {
+       if (classification.confidence > confidence) {
+           confidence = classification.confidence;
+           tempClassification = classification;
+       }
+   }        
+}];
+</pre>
+</li>
+<li><p>VNClassificationObservation对象两个属性</p>
+<ul>
+<li>identifier：识别对象 </li>
+<li>confidence：识别率</li>
+</ul>
+</li>
+<li><p>发送图片识别请求</p>
+<pre>
+dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+  VNImageRequestHandler * vnImageRequestHandler = [[VNImageRequestHandler alloc] initWithCGImage:image.CGImage options:nil];   
+   NSError *error = nil;
+   [vnImageRequestHandler performRequests:@[vnCoreMlRequest] error:&error]; 
+   if (error) {
+       NSLog(@"%@",error.localizedDescription);
+   }
+});
+</pre>
+</li>
+<li><p>回调在主线程更新UI</p>
+<pre>
+dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+       self.resultLable.text = [NSString stringWithFormat:@"识别结果:%@",tempClassification.identifier];
+       self.confidenceLabel.text = [NSString stringWithFormat:@"匹配率:%@",@(tempClassification.confidence)];
+   });
+</pre>
+
+
+</li>
+</ol>
+<p>多次下来是不是很简单，大同小异，只要熟悉CoreML，一切就是那么easy</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Welcome to my blog. Thanks.&lt;/p&gt;
+&lt;p&gt;Dome:&lt;a href=&quot;https://github.com/princeSmall/CoreML_MobileNet&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;github地址
+    
+    </summary>
+    
+      <category term="Python" scheme="http://yoursite.com/categories/Python/"/>
+    
+    
+      <category term="3" scheme="http://yoursite.com/tags/3/"/>
+    
+  </entry>
   
   <entry>
     <title>[Python_CoreML_Resnet50]</title>
