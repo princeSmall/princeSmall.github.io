@@ -229,7 +229,7 @@ apt-get install python-pip
     <link href="http://yoursite.com/2017/09/12/iOS-CellAnimation/"/>
     <id>http://yoursite.com/2017/09/12/iOS-CellAnimation/</id>
     <published>2017-09-12T07:17:55.000Z</published>
-    <updated>2017-09-20T01:32:27.000Z</updated>
+    <updated>2017-09-20T01:40:38.000Z</updated>
     
     <content type="html"><![CDATA[<p>Welcome to my blog. Thanks.</p>
 <p>Dome: <a href="https://github.com/princeSmall/CellAnimation" target="_blank" rel="external">github地址</a></p>
@@ -458,7 +458,7 @@ apt-get install python-pip
     
     </summary>
     
-      <category term="Ios" scheme="http://yoursite.com/categories/Ios/"/>
+      <category term="iOS" scheme="http://yoursite.com/categories/iOS/"/>
     
     
       <category term="2" scheme="http://yoursite.com/tags/2/"/>
@@ -470,7 +470,7 @@ apt-get install python-pip
     <link href="http://yoursite.com/2017/09/11/iOS-QRCodeImage/"/>
     <id>http://yoursite.com/2017/09/11/iOS-QRCodeImage/</id>
     <published>2017-09-11T01:08:33.000Z</published>
-    <updated>2017-09-20T01:35:37.000Z</updated>
+    <updated>2017-09-20T01:41:05.000Z</updated>
     
     <content type="html"><![CDATA[<p>Welcome to my blog. Thanks.</p>
 <p>Dome: <a href="https://github.com/princeSmall/QRCodeImage" target="_blank" rel="external">github地址</a></p>
@@ -771,7 +771,7 @@ void ProviderReleaseData (void *info, const void *data, size_t size){
     
     </summary>
     
-      <category term="ios" scheme="http://yoursite.com/categories/ios/"/>
+      <category term="iOS" scheme="http://yoursite.com/categories/iOS/"/>
     
     
       <category term="2" scheme="http://yoursite.com/tags/2/"/>
