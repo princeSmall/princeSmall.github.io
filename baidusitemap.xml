@@ -4,6 +4,60 @@
 
     
   <url>
+    <loc>http://yoursite.com/2017/08/03/%E8%87%AA%E5%AE%9A%E4%B9%89tarbar/</loc>
+    <lastmod>2017-09-21T08:53:54.000Z</lastmod>
+    <data>
+        <display>
+        <title>[iOS_自定义tarbar和侧边栏]</title>
+        <pubTime>2017-08-03T07:02:56.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="iOS" url="http://yoursite.com/categories/iOS/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2017/08/11/%E5%A2%9E%E5%88%A0%E7%A7%BB/</loc>
+    <lastmod>2017-09-21T08:53:14.000Z</lastmod>
+    <data>
+        <display>
+        <title>[iOS_CollectionViewCell的增删移]</title>
+        <pubTime>2017-08-11T08:34:35.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="iOS" url="http://yoursite.com/categories/iOS/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2017/08/18/%E5%AE%9A%E6%97%B6%E5%99%A8timer/</loc>
+    <lastmod>2017-09-21T08:52:26.000Z</lastmod>
+    <data>
+        <display>
+        <title>[iOS_定时器动画的使用]</title>
+        <pubTime>2017-08-18T08:20:47.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="iOS" url="http://yoursite.com/categories/iOS/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2017/09/21/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-CoreML-Inceptionv3/</loc>
     <lastmod>2017-09-21T02:22:53.000Z</lastmod>
     <data>
@@ -133,60 +187,6 @@
         
         <tag>2</tag>
          
-         
-           
-             
-              <breadCrumb title="iOS" url="http://yoursite.com/categories/iOS/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/2017/08/03/%E8%87%AA%E5%AE%9A%E4%B9%89tarbar/</loc>
-    <lastmod>2017-09-20T01:16:03.000Z</lastmod>
-    <data>
-        <display>
-        <title>[自定义tarbar]</title>
-        <pubTime>2017-08-03T07:02:56.000Z</pubTime>
-        
-         
-           
-             
-              <breadCrumb title="iOS" url="http://yoursite.com/categories/iOS/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/2017/08/11/%E5%A2%9E%E5%88%A0%E7%A7%BB/</loc>
-    <lastmod>2017-09-12T07:23:48.000Z</lastmod>
-    <data>
-        <display>
-        <title>[增删移]</title>
-        <pubTime>2017-08-11T08:34:35.000Z</pubTime>
-        
-         
-           
-             
-              <breadCrumb title="iOS" url="http://yoursite.com/categories/iOS/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/2017/08/18/%E5%AE%9A%E6%97%B6%E5%99%A8timer/</loc>
-    <lastmod>2017-09-12T07:23:34.000Z</lastmod>
-    <data>
-        <display>
-        <title>[定时器timer]</title>
-        <pubTime>2017-08-18T08:20:47.000Z</pubTime>
-        
          
            
              

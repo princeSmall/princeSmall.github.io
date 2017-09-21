@@ -2523,11 +2523,11 @@ glDrawArrays(GL_TRIANGLES, 0, 3);
   </entry>
   
   <entry>
-    <title>[定时器timer]</title>
+    <title>[iOS_定时器动画的使用]</title>
     <link href="http://yoursite.com/2017/08/18/%E5%AE%9A%E6%97%B6%E5%99%A8timer/"/>
     <id>http://yoursite.com/2017/08/18/定时器timer/</id>
     <published>2017-08-18T08:20:47.000Z</published>
-    <updated>2017-09-12T07:23:34.000Z</updated>
+    <updated>2017-09-21T08:52:26.000Z</updated>
     
     <content type="html"><![CDATA[<p>Welcome to my blog. Thanks.</p>
 <p>Dome: <a href="https://github.com/princeSmall/Timer" target="_blank" rel="external">github 地址</a></p>
@@ -2739,11 +2739,11 @@ glDrawArrays(GL_TRIANGLES, 0, 3);
   </entry>
   
   <entry>
-    <title>[增删移]</title>
+    <title>[iOS_CollectionViewCell的增删移]</title>
     <link href="http://yoursite.com/2017/08/11/%E5%A2%9E%E5%88%A0%E7%A7%BB/"/>
     <id>http://yoursite.com/2017/08/11/增删移/</id>
     <published>2017-08-11T08:34:35.000Z</published>
-    <updated>2017-09-12T07:23:48.000Z</updated>
+    <updated>2017-09-21T08:53:14.000Z</updated>
     
     <content type="html"><![CDATA[<p>Welcome to my blog. Thanks.</p>
 <p>Dome: <a href="https://github.com/princeSmall/CollectionViewCell.git" target="_blank" rel="external"> github 地址</a></p>
@@ -2850,11 +2850,11 @@ glDrawArrays(GL_TRIANGLES, 0, 3);
   </entry>
   
   <entry>
-    <title>[自定义tarbar]</title>
+    <title>[iOS_自定义tarbar和侧边栏]</title>
     <link href="http://yoursite.com/2017/08/03/%E8%87%AA%E5%AE%9A%E4%B9%89tarbar/"/>
     <id>http://yoursite.com/2017/08/03/自定义tarbar/</id>
     <published>2017-08-03T07:02:56.000Z</published>
-    <updated>2017-09-20T01:16:03.000Z</updated>
+    <updated>2017-09-21T08:53:54.000Z</updated>
     
     <content type="html"><![CDATA[<p>Welcome to my blog. Thanks.</p>
 <p>Dome: <a href="https://github.com/princeSmall/REsideAndTarbar" target="_blank" rel="external"> github 地址</a></p>
