@@ -4,19 +4,19 @@
 
     
   <url>
-    <loc>http://yoursite.com/2017/09/20/Python-CoreML-MobileNet/</loc>
-    <lastmod>2017-09-20T02:45:03.000Z</lastmod>
+    <loc>http://yoursite.com/2017/09/21/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-CoreML-Inceptionv3/</loc>
+    <lastmod>2017-09-21T02:22:53.000Z</lastmod>
     <data>
         <display>
-        <title>[Python_CoreML_MobileNet]</title>
-        <pubTime>2017-09-20T02:40:12.000Z</pubTime>
+        <title>[机器学习_CoreML_Inceptionv3]</title>
+        <pubTime>2017-09-21T01:15:15.000Z</pubTime>
         
         <tag>3</tag>
          
          
            
              
-              <breadCrumb title="Python" url="http://yoursite.com/categories/Python/"/>
+              <breadCrumb title="机器学习" url="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
           
         </display>
     </data>
@@ -25,10 +25,10 @@
     
   <url>
     <loc>http://yoursite.com/2017/09/20/Python-CoreML-Resnet50/</loc>
-    <lastmod>2017-09-20T02:35:42.000Z</lastmod>
+    <lastmod>2017-09-21T02:21:40.000Z</lastmod>
     <data>
         <display>
-        <title>[Python_CoreML_Resnet50]</title>
+        <title>[机器学习_CoreML_Resnet50]</title>
         <pubTime>2017-09-20T02:18:31.000Z</pubTime>
         
         <tag>3</tag>
@@ -36,7 +36,7 @@
          
            
              
-              <breadCrumb title="Python" url="http://yoursite.com/categories/Python/"/>
+              <breadCrumb title="机器学习" url="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
           
         </display>
     </data>
@@ -45,10 +45,10 @@
     
   <url>
     <loc>http://yoursite.com/2017/09/20/Python-mlmodel/</loc>
-    <lastmod>2017-09-20T01:41:08.000Z</lastmod>
+    <lastmod>2017-09-20T09:07:28.000Z</lastmod>
     <data>
         <display>
-        <title>[Python_mlmodel]</title>
+        <title>[机器学习_Python_mlmodel]</title>
         <pubTime>2017-09-20T00:47:12.000Z</pubTime>
         
         <tag>3</tag>
@@ -56,7 +56,27 @@
          
            
              
-              <breadCrumb title="Python" url="http://yoursite.com/categories/Python/"/>
+              <breadCrumb title="机器学习" url="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2017/09/20/Python-CoreML-MobileNet/</loc>
+    <lastmod>2017-09-20T09:06:18.000Z</lastmod>
+    <data>
+        <display>
+        <title>[机器学习_CoreML_MobileNet]</title>
+        <pubTime>2017-09-20T02:40:12.000Z</pubTime>
+        
+        <tag>3</tag>
+         
+         
+           
+             
+              <breadCrumb title="机器学习" url="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
           
         </display>
     </data>

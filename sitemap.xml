@@ -2,23 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://yoursite.com/2017/09/20/Python-CoreML-MobileNet/</loc>
+    <loc>http://yoursite.com/2017/09/21/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-CoreML-Inceptionv3/</loc>
     
-    <lastmod>2017-09-20T02:45:03.000Z</lastmod>
+    <lastmod>2017-09-21T02:22:53.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2017/09/20/Python-CoreML-Resnet50/</loc>
     
-    <lastmod>2017-09-20T02:35:42.000Z</lastmod>
+    <lastmod>2017-09-21T02:21:40.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2017/09/20/Python-mlmodel/</loc>
     
-    <lastmod>2017-09-20T01:41:08.000Z</lastmod>
+    <lastmod>2017-09-20T09:07:28.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/09/20/Python-CoreML-MobileNet/</loc>
+    
+    <lastmod>2017-09-20T09:06:18.000Z</lastmod>
     
   </url>
   
