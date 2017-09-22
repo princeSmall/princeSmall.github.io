@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-09-21T02:22:53.000Z</updated>
+  <updated>2017-09-22T07:36:55.084Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,127 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>[GIT_版本库管理]</title>
+    <link href="http://yoursite.com/2017/09/22/GIT-%E7%89%88%E6%9C%AC%E5%BA%93%E7%AE%A1%E7%90%86/"/>
+    <id>http://yoursite.com/2017/09/22/GIT-版本库管理/</id>
+    <published>2017-09-22T02:14:17.000Z</published>
+    <updated>2017-09-22T07:36:55.084Z</updated>
+    
+    <content type="html"><![CDATA[<p>今天新同事不会用git，着实让我惊讶了，还好我有做笔记的习惯。就把我A long time ago 学习整理的git给他了，上手简单，很快就会成为git 大神，啊哈哈</p>
+<h3 id="Git-小技能"><a href="#Git-小技能" class="headerlink" title="Git 小技能"></a>Git 小技能</h3><p>多人开发Git版本库的管理是再好不过的了，首先你要会把远程仓库的代码clone到你的电脑里，其次建立本地你的分支，写上你的code，然后添加到暂存区，没有问题就提交到修改区。既然是同时开发，肯能你同事也修改了，那就要把他的code先从远程仓库pull下来，不管你知不知道他们是否提交，避免冲突，先pull再push。然后无误后在merge到master分支，一切一气呵成。</p>
+<h4 id="远程仓库管理"><a href="#远程仓库管理" class="headerlink" title="远程仓库管理"></a>远程仓库管理</h4><ol>
+<li>先克隆代码到桌面吧，这克隆的是master分支代码<pre>
+cd desktop
+git clone (远程仓库地址)
+</pre></li>
+<li>如果你想克隆远程别的分支代码<pre>
+git checkout -b (分支名) origin/(远程分支名)
+git checkout —track origin/(远程分支名)
+</pre></li>
+<li>添加远程仓库<pre>
+git remote add origin (远程仓库地址)：
+</pre></li>
+<li>删除远程仓库<pre>
+git remote remove origin (远程仓库地址)
+</pre></li>
+<li>显示远程分支<pre>
+git remote show origin
+</pre>
+
+</li>
+</ol>
+<h4 id="代码管理"><a href="#代码管理" class="headerlink" title="代码管理"></a>代码管理</h4><ol>
+<li>代码添加到暂存区<pre>
+git add (文件名)：添加某个文件
+git add . : 添加所有文件
+git add -A : 添加所有文件夹和文件
+</pre></li>
+<li>代码添加到当前分支<pre>
+git commit -m "提交描述"
+</pre></li>
+<li>拉取远程代码<pre>
+git pull origin (远程分支)
+</pre></li>
+<li>同步本地代码<pre>
+git push origin (远程分支)
+</pre>
+
+</li>
+</ol>
+<h4 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h4><ol>
+<li>查看当前分支<pre>
+git branch
+</pre></li>
+<li>创建新的分支<pre>
+git checkout -b newBranch
+</pre></li>
+<li>删除旧的分支<pre>
+git checkout -d newBranch
+</pre></li>
+<li>合并分支<pre>
+git merge (要合并的分支)
+</pre>
+
+</li>
+</ol>
+<h4 id="提交管理"><a href="#提交管理" class="headerlink" title="提交管理"></a>提交管理</h4><ol>
+<li>找到历史提交的commit id<pre>
+git log —pretty=oneline —abbrev-commit
+</pre></li>
+<li>取消暂存<pre>
+git reset HEAD 文件名
+</pre></li>
+<li>放弃当前修改<pre>
+git checkout  -- (文件名)：（放弃当前文件修改）
+git checkout . :(放弃当前所有修改)
+</pre></li>
+<li>恢复commit_id对应的版本<pre>
+git reset --hard commit_id
+</pre>
+
+</li>
+</ol>
+<h4 id="标签管理"><a href="#标签管理" class="headerlink" title="标签管理"></a>标签管理</h4><ol>
+<li>查看标签<pre>
+git tag
+</pre></li>
+<li>查看标签信息<pre>
+git show v1.0
+</pre></li>
+<li>创建标签<pre>
+git tag v1.0  : 创建1.0标签
+git tag v2.0 (commit_id): 创建指定提交的标签
+</pre></li>
+<li>删除标签<pre>
+git tag -d v1.0 :（删除1.0标签）
+git push origin :refs/tags/v0.9：（删除远程0.9标签）
+</pre></li>
+<li>推送本地标签<pre>
+git push origin v1.0 ：（推送本地标签到远程）
+git push origin —tags：（推送所有本地标签到远程）
+</pre>
+
+</li>
+</ol>
+<p>当然没有写Git冲突处理，因为我觉得冲突太简单了，打开项目包内容，定位到冲突的地方。保留正确的code，删除多余的运行就OK。如果一些乱七八糟的冲突，当然我也遇到过但是没有记录下来，很遗憾。</p>
+<h4 id="冲突解决"><a href="#冲突解决" class="headerlink" title="冲突解决"></a>冲突解决</h4><p><img src="/2017/09/22/GIT-版本库管理/1.jpg" alt=""><br><img src="/2017/09/22/GIT-版本库管理/2.jpg" alt=""><br><img src="/2017/09/22/GIT-版本库管理/3.jpg" alt=""></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;今天新同事不会用git，着实让我惊讶了，还好我有做笔记的习惯。就把我A long time ago 学习整理的git给他了，上手简单，很快就会成为git 大神，啊哈哈&lt;/p&gt;
+&lt;h3 id=&quot;Git-小技能&quot;&gt;&lt;a href=&quot;#Git-小技能&quot; class=&quot;header
+    
+    </summary>
+    
+      <category term="GIT" scheme="http://yoursite.com/categories/GIT/"/>
+    
+    
+      <category term="5" scheme="http://yoursite.com/tags/5/"/>
+    
+  </entry>
   
   <entry>
     <title>[机器学习_CoreML_Inceptionv3]</title>
