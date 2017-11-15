@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-09-30T08:12:31.480Z</updated>
+  <updated>2017-11-15T06:16:57.799Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,122 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>[Animation_BasicAnimation]</title>
+    <link href="http://yoursite.com/2017/11/15/Animation-BasicAnimation/"/>
+    <id>http://yoursite.com/2017/11/15/Animation-BasicAnimation/</id>
+    <published>2017-11-15T06:10:33.000Z</published>
+    <updated>2017-11-15T06:16:57.799Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to my blog. Thanks.</p>
+<p>Dome: <a href="https://github.com/princeSmall/Full-animation-details" target="_blank" rel="external">github地址</a></p>
+<p>由于下班的时候出了事故，导致卧病休息了一个月左右，天天根本没时间更新博客，觉得没有记录就没有进步，很难过。好歹前段时间完成了公司的任务，现在有时间整理点东西。关于Animation明天会陆续整理出来，今天就是最简单的BasicAnimation。</p>
+<h3 id="BasicAnimation"><a href="#BasicAnimation" class="headerlink" title="BasicAnimation"></a>BasicAnimation</h3><p><img src="/2017/11/15/Animation-BasicAnimation/Animation.gif" alt="animation"></p>
+<p>1、keyPath</p>
+<pre><code>rotation 旋轉
+
+scale 缩放
+
+translation 平移
+
+CGPoint Key Paths : (example)position.x 位移
+
+CGRect Key Paths : (example)bounds.size.width 伸缩
+
+origin 原点
+
+size 大小
+
+opacity 透明度
+
+backgroundColor  背景 颜色
+
+contents  内容
+
+Shadow Key Path: 阴影
+</code></pre><p>2、</p>
+<pre><code>duration：动画的持续时间
+</code></pre><p>3、<br>　　<pre>repeatCount：动画的重复次数</pre></p>
+<p>4、<br>　　<pre>timingFunction：动画的时间节奏控制</pre></p>
+<p>5、Use</p>
+<pre><code>    case 0:
+        animation = [CABasicAnimation animationWithKeyPath:@&quot;transform.rotation.x&quot;];
+        //setFromValue不设置,默认以当前状态为准
+        [animation setToValue:@(2 * M_PI)];
+        break;
+    case 1:
+        animation = [CABasicAnimation animationWithKeyPath:@&quot;transform.rotation.y&quot;];
+        //setFromValue不设置,默认以当前状态为准
+        [animation setToValue:@(2 * M_PI)];
+        break;
+    case 2:
+        animation = [CABasicAnimation animationWithKeyPath:@&quot;transform.rotation.z&quot;];
+        //setFromValue不设置,默认以当前状态为准
+        [animation setToValue:@(2 * M_PI)];
+        break;
+    case 3:
+        //平移
+        animation = [CABasicAnimation animationWithKeyPath:@&quot;position&quot;];
+        //setFromValue不设置,默认以当前状态为准
+        [animation setToValue:[NSValue valueWithCGPoint:CGPointMake(self.redView.center.x, self.redView.center.y + 200)]];
+        break;
+    case 4:
+        animation = [CABasicAnimation animationWithKeyPath:@&quot;opacity&quot;];
+        [animation setFromValue:@1.0];
+        [animation setToValue:@0.1];
+        break;
+    case 5:
+        animation = [CABasicAnimation animationWithKeyPath:@&quot;backgroundColor&quot;];
+        animation.fromValue = (__bridge id _Nullable)([UIColor redColor].CGColor);
+        animation.toValue = (__bridge id _Nullable)([UIColor greenColor].CGColor);
+
+        break;
+    case 6:
+        animation = [CABasicAnimation animationWithKeyPath:@&quot;transform.scale&quot;];
+        [animation setFromValue:@1.0];
+        [animation setToValue:@0.1];
+        break;
+    case 7:
+        animation = [CABasicAnimation animationWithKeyPath:@&quot;transform.scale.x&quot;];
+        [animation setFromValue:@1.0];
+        [animation setToValue:@0.1];
+        break;
+    case 8:
+        animation = [CABasicAnimation animationWithKeyPath:@&quot;transform.scale.y&quot;];
+        [animation setFromValue:@1.0];
+        [animation setToValue:@0.1];
+        break;
+    case 9:
+        animation = [CABasicAnimation animationWithKeyPath:@&quot;bounds&quot;];
+        [animation setToValue:[NSValue valueWithCGRect:CGRectMake(self.redView.frame.origin.x, self.redView.frame.origin.y, 200, 200)]];
+        break;
+
+    default:
+        break;
+}
+[animation setDelegate:self];//代理回调
+[animation setDuration:1];//设置动画时间，单次动画时间
+[animation setRemovedOnCompletion:NO];//默认为YES,设置为NO时setFillMode有效
+[animation setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
+[animation setAutoreverses:YES];
+[animation setFillMode:kCAFillModeBoth];
+[self.redView.layer addAnimation:animation forKey:@&quot;basicAnimation&quot;];
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Welcome to my blog. Thanks.&lt;/p&gt;
+&lt;p&gt;Dome: &lt;a href=&quot;https://github.com/princeSmall/Full-animation-details&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;g
+    
+    </summary>
+    
+      <category term="Animation" scheme="http://yoursite.com/categories/Animation/"/>
+    
+    
+      <category term="6" scheme="http://yoursite.com/tags/6/"/>
+    
+  </entry>
   
   <entry>
     <title>[iOS_零碎知识点整理]</title>
@@ -3729,116 +3845,6 @@ self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[U
     
       <category term="iOS" scheme="http://yoursite.com/categories/iOS/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>Hexo简单操作</title>
-    <link href="http://yoursite.com/2017/07/25/Hexo%E7%AE%80%E5%8D%95%E6%93%8D%E4%BD%9C/"/>
-    <id>http://yoursite.com/2017/07/25/Hexo简单操作/</id>
-    <published>2017-07-25T08:00:42.000Z</published>
-    <updated>2017-07-25T08:27:55.000Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="Welcome-to-my-blog-Thanks"><a href="#Welcome-to-my-blog-Thanks" class="headerlink" title="Welcome to my blog. Thanks."></a>Welcome to my blog. Thanks.</h3><p>打开themes/next/source/css/_custom/custom.styl.<br>参考样式:<a href="https://princesmall.cn" target="_blank" rel="external">博客地址</a></p>
-<p><img src="/2017/07/25/Hexo简单操作/css.png" alt="logo"></p>
-<pre>/*标题  */
-.post-title{
-color: red;
-}    
-/*内容  */
-.post-body{
-color: green;
-}
-/*author  */
-.author{
-text-align: center;
-color: red;
-}
-/*心photo  */
-.with-love{
-color: red;
-}
-/*乐乐  */
-.theme-link{
-color: red;
-}
-.busuanzi-value{
-color: rebeccapurple;
-}
-</pre>
-
-<h3 id="Next主题操作"><a href="#Next主题操作" class="headerlink" title="Next主题操作"></a>Next主题操作</h3><ol>
-<li>生成新页面 <pre> hexo g</pre></li>
-<li>发布代码  <pre> hexo d</pre></li>
-<li>开启调试服务  <pre> hexo  s –debug</pre></li>
-</ol>
-<h3 id="为next主题的主页文章添加阴影效果"><a href="#为next主题的主页文章添加阴影效果" class="headerlink" title="为next主题的主页文章添加阴影效果"></a>为next主题的主页文章添加阴影效果</h3><ol>
-<li>打开themes/next/source/css/_schemes/Mist/_posts-expanded.styl文件</li>
-<li>找到类.posts-expand下面的.post<pre>
-.post {
-margin-top: 120px;
-}
-改成:
-.post {
-margin-top: 60px;
-margin-bottom: 60px;
-padding: 25px;
--webkit-box-shadow: 0 0 5px rgba(202, 203, 203, .5);
--moz-box-shadow: 0 0 5px rgba(202, 203, 204, .5);
-}
-</pre>
-
-</li>
-</ol>
-<h3 id="添加“Fork-me-on-Github”-ribbon"><a href="#添加“Fork-me-on-Github”-ribbon" class="headerlink" title="添加“Fork me on Github” ribbon"></a>添加“Fork me on Github” ribbon</h3><ol>
-<li><p>打开themes\next\layout\layout.swig</p>
-<pre><code>&lt;a href=&quot;你的地址&quot;&gt;&lt;img style=&quot;position: absolute; top: 0; left: 0; border: 0;&quot; 
-src=&quot;https://camo.githubusercontent.com/82b228a3648bf44fc1163ef44c62fcc60081495e/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f7265645f6161303030302e706e67&quot; 
-alt=&quot;Fork me on GitHub&quot; 
-data-canonical-src=&quot;https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png&quot;&gt;&lt;/a&gt;
-</code></pre></li>
-</ol>
-<h3 id="404界面"><a href="#404界面" class="headerlink" title="404界面"></a>404界面</h3><ol>
-<li>找到根目录-source<br><img src="/2017/07/25/Hexo简单操作/404.png" alt="logo"></li>
-<li>创建HTML文件</li>
-<li><p>打开：commonweal: /404.html</p>
-<pre><code>&lt;html&gt;
-&lt;body&gt;
-&lt;script type=&quot;text/javascript&quot; 
-src=&quot;http://www.qq.com/404/search_children.js&quot;         
-charset=&quot;utf-8&quot; homePageUrl=&quot;http://www.princesmall.cn&quot;
- homePageName=&quot;回到乐乐的主页&quot;&gt;&lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-注：如果返回的还是qq主页，请参考我网页源码，毕竟有些长，这只是不body。然后copy到你的404.html下
-</code></pre></li>
-</ol>
-<h3 id="文章末尾追加版权信息"><a href="#文章末尾追加版权信息" class="headerlink" title="文章末尾追加版权信息"></a>文章末尾追加版权信息</h3><ol>
-<li>找到themes/next/layout/_macro/reward.swig</li>
-<li>在最上面添加如下代码：（最上面）<br><img src="/2017/07/25/Hexo简单操作/permalink.png" alt="permalink">   </li>
-</ol>
-<h3 id="Hexo插入图片"><a href="#Hexo插入图片" class="headerlink" title="Hexo插入图片"></a>Hexo插入图片</h3><ol>
-<li>首先确认根目录下_config.yml 中有 post_asset_folder:true</li>
-<li>在hexo的目录下执行npm install <a href="https://github.com/CodeFalling/hexo-asset-image" target="_blank" rel="external">https://github.com/CodeFalling/hexo-asset-image</a> –save</li>
-<li>创建文件hexo new “文件名”</li>
-<li><p>在source下会生成一个和文件名一样的文件夹，图片放在该文件夹下</p>
-<pre><code>例如：
-  ![logo](文件名/logo.jpg)
-  是不是so easy！
-</code></pre></li>
-</ol>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;Welcome-to-my-blog-Thanks&quot;&gt;&lt;a href=&quot;#Welcome-to-my-blog-Thanks&quot; class=&quot;headerlink&quot; title=&quot;Welcome to my blog. Thanks.&quot;&gt;&lt;/a&gt;Welcome t
-    
-    </summary>
-    
-      <category term="Hexo" scheme="http://yoursite.com/categories/Hexo/"/>
-    
-    
-      <category term="1" scheme="http://yoursite.com/tags/1/"/>
     
   </entry>
   
