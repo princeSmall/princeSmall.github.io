@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-11-15T06:16:57.799Z</updated>
+  <updated>2017-11-16T00:24:16.318Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,76 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>[Animation_SpringAnimation]</title>
+    <link href="http://yoursite.com/2017/11/16/Animation-SpringAnimation/"/>
+    <id>http://yoursite.com/2017/11/16/Animation-SpringAnimation/</id>
+    <published>2017-11-16T00:04:58.000Z</published>
+    <updated>2017-11-16T00:24:16.318Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to my blog. Thanks.</p>
+<p>Dome: <a href="https://github.com/princeSmall/Full-animation-details" target="_blank" rel="external">github地址</a></p>
+<p>昨天整理了BasicAnimation，昨晚对SpringAnimation也进行了梳理。说白了，它的父类也是BasicAnimation，也增加了UIView 实例方法的应用</p>
+<h3 id="SpringAnimation"><a href="#SpringAnimation" class="headerlink" title="SpringAnimation"></a>SpringAnimation</h3><p>1、</p>
+<pre><code>mass:
+
+质量，影响图层运动时的弹簧惯性，质量越大，弹簧拉伸和压缩的幅度越大
+
+动画的速度变慢，并且波动幅度变大
+</code></pre><p>2、 </p>
+<pre><code>stiffness:
+
+刚度系数(劲度系数/弹性系数)，刚度系数越大，形变产生的力就越大，运动越快
+</code></pre><p>3、</p>
+<pre><code>damping:
+
+阻尼系数，阻止弹簧伸缩的系数，阻尼系数越大，停止越快
+</code></pre><p>4、</p>
+<pre><code>initialVelocity:
+
+初始速率，动画视图的初始速度大小
+
+速率为正数时，速度方向与运动方向一致，速率为负数时，速度方向与运动方向相反
+</code></pre><p>5、</p>
+<pre><code>CASpringAnimation * springAnimation = [CASpringAnimation animationWithKeyPath:@&quot;position&quot;];
+springAnimation.damping = damping;
+springAnimation.stiffness = stiffness;
+springAnimation.mass = mass;
+springAnimation.initialVelocity = initialVelocity;
+springAnimation.toValue = [NSValue valueWithCGSize:CGSizeMake(self.redView.layer.position.x, self.redView.layer.position.y + 200)];
+springAnimation.duration = springAnimation.settlingDuration;
+[self.redView.layer addAnimation:springAnimation forKey:springAnimation.keyPath];
+</code></pre><p>6、</p>
+<pre><code> [UIView animateWithDuration:5 delay:0 usingSpringWithDamping:0.3 initialSpringVelocity:10 options:UIViewAnimationOptionTransitionFlipFromRight animations:^{
+        CGPoint point =self.redView.center;
+        point.y += 150;
+        [self.redView setCenter:point];
+    } completion:^(BOOL finished) {
+        [self.redView setCenter:CGPointMake(250 + 49, 250 + 49)];
+        [self.redView setBackgroundColor:[UIColor redColor]];
+    }];
+}     
+      duration: 动画时长
+      delay: 动画延迟
+      damping: 弹簧效果
+      springVelocity: 初始速度
+      options: 过度效果
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Welcome to my blog. Thanks.&lt;/p&gt;
+&lt;p&gt;Dome: &lt;a href=&quot;https://github.com/princeSmall/Full-animation-details&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;g
+    
+    </summary>
+    
+      <category term="Animation" scheme="http://yoursite.com/categories/Animation/"/>
+    
+    
+      <category term="6" scheme="http://yoursite.com/tags/6/"/>
+    
+  </entry>
   
   <entry>
     <title>[Animation_BasicAnimation]</title>
@@ -3747,99 +3817,6 @@ glDrawArrays(GL_TRIANGLES, 0, 3);
     
       &lt;p&gt;Welcome to my blog. Thanks.&lt;/p&gt;
 &lt;p&gt;Dome: &lt;a href=&quot;https://github.com/princeSmall/CollectionViewCell.git&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt; 
-    
-    </summary>
-    
-      <category term="iOS" scheme="http://yoursite.com/categories/iOS/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>[iOS_自定义tarbar和侧边栏]</title>
-    <link href="http://yoursite.com/2017/08/03/%E8%87%AA%E5%AE%9A%E4%B9%89tarbar/"/>
-    <id>http://yoursite.com/2017/08/03/自定义tarbar/</id>
-    <published>2017-08-03T07:02:56.000Z</published>
-    <updated>2017-09-21T08:53:54.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>Welcome to my blog. Thanks.</p>
-<p>Dome: <a href="https://github.com/princeSmall/REsideAndTarbar" target="_blank" rel="external"> github 地址</a></p>
-<h3 id="pod-RESideMenu"><a href="#pod-RESideMenu" class="headerlink" title="pod RESideMenu"></a>pod RESideMenu</h3><ol>
-<li><p>vim podfile</p>
-<pre><code>platform :ios,&apos;8.0&apos;
-target &apos;SideAndTarbar&apos; do
-pod &apos;RESideMenu&apos;, &apos;~&gt; 4.0.7&apos;
-</code></pre></li>
-</ol>
-<h3 id="AppDelegate-m"><a href="#AppDelegate-m" class="headerlink" title="AppDelegate.m"></a>AppDelegate.m</h3><pre><code>添加RESideMenuDelegate
-</code></pre><ol>
-<li><p>didFinishLaunchingWithOptions</p>
-<pre><code>self.window = [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen ]bounds]];
-TableViewController * viewController =  [[TableViewController alloc]init];
-TarBarViewController * barViewController = [[TarBarViewController alloc]init];
-RESideMenu * sideMenu = [[RESideMenu alloc]initWithContentViewController:barViewController leftMenuViewController:viewController rightMenuViewController:nil];
-sideMenu.delegate = self;
-sideMenu.contentViewShadowEnabled = YES;
-sideMenu.contentViewInPortraitOffsetCenterX = 100.f;
-sideMenu.contentViewScaleValue = 1.0;
-sideMenu.menuPreferredStatusBarStyle = UIStatusBarStyleLightContent;
-sideMenu.bouncesHorizontally = NO;
-self.window.rootViewController = sideMenu; 
-</code></pre></li>
-</ol>
-<h3 id="自定义tabbar"><a href="#自定义tabbar" class="headerlink" title="自定义tabbar"></a>自定义tabbar</h3><ol>
-<li><p>添加子控制器属性</p>
-<ul>
-<li>添加navgationbar</li>
-<li>去除tabbar分割线</li>
-<li>选中controller后图片和标题改变</li>
-</ul>
-</li>
-</ol>
-<pre>
--(void)addChildViewController:(UIViewController *)childController title:(NSString *)title image:(UIImage *)image selecteImage:(UIImage *)selectedImage{
-
-    UINavigationController * controller = [[UINavigationController alloc]initWithRootViewController:childController];
-    childController.view.backgroundColor = [UIColor whiteColor];
-    childController.navigationItem.title = title;
-    [[UITabBar appearance] setShadowImage:[UIImage new]]; [[UITabBar appearance] setBackgroundImage:[[UIImage alloc]init]];
-    selectedImage = [selectedImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    self.tabBar.tintColor = [UIColor greenColor];  
-    controller.tabBarItem = [[UITabBarItem alloc]initWithTitle:title image:image selectedImage:selectedImage];
-    [self addChildViewController:controller];
-
-}  
-</pre>  
-
-<ol>
-<li>添加子控制器 <pre>
--(void)setNewBar{
-OneViewController * one = [[OneViewController alloc]init];
-[self addChildViewController:one title:@"MainOne" image:[UIImage imageNamed:@"icon_home_normal"] selecteImage:[UIImage imageNamed:@"icon_home_selected"]];
-TwoViewController * two = [[TwoViewController alloc]init];
-[self addChildViewController:two title:@"MainTwo" image:[UIImage imageNamed:@"icon_door_normal"] selecteImage:[UIImage imageNamed:@"icon_door_selected"]];
-}
-</pre>
-
-</li>
-</ol>
-<h3 id="在各自类中进行操作就OK"><a href="#在各自类中进行操作就OK" class="headerlink" title="在各自类中进行操作就OK"></a>在各自类中进行操作就OK</h3><ol>
-<li>例如：<pre>
-self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"icon_sidebar"] style:UIBarButtonItemStylePlain target:self action:@selector(presentLeftMenuViewController:)];
- UIButton * button = [[UIButton alloc]initWithFrame:CGRectMake(100, 100, 100, 100)];
- button.backgroundColor = [UIColor greenColor];
- [self.view addSubview:button];
-</pre>
-
-</li>
-</ol>
-<p><img src="/2017/08/03/自定义tarbar/main.png" alt=""><br><img src="/2017/08/03/自定义tarbar/mainTwo.png" alt=""><br><img src="/2017/08/03/自定义tarbar/left.png" alt=""></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Welcome to my blog. Thanks.&lt;/p&gt;
-&lt;p&gt;Dome: &lt;a href=&quot;https://github.com/princeSmall/REsideAndTarbar&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt; github 
     
     </summary>
     
