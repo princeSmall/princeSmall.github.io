@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-11-16T00:24:16.318Z</updated>
+  <updated>2017-11-17T00:15:06.430Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,97 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>[Animation_keyFrameAnimation]</title>
+    <link href="http://yoursite.com/2017/11/17/Animation-keyFrameAnimation/"/>
+    <id>http://yoursite.com/2017/11/17/Animation-keyFrameAnimation/</id>
+    <published>2017-11-17T00:00:31.000Z</published>
+    <updated>2017-11-17T00:15:06.430Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to my blog. Thanks.</p>
+<p>Dome: <a href="https://github.com/princeSmall/Full-animation-details" target="_blank" rel="external">github地址</a></p>
+<p>CAPropertyAnimation 的子类有CABsicAnimation 和 CAKeyframeAnimation。<br>今天要说的就是CAKeyframeAnimation关键帧动画，毫无疑问一切复杂的动画都是由简单的动画拼接来的，知其所以然，需要的时候必定能写出好的动画</p>
+<h3 id="keyFrameAnimation"><a href="#keyFrameAnimation" class="headerlink" title="keyFrameAnimation"></a>keyFrameAnimation</h3><h4 id="属性值了解"><a href="#属性值了解" class="headerlink" title="属性值了解"></a>属性值了解</h4><p>1、关键帧值数组,一组变化值</p>
+<pre><code>@property(nullable, copy) NSArray *values;
+</code></pre><p>2、关键帧帧路径,优先级比values大</p>
+<pre><code>@property(nullable) CGPathRef path;
+</code></pre><p>3、每一帧对应的时间,时间可以控制速度.它和每一个帧相对应,取值为0.0-1.0,不设则每一帧时间相等.</p>
+<pre><code>@property(nullable, copy) NSArray *keyTimes;
+</code></pre><p>4、每一帧对应的时间曲线函数,也就是每一帧的运动节奏</p>
+<pre><code>@property(nullable, copy) NSArray *timingFunctions;
+</code></pre><p>5、动画的计算模式,默认值: kCAAnimationLinear.有以下几个值:</p>
+<pre><code>@property(copy) NSString *calculationMode;
+
+kCAAnimationLinear
+关键帧为座标点的时候,关键帧之间直接直线相连进行插值计算;
+
+kCAAnimationDiscrete
+离散的,也就是没有补间动画
+
+kCAAnimationPaced
+平均，keyTimes跟timeFunctions失效
+
+kCAAnimationCubic
+对关键帧为座标点的关键帧进行圆滑曲线相连后插值计算,对于曲线的形状还可以通过tensionValues,continuityValues,biasValues来进行调整自定义,keyTimes跟timeFunctions失效
+
+kCAAnimationCubicPaced
+在kCAAnimationCubic的基础上使得动画运行变得均匀,就是系统时间内运动的距离相同,,keyTimes跟timeFunctions失效
+</code></pre><p>6、动画的张力,当动画为立方计算模式的时候此属性提供了控制插值,因为每个关键帧都可能有张力所以连续性会有所偏差它的范围为[-1,1].同样是此作用</p>
+<pre><code>@property(nullable, copy) NSArray *tensionValues;
+</code></pre><p>7、动画的连续性值</p>
+<pre><code>@property(nullable, copy) NSArray *continuityValues;
+</code></pre><p>8、动画的偏斜率</p>
+<pre><code>@property(nullable, copy) NSArray *biasValues;
+</code></pre><p>9、动画沿路径旋转方式,默认为nil.它有两个值:</p>
+<pre><code>@property(nullable, copy) NSString *rotationMode;
+kCAAnimationRotateAuto
+自动旋转
+kCAAnimationRotateAutoReverse
+自动翻转
+</code></pre><h4 id="动画应用"><a href="#动画应用" class="headerlink" title="动画应用"></a>动画应用</h4><p>draw  a curve</p>
+<pre><code>keyFrame：
+path：路径
+duration：单次时间
+rotationMode：旋转样式
+repeatCount：重复次数
+</code></pre><p>1、弧形</p>
+<pre><code>- (void)addArcWithCenter:(CGPoint)center radius:(CGFloat)radius startAngle:(CGFloat)startAngle endAngle:(CGFloat)endAngle clockwise:(BOOL)clockwise ;
+center ： 弧形的中心
+radius： 弧形的半径
+startAngle：弧形开始弧度
+endAngle：弧形结束弧度
+colockwise：顺逆时针
+</code></pre><p>2、抛物线</p>
+<pre><code>- (void)moveToPoint:(CGPoint)point
+- (void)addQuadCurveToPoint:(CGPoint)endPoint controlPoint:(CGPoint)controlPoint;
+point：开始位置
+endPoint：结束位置
+controlPoint：拐点位置
+</code></pre><p>3、椭圆形</p>
+<pre><code>+ (instancetype)bezierPathWithOvalInRect:(CGRect)rect;
+rect： x起点
+       y起点
+       width宽度
+       height高度
+</code></pre><p>4、圆形</p>
+<pre><code>rect：
+width = height
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Welcome to my blog. Thanks.&lt;/p&gt;
+&lt;p&gt;Dome: &lt;a href=&quot;https://github.com/princeSmall/Full-animation-details&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;g
+    
+    </summary>
+    
+      <category term="Animation" scheme="http://yoursite.com/categories/Animation/"/>
+    
+    
+      <category term="6" scheme="http://yoursite.com/tags/6/"/>
+    
+  </entry>
   
   <entry>
     <title>[Animation_SpringAnimation]</title>
@@ -3706,117 +3797,6 @@ glDrawArrays(GL_TRIANGLES, 0, 3);
       &lt;p&gt;Welcome to my blog. Thanks.&lt;/p&gt;
 &lt;p&gt;Dome: &lt;a href=&quot;https://github.com/princeSmall/Timer&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;github 地址&lt;/a&gt;&lt;/p&gt;
 
-    
-    </summary>
-    
-      <category term="iOS" scheme="http://yoursite.com/categories/iOS/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>[iOS_CollectionViewCell的增删移]</title>
-    <link href="http://yoursite.com/2017/08/11/%E5%A2%9E%E5%88%A0%E7%A7%BB/"/>
-    <id>http://yoursite.com/2017/08/11/增删移/</id>
-    <published>2017-08-11T08:34:35.000Z</published>
-    <updated>2017-09-21T08:53:14.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>Welcome to my blog. Thanks.</p>
-<p>Dome: <a href="https://github.com/princeSmall/CollectionViewCell.git" target="_blank" rel="external"> github 地址</a></p>
-<p>   今日看到某娱乐项目选择增删移很好玩，周五上午没事就写了一个。<br>   利用CollectionViewCell，将数据持久化保存在infoplist。<br>   再也不怕回到解放前了。主要分[已添加]–[待添加]–[未添加]–[删除添加]</p>
-<h3 id="CollectionViewCell"><a href="#CollectionViewCell" class="headerlink" title="CollectionViewCell"></a>CollectionViewCell</h3><pre>
- UIBarButtonItem * rightItem = [[UIBarButtonItem alloc]initWithTitle:@"新增加" style:UIBarButtonItemStylePlain target:self action:@selector(add)];
-    self.navigationItem.rightBarButtonItem = rightItem;
-    UICollectionViewFlowLayout * layout = [[UICollectionViewFlowLayout alloc]init];
-    layout.itemSize = CGSizeMake(50, 50);
-    layout.scrollDirection = UICollectionViewScrollDirectionVertical;
-    self.collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) collectionViewLayout:layout];
-    self.collectionView.backgroundColor = [UIColor whiteColor];
-    self.collectionView.delegate = self;
-    self.collectionView.dataSource = self;
-    [self.collectionView registerNib:[UINib nibWithNibName:@"CollectionViewCell" bundle:nil] forCellWithReuseIdentifier:identifier];
-    [self.collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:headerId];
-</pre> 
-
-<h3 id="两个数组用来存放已添加的和待添加的"><a href="#两个数组用来存放已添加的和待添加的" class="headerlink" title="两个数组用来存放已添加的和待添加的"></a>两个数组用来存放已添加的和待添加的</h3><pre> 
-   if ([[NSUserDefaults standardUserDefaults]objectForKey:@"one"] == nil) {
-   self.oneArray = [NSMutableArray arrayWithObjects:@"0",@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",@"13",@"14",@"15",@"16",@"17",@"18",@"19",nil];
-    }else{
-        id array = [[NSUserDefaults standardUserDefaults]objectForKey:@"one"];
-        [self.oneArray addObjectsFromArray:array];
-    }
-    if ( [[NSUserDefaults standardUserDefaults]objectForKey:@"two"] == nil) {
-        self.twoArray = [NSMutableArray arrayWithObjects:@"a",@"b",@"c",@"d",@"e",@"f",@"g",@"h",@"i",@"j", nil];
-    }else{
-        id array = [[NSUserDefaults standardUserDefaults]objectForKey:@"two"];
-        [self.twoArray addObjectsFromArray:array];
-    }
-</pre>
-
-<h3 id="每次改变后刷新要防止复用"><a href="#每次改变后刷新要防止复用" class="headerlink" title="每次改变后刷新要防止复用"></a>每次改变后刷新要防止复用</h3><pre>
- UICollectionReusableView *headerView = [self.collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:headerId forIndexPath:indexPath];
-    headerView.backgroundColor = [UIColor darkGrayColor];
-    [headerView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-    _titleLab = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width - 50, 40)];
-    _titleLab.textAlignment = NSTextAlignmentLeft;
-    _titleLab.textColor = [UIColor whiteColor];
-    [headerView addSubview:self.titleLab];
-</pre>
-
-<h3 id="编辑状态下进行移动和删除"><a href="#编辑状态下进行移动和删除" class="headerlink" title="编辑状态下进行移动和删除"></a>编辑状态下进行移动和删除</h3><pre>
--(void)edit{
-    for (CollectionViewCell * cell in self.collectionView.visibleCells) {
-        if (cell.edit == NO) {
-            cell.layer.masksToBounds = NO;
-            cell.layer.shadowOpacity = 0.7f;
-            cell.layer.shadowColor = [UIColor darkGrayColor].CGColor;
-            cell.layer.shadowOffset = CGSizeMake(1.f, 1.f);
-            cell.deleteBtn.hidden = NO;
-            [self.editBtn setTitle:@"完成" forState:UIControlStateNormal];
-            cell.edit = YES;
-        }else{
-            cell.edit = NO;
-            cell.deleteBtn.hidden = YES;
-            cell.layer.masksToBounds = YES;
-            [self.editBtn setTitle:@"编辑" forState:UIControlStateNormal];
-        }
-    }
-
-}
-</pre>
-
-<h3 id="添加数据-持久化存储刷新界面"><a href="#添加数据-持久化存储刷新界面" class="headerlink" title="添加数据,持久化存储刷新界面"></a>添加数据,持久化存储刷新界面</h3><pre>
--(void)add{
-    SCLAlertView * alert = [[SCLAlertView alloc]init];
-    [alert setHorizontalButtons:YES];
-    SCLTextView * textField = [alert addTextField:@"Enter your name"];
-    [alert addButton:@"确定" actionBlock:^(void) {
-        NSLog(@"Text value: %@", textField.text);
-        [self.twoArray addObject:textField.text];
-        [self.collectionView reloadData];
-        [[NSUserDefaults standardUserDefaults]setObject:self.twoArray forKey:@"two"];
-        [[NSUserDefaults standardUserDefaults]synchronize];
-
-    }];   
-  [alert showEdit:self title:nil subTitle:@"请输入名称" closeButtonTitle:@"取消" duration:0.0f];
-</pre>
-
-<h3 id="增删移随时保存数据"><a href="#增删移随时保存数据" class="headerlink" title="增删移随时保存数据"></a>增删移随时保存数据</h3><pre> 
-    [[NSUserDefaults standardUserDefaults]setObject:self.oneArray forKey:@"one"];
-    [[NSUserDefaults standardUserDefaults]setObject:self.twoArray forKey:@"two"];
-    [[NSUserDefaults standardUserDefaults]synchronize];
-
-</pre>
-
-
-
-<p><img src="/2017/08/11/增删移/main.png" alt="mian"><br><img src="/2017/08/11/增删移/add.png" alt="add"><br><img src="/2017/08/11/增删移/remove.png" alt="remove"></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Welcome to my blog. Thanks.&lt;/p&gt;
-&lt;p&gt;Dome: &lt;a href=&quot;https://github.com/princeSmall/CollectionViewCell.git&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt; 
     
     </summary>
     
