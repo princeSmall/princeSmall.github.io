@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://yoursite.com/2017/11/17/Animation-keyFrameAnimation/</loc>
+    <loc>http://yoursite.com/2017/11/18/Animation-TransitionAnimation/</loc>
     
-    <lastmod>2017-11-17T00:15:06.430Z</lastmod>
+    <lastmod>2017-11-18T03:02:26.558Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2017/11/16/Animation-SpringAnimation/</loc>
     
-    <lastmod>2017-11-16T00:24:16.318Z</lastmod>
+    <lastmod>2017-11-18T03:01:53.638Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/11/17/Animation-keyFrameAnimation/</loc>
+    
+    <lastmod>2017-11-17T00:15:06.430Z</lastmod>
     
   </url>
   

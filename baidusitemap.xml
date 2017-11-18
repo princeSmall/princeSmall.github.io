@@ -4,12 +4,12 @@
 
     
   <url>
-    <loc>http://yoursite.com/2017/11/17/Animation-keyFrameAnimation/</loc>
-    <lastmod>2017-11-17T00:15:06.430Z</lastmod>
+    <loc>http://yoursite.com/2017/11/18/Animation-TransitionAnimation/</loc>
+    <lastmod>2017-11-18T03:02:26.558Z</lastmod>
     <data>
         <display>
-        <title>[Animation_keyFrameAnimation]</title>
-        <pubTime>2017-11-17T00:00:31.000Z</pubTime>
+        <title>[Animation_TransitionAnimation]</title>
+        <pubTime>2017-11-18T02:58:25.000Z</pubTime>
         
         <tag>6</tag>
          
@@ -25,11 +25,31 @@
     
   <url>
     <loc>http://yoursite.com/2017/11/16/Animation-SpringAnimation/</loc>
-    <lastmod>2017-11-16T00:24:16.318Z</lastmod>
+    <lastmod>2017-11-18T03:01:53.638Z</lastmod>
     <data>
         <display>
         <title>[Animation_SpringAnimation]</title>
         <pubTime>2017-11-16T00:04:58.000Z</pubTime>
+        
+        <tag>6</tag>
+         
+         
+           
+             
+              <breadCrumb title="Animation" url="http://yoursite.com/categories/Animation/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2017/11/17/Animation-keyFrameAnimation/</loc>
+    <lastmod>2017-11-17T00:15:06.430Z</lastmod>
+    <data>
+        <display>
+        <title>[Animation_keyFrameAnimation]</title>
+        <pubTime>2017-11-17T00:00:31.000Z</pubTime>
         
         <tag>6</tag>
          
