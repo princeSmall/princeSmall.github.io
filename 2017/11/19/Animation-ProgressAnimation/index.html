@@ -79,7 +79,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="2," />
+  <meta name="keywords" content="6," />
 
 
 
@@ -97,19 +97,17 @@
 
 
 
-<meta name="description" content="Welcome to my blog. Thanks. Dome: github地址 好几天没写博客了，正好在忙二维码的生成，扫描就里一个flag吧  原始二维码通过滤镜CIFilter生成二维码  创建过滤器 给过滤器添加数据 设置滤镜inputMessage数据 输出二维码   + (CIImage *)qrCodeImageWithContent:(NSString *)content{">
-<meta name="keywords" content="2">
+<meta name="description" content="Welcome to my blog. Thanks. Dome: github地址 今天主要讲一些动画的运用，也就是进度条，有弧形的，扇形的，圆形的。其实没什么难点，我封装在一个个View里，直接调用就行，弧度跟着进度条走就OK的。 ProgressAnimation 懒加载UISlider  - (UISlider *)sectorSlider{     if (_sectorSlider =">
+<meta name="keywords" content="6">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[iOS-QRCodeImage]">
-<meta property="og:url" content="http://yoursite.com/2017/09/11/iOS-QRCodeImage/index.html">
+<meta property="og:title" content="[Animation_ProgressAnimation]">
+<meta property="og:url" content="http://yoursite.com/2017/11/19/Animation-ProgressAnimation/index.html">
 <meta property="og:site_name" content="乐乐">
-<meta property="og:description" content="Welcome to my blog. Thanks. Dome: github地址 好几天没写博客了，正好在忙二维码的生成，扫描就里一个flag吧  原始二维码通过滤镜CIFilter生成二维码  创建过滤器 给过滤器添加数据 设置滤镜inputMessage数据 输出二维码   + (CIImage *)qrCodeImageWithContent:(NSString *)content{">
-<meta property="og:image" content="http://yoursite.com/2017/09/11/iOS-QRCodeImage/QRCode.gif">
-<meta property="og:updated_time" content="2017-09-20T01:41:05.000Z">
+<meta property="og:description" content="Welcome to my blog. Thanks. Dome: github地址 今天主要讲一些动画的运用，也就是进度条，有弧形的，扇形的，圆形的。其实没什么难点，我封装在一个个View里，直接调用就行，弧度跟着进度条走就OK的。 ProgressAnimation 懒加载UISlider  - (UISlider *)sectorSlider{     if (_sectorSlider =">
+<meta property="og:updated_time" content="2017-11-19T02:40:44.558Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="[iOS-QRCodeImage]">
-<meta name="twitter:description" content="Welcome to my blog. Thanks. Dome: github地址 好几天没写博客了，正好在忙二维码的生成，扫描就里一个flag吧  原始二维码通过滤镜CIFilter生成二维码  创建过滤器 给过滤器添加数据 设置滤镜inputMessage数据 输出二维码   + (CIImage *)qrCodeImageWithContent:(NSString *)content{">
-<meta name="twitter:image" content="http://yoursite.com/2017/09/11/iOS-QRCodeImage/QRCode.gif">
+<meta name="twitter:title" content="[Animation_ProgressAnimation]">
+<meta name="twitter:description" content="Welcome to my blog. Thanks. Dome: github地址 今天主要讲一些动画的运用，也就是进度条，有弧形的，扇形的，圆形的。其实没什么难点，我封装在一个个View里，直接调用就行，弧度跟着进度条走就OK的。 ProgressAnimation 懒加载UISlider  - (UISlider *)sectorSlider{     if (_sectorSlider =">
 
 
 
@@ -137,13 +135,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/09/11/iOS-QRCodeImage/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/11/19/Animation-ProgressAnimation/"/>
 
 
 
 
 
-  <title>[iOS-QRCodeImage] | 乐乐</title>
+  <title>[Animation_ProgressAnimation] | 乐乐</title>
   
 
 
@@ -326,7 +324,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/11/iOS-QRCodeImage/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/19/Animation-ProgressAnimation/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="TongLe">
@@ -343,7 +341,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">[iOS-QRCodeImage]</h1>
+          <h1 class="post-title" itemprop="name headline">[Animation_ProgressAnimation]</h1>
         
 
         <div class="post-meta">
@@ -355,8 +353,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-11T09:08:33+08:00">
-                2017-09-11
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-19T10:32:16+08:00">
+                2017-11-19
               </time>
             
 
@@ -378,8 +376,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS</span>
+                  <a href="/categories/Animation/" itemprop="url" rel="index">
+                    <span itemprop="name">Animation</span>
                   </a>
                 </span>
 
@@ -418,296 +416,88 @@
 
       
         <p>Welcome to my blog. Thanks.</p>
-<p>Dome: <a href="https://github.com/princeSmall/QRCodeImage" target="_blank" rel="external">github地址</a></p>
-<p>好几天没写博客了，正好在忙二维码的生成，扫描就里一个flag吧</p>
-<p><img src="/2017/09/11/iOS-QRCodeImage/QRCode.gif" alt="gif"></p>
-<h3 id="原始二维码"><a href="#原始二维码" class="headerlink" title="原始二维码"></a>原始二维码</h3><p>通过滤镜CIFilter生成二维码</p>
-<ol>
-<li>创建过滤器</li>
-<li>给过滤器添加数据</li>
-<li>设置滤镜inputMessage数据</li>
-<li>输出二维码</li>
+<p>Dome: <a href="https://github.com/princeSmall/Full-animation-details" target="_blank" rel="external">github地址</a></p>
+<p>今天主要讲一些动画的运用，也就是进度条，有弧形的，扇形的，圆形的。<br>其实没什么难点，我封装在一个个View里，直接调用就行，弧度跟着进度条走就OK的。</p>
+<h3 id="ProgressAnimation"><a href="#ProgressAnimation" class="headerlink" title="ProgressAnimation"></a>ProgressAnimation</h3><ol>
+<li>懒加载UISlider</li>
 </ol>
-<pre>
-+ (CIImage *)qrCodeImageWithContent:(NSString *)content{
-    CIFilter *qrFilter = [CIFilter filterWithName:@"CIQRCodeGenerator"];
-    NSData *contentData = [content dataUsingEncoding:NSUTF8StringEncoding];
-    [qrFilter setValue:contentData forKey:@"inputMessage"];
-    [qrFilter setValue:@"H" forKey:@"inputCorrectionLevel"];
-    CIImage *image = qrFilter.outputImage;
-    return image;
-}
-
-void ProviderReleaseData (void *info, const void *data, size_t size){
-    free((void*)data);
-}
-</pre>
-
-<p>生成制定大小的二维码</p>
-<ol>
-<li>传入原始二维码数据</li>
-<li>设置倍数scale</li>
-<li>通过bitmapImage放大并保存</li>
-</ol>
-<pre>
-+ (UIImage *)qrCodeImageWithContent:(NSString *)content codeImageSize:(CGFloat)size{
-    CIImage *image = [self qrCodeImageWithContent:content];
-    CGRect integralRect = CGRectIntegral(image.extent);
-    CGFloat scale = MIN(size/CGRectGetWidth(integralRect), size/CGRectGetHeight(integralRect));  
-    size_t width = CGRectGetWidth(integralRect)*scale;
-    size_t height = CGRectGetHeight(integralRect)*scale;
-    CGColorSpaceRef colorSpaceRef = CGColorSpaceCreateDeviceGray();
-    CGContextRef bitmapRef = CGBitmapContextCreate(nil, width, height, 8, 0, colorSpaceRef, (CGBitmapInfo)kCGImageAlphaNone);
-    CIContext *context = [CIContext contextWithOptions:nil];
-    CGImageRef bitmapImage = [context createCGImage:image fromRect:integralRect];
-    CGContextSetInterpolationQuality(bitmapRef, kCGInterpolationNone);
-    CGContextScaleCTM(bitmapRef, scale, scale);
-    CGContextDrawImage(bitmapRef, integralRect, bitmapImage);
-
-    CGImageRef scaledImage = CGBitmapContextCreateImage(bitmapRef);
-    CGContextRelease(bitmapRef);
-    CGImageRelease(bitmapImage);
-    return [UIImage imageWithCGImage:scaledImage];
-}
-</pre>
-
-
-
-<h3 id="原始条形码"><a href="#原始条形码" class="headerlink" title="原始条形码"></a>原始条形码</h3><p>通过滤镜CIFilter生成二维码</p>
-<ol>
-<li>创建过滤器</li>
-<li>给过滤器添加数据</li>
-<li>设置滤镜inputMessage数据</li>
-<li>输出二维码</li>
-</ol>
-<pre>
-+ (CIImage *)barcodeImageWithContent:(NSString *)content{
-    CIFilter *qrFilter = [CIFilter filterWithName:@"CICode128BarcodeGenerator"];
-    NSData *contentData = [content dataUsingEncoding:NSUTF8StringEncoding];
-    [qrFilter setValue:contentData forKey:@"inputMessage"];
-    [qrFilter setValue:@(0.00) forKey:@"inputQuietSpace"];
-    CIImage *image = qrFilter.outputImage;
-    return image;
-}
-
-void ProviderReleaseData (void *info, const void *data, size_t size){
-    free((void*)data);
-}
-</pre>
-
-<p>生成定制大小的条形码</p>
-<ol>
-<li>传入原始二维码数据</li>
-<li>设置倍数scale</li>
-<li>通过bitmapImage放大并保存</li>
-</ol>
-<pre>
-+ (UIImage *)barcodeImageWithContent:(NSString *)content codeImageSize:(CGSize)size{
-    CIImage *image = [self barcodeImageWithContent:content];
-    CGRect integralRect = CGRectIntegral(image.extent);
-    CGFloat scale = MIN(size.width/CGRectGetWidth(integralRect), size.height/CGRectGetHeight(integralRect));  
-    size_t width = CGRectGetWidth(integralRect)*scale;
-    size_t height = CGRectGetHeight(integralRect)*scale;
-    CGColorSpaceRef colorSpaceRef = CGColorSpaceCreateDeviceGray();
-    CGContextRef bitmapRef = CGBitmapContextCreate(nil, width, height, 8, 0, colorSpaceRef, (CGBitmapInfo)kCGImageAlphaNone);
-    CIContext *context = [CIContext contextWithOptions:nil];
-    CGImageRef bitmapImage = [context createCGImage:image fromRect:integralRect];
-    CGContextSetInterpolationQuality(bitmapRef, kCGInterpolationNone);
-    CGContextScaleCTM(bitmapRef, scale, scale);
-    CGContextDrawImage(bitmapRef, integralRect, bitmapImage);
-
-    CGImageRef scaledImage = CGBitmapContextCreateImage(bitmapRef);
-    CGContextRelease(bitmapRef);
-    CGImageRelease(bitmapImage);
-    return [UIImage imageWithCGImage:scaledImage];
-}
-</pre>
-
-
-<h3 id="彩色二维码"><a href="#彩色二维码" class="headerlink" title="彩色二维码"></a>彩色二维码</h3><p>获取原始二维码改变像素点颜色</p>
-<ol>
-<li>@param content 二维码数据</li>
-<li>@param size 二维码大小</li>
-<li>@param red 0 ~ 1.0</li>
-<li>@param green 0 ~ 1.0</li>
-<li>@param blue 0 ~ 1.0</li>
-</ol>
-<pre>
-+ (UIImage *)qrCodeImageWithContent:(NSString *)content codeImageSize:(CGFloat)size red:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue{
-    UIImage *image = [self qrCodeImageWithContent:content codeImageSize:size];
-    int imageWidth = image.size.width;
-    int imageHeight = image.size.height;
-    size_t bytesPerRow = imageWidth * 4;
-    uint32_t *rgbImageBuf = (uint32_t *)malloc(bytesPerRow * imageHeight);
-    CGColorSpaceRef colorSpaceRef = CGColorSpaceCreateDeviceRGB();
-    CGContextRef context = CGBitmapContextCreate(rgbImageBuf, imageWidth, imageHeight, 8, bytesPerRow, colorSpaceRef, kCGBitmapByteOrder32Little|kCGImageAlphaNoneSkipLast);
-    CGContextDrawImage(context, CGRectMake(0, 0, imageWidth, imageHeight), image.CGImage);
-    //遍历像素, 改变像素点颜色
-    int pixelNum = imageWidth * imageHeight;
-    uint32_t *pCurPtr = rgbImageBuf;
-    for (int i = 0; i< pixelNum; i++, pCurPtr++) {
-        if ((*pCurPtr & 0xFFFFFF00) < 0x99999900) {
-            uint8_t* ptr = (uint8_t*)pCurPtr;
-            ptr[3] = red*255;
-            ptr[2] = green*255;
-            ptr[1] = blue*255;
-        }else{
-            uint8_t* ptr = (uint8_t*)pCurPtr;
-            ptr[0] = 0;
-        }
+<pre>- (UISlider *)sectorSlider{
+    if (_sectorSlider == nil) {
+        _sectorSlider = [[UISlider alloc]initWithFrame:CGRectMake(winWidth/2.0 - 100, 100, 200, 10)];
+        _sectorSlider.continuous = YES;
+        [_sectorSlider addTarget:self action:@selector(sliderValueChanged:) forControlEvents:UIControlEventValueChanged];
+        [_sectorSlider setMinimumValue:0.0];
+        [_sectorSlider setMaximumValue:1.0];
     }
-    //取出图片
-    CGDataProviderRef dataProvider = CGDataProviderCreateWithData(NULL, rgbImageBuf, bytesPerRow * imageHeight, ProviderReleaseData);
-    CGImageRef imageRef = CGImageCreate(imageWidth, imageHeight, 8, 32, bytesPerRow, colorSpaceRef,
-                                        kCGImageAlphaLast | kCGBitmapByteOrder32Little, dataProvider,
-                                        NULL, true, kCGRenderingIntentDefault);
-    CGDataProviderRelease(dataProvider);
-    UIImage *resultImage = [UIImage imageWithCGImage:imageRef];
-    CGImageRelease(imageRef);
-    CGContextRelease(context);
-    CGColorSpaceRelease(colorSpaceRef);
-
-    return resultImage;
+    return _sectorSlider;
 }
 </pre>
 
-<p>给二维码添加中心logo</p>
-<pre>
-+ (UIImage *)qrCodeImageWithContent:(NSString *)content
-                      codeImageSize:(CGFloat)size
-                               logo:(UIImage *)logo
-                          logoFrame:(CGRect)logoFrame
-                                red:(CGFloat)red
-                              green:(CGFloat)green
-                               blue:(CGFloat)blue{
-    UIImage * image = [self qrCodeImageWithContent:content codeImageSize:size red:red green:green blue:blue];   
-    if (logo != nil) {
-        UIGraphicsBeginImageContext(image.size);
-        [image drawInRect:CGRectMake(0, 0, image.size.width, image.size.height)];
-        [logo drawInRect:logoFrame];
-        UIImage *resultImage = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
-        return resultImage;
-    }else{
-        return image;
-    }   
-}
-</pre>
-
-<h3 id="彩色条形码"><a href="#彩色条形码" class="headerlink" title="彩色条形码"></a>彩色条形码</h3><p>获取原始二维码改变像素点颜色</p>
 <ol>
-<li>@param content 二维码数据</li>
-<li>@param size 二维码大小</li>
-<li>@param red 0 ~ 1.0</li>
-<li>@param green 0 ~ 1.0</li>
-<li>@param blue 0 ~ 1.0</li>
+<li>点击调用UISlider方法</li>
 </ol>
-<pre>
-+ (UIImage *)barcodeImageWithContent:(NSString *)content codeImageSize:(CGSize)size red:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue{
-    UIImage *image = [self barcodeImageWithContent:content codeImageSize:size];
-    int imageWidth = image.size.width;
-    int imageHeight = image.size.height;
-    size_t bytesPerRow = imageWidth * 4;
-    uint32_t *rgbImageBuf = (uint32_t *)malloc(bytesPerRow * imageHeight);
-    CGColorSpaceRef colorSpaceRef = CGColorSpaceCreateDeviceRGB();
-    CGContextRef context = CGBitmapContextCreate(rgbImageBuf, imageWidth, imageHeight, 8, bytesPerRow, colorSpaceRef, kCGBitmapByteOrder32Little|kCGImageAlphaNoneSkipLast);
-    CGContextDrawImage(context, CGRectMake(0, 0, imageWidth, imageHeight), image.CGImage);
-    //遍历像素, 改变像素点颜色
-    int pixelNum = imageWidth * imageHeight;
-    uint32_t *pCurPtr = rgbImageBuf;
-    for (int i = 0; i< pixelNum; i++, pCurPtr++) {
-        if ((*pCurPtr & 0xFFFFFF00) < 0x99999900) {
-            uint8_t* ptr = (uint8_t*)pCurPtr;
-            ptr[3] = red*255;
-            ptr[2] = green*255;
-            ptr[1] = blue*255;
-        }else{
-            uint8_t* ptr = (uint8_t*)pCurPtr;
-            ptr[0] = 0;
-        }
-    }
-    //取出图片
-    CGDataProviderRef dataProvider = CGDataProviderCreateWithData(NULL, rgbImageBuf, bytesPerRow * imageHeight, ProviderReleaseData);
-    CGImageRef imageRef = CGImageCreate(imageWidth, imageHeight, 8, 32, bytesPerRow, colorSpaceRef,
-                                        kCGImageAlphaLast | kCGBitmapByteOrder32Little, dataProvider,
-                                        NULL, true, kCGRenderingIntentDefault);
-    CGDataProviderRelease(dataProvider);
-    UIImage *resultImage = [UIImage imageWithCGImage:imageRef];
-    CGImageRelease(imageRef);
-    CGContextRelease(context);
-    CGColorSpaceRelease(colorSpaceRef); 
-    return resultImage;
+<pre>-(void)sliderValueChanged:(UISlider *)slider{
+    NSLog(@"---%f", slider.value);
+    self.percentLable.text = [NSString stringWithFormat:@"%.2f",slider.value * 100];
+     [self.animationView  setStartMove:slider.value];
+    [self.animationBallView setStartMove:slider.value];
+    [self.animationTimeView setStartMove:slider.value];
 }
 </pre>
 
-<h3 id="渐变二维码"><a href="#渐变二维码" class="headerlink" title="渐变二维码"></a>渐变二维码</h3><p>绘制黑白二维码</p>
-<pre>
-- (UIImage *)genQRCodeImageMask:(UIImage *)image {
-    if (image != nil) {
-        int bitsPerComponent = 8;
-        int bytesPerPixel = 4;
-        int width = image.size.width;
-        int height = image.size.height;
-        unsigned char * imageData = (unsigned char *)malloc(width * height * bytesPerPixel);
+<h4 id="圆形进度条"><a href="#圆形进度条" class="headerlink" title="圆形进度条"></a>圆形进度条</h4><pre>
+- (void)drawRect:(CGRect)rect {
+    CGPoint point = CGPointMake(100, 100);
+    CGFloat radius = 95.0f;
 
-        // 将原始黑白二维码图片绘制到像素格式为ARGB的图片上，绘制后的像素数据在imageData中。
-        CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-        CGContextRef imageContext = CGBitmapContextCreate(imageData, width, height, bitsPerComponent, bytesPerPixel * width, colorSpace, kCGImageAlphaPremultipliedFirst);
-        UIGraphicsPushContext(imageContext);
-        CGContextTranslateCTM(imageContext, 0, height);
-        CGContextScaleCTM(imageContext, 1, -1);
-        [image drawInRect:CGRectMake(0, 0, width, height)];
+    UIBezierPath *ballPath = [UIBezierPath bezierPathWithArcCenter:point radius:radius startAngle:self.startAngle endAngle:self.endAngle clockwise:YES];
 
-        CGColorSpaceRelease(colorSpace);
+    [[UIColor greenColor]set];
+    [ballPath fill];
 
-        // 根据每个像素R通道的值修改Alpha通道的值，当Red大于100，则将Alpha置为0，反之置为255
-        for (int row = 0; row < height; ++row) {
-            for (int col = 0; col < width; ++col) {
-                int offset = row * width * bytesPerPixel + col * bytesPerPixel;
-                unsigned char r = imageData[offset + 1];
-                unsigned char alpha = r > 100 ? 0 : 255;
-                imageData[offset] = alpha;
-            }
-        }
+    //    在球形的外面绘制一个描边空心的圆形，不然很难看
+    UIBezierPath *strokePath = [UIBezierPath bezierPathWithArcCenter:point radius:radius startAngle:0 endAngle:-0.00000001 clockwise:YES];
+    [[UIColor lightGrayColor]set];
+    [strokePath stroke];
+}
 
-        CGImageRef cgMaskImage = CGBitmapContextCreateImage(imageContext);
-        UIImage *maskImage = [UIImage imageWithCGImage:cgMaskImage];
-        CFRelease(cgMaskImage);
-        UIGraphicsPopContext();
-        CFRelease(imageContext);
 
-        free(imageData);
-        return maskImage;
-    }
-    return nil;
+-(void)setStartMove:(CGFloat)value{
+
+    //    设置起始点，位置是根据进度动态变换的
+    self.startAngle = M_PI_2 - value * M_PI;
+    self.endAngle = M_PI_2 + value * M_PI;
+
+    [self setNeedsDisplay];
 }
 </pre>
 
-<p>设置蒙层的颜色</p>
-<pre>
-- (CAGradientLayer *)gradientLayer {
-    if (_gradientLayer == nil) {
-        _gradientLayer = [CAGradientLayer new];
-        _gradientLayer.colors = @[
-                                  (__bridge id)[UIColor colorWithRed: 0x2a / 255.0 green:0x9c / 255.0 blue: 0x1f / 255.0 alpha:1.0].CGColor,
-                                  (__bridge id)[UIColor colorWithRed: 0xe6 / 255.0 green:0xcd / 255.0 blue: 0x27 / 255.0 alpha:1.0].CGColor,
-                                  (__bridge id)[UIColor colorWithRed: 0xe6 / 255.0 green:0x27 / 255.0 blue: 0x57 / 255.0 alpha:1.0].CGColor
-                                  ];
-        [self.layer addSublayer: _gradientLayer];
-        _gradientLayer.frame = self.bounds;
-    }
-    return _gradientLayer;
+<h4 id="扇形进度条"><a href="#扇形进度条" class="headerlink" title="扇形进度条"></a>扇形进度条</h4><pre>
+-(void)drawRect:(CGRect)rect{
+    CGPoint point = CGPointMake(100 , 100);
+    CGFloat radius = 95.0f;
+//    开始的角度
+    CGFloat startAngle = - M_PI_2;
+    CGFloat endAngle = startAngle + self.endAngle;
+    UIBezierPath * path = [UIBezierPath bezierPathWithArcCenter:point radius:radius startAngle:startAngle endAngle:endAngle clockwise:YES];
+    [path addLineToPoint:point];
+    [[UIColor greenColor]set];
+    [path fill];
+    UIBezierPath *strokePath = [UIBezierPath bezierPathWithArcCenter:point radius:radius startAngle:0 endAngle:-0.00000001 clockwise:YES];
+    [[UIColor lightGrayColor]set];
+    [strokePath stroke];
+
+}
+- (void)setStartMove:(CGFloat)value{
+    self.endAngle = value * M_PI * 2;
+    [self setNeedsDisplay];
 }
 </pre>
 
-<p>添加蒙层，设置黑白二维码图片</p>
-<pre>- (void)setQRCodeImage:(UIImage *)qrcodeImage {
-    UIImage *maskImage = [self genQRCodeImageMask: qrcodeImage];
-    self.maskLayer.contents = (__bridge id)maskImage.CGImage;
-    self.maskLayer.frame = self.bounds;
-    self.gradientLayer.mask = self.maskLayer;
-}
+<h4 id="弧形进度条"><a href="#弧形进度条" class="headerlink" title="弧形进度条"></a>弧形进度条</h4><pre>
+电脑没电，待续。。。。。
 </pre>
+
       
     </div>
 
@@ -724,7 +514,7 @@ void ProviderReleaseData (void *info, const void *data, size_t size){
  
    <div class="">
    <p><span>
-   <b>本文地址：</b><a href="/2017/09/11/iOS-QRCodeImage/" title="[iOS-QRCodeImage]">http://yoursite.com/2017/09/11/iOS-QRCodeImage/</a><br/><b>转载请注明出处，查重必究，谢谢！</b>
+   <b>本文地址：</b><a href="/2017/11/19/Animation-ProgressAnimation/" title="[Animation_ProgressAnimation]">http://yoursite.com/2017/11/19/Animation-ProgressAnimation/</a><br/><b>转载请注明出处，查重必究，谢谢！</b>
    </span></p>
    </div>
  
@@ -746,7 +536,7 @@ void ProviderReleaseData (void *info, const void *data, size_t size){
       
         <div class="post-tags">
           
-            <a href="/tags/2/" rel="tag"># 2</a>
+            <a href="/tags/6/" rel="tag"># 6</a>
           
         </div>
       
@@ -759,8 +549,8 @@ void ProviderReleaseData (void *info, const void *data, size_t size){
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/09/05/iOS物理动画引擎-UIDynamic/" rel="next" title="[iOS物理动画引擎_UIDynamic]">
-                <i class="fa fa-chevron-left"></i> [iOS物理动画引擎_UIDynamic]
+              <a href="/2017/11/18/Animation-TransitionAnimation/" rel="next" title="[Animation_TransitionAnimation]">
+                <i class="fa fa-chevron-left"></i> [Animation_TransitionAnimation]
               </a>
             
           </div>
@@ -768,10 +558,6 @@ void ProviderReleaseData (void *info, const void *data, size_t size){
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/09/12/iOS-CellAnimation/" rel="prev" title="[iOS_CellAnimation]">
-                [iOS_CellAnimation] <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -916,7 +702,7 @@ void ProviderReleaseData (void *info, const void *data, size_t size){
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#原始二维码"><span class="nav-number">1.</span> <span class="nav-text">原始二维码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原始条形码"><span class="nav-number">2.</span> <span class="nav-text">原始条形码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#彩色二维码"><span class="nav-number">3.</span> <span class="nav-text">彩色二维码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#彩色条形码"><span class="nav-number">4.</span> <span class="nav-text">彩色条形码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#渐变二维码"><span class="nav-number">5.</span> <span class="nav-text">渐变二维码</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#ProgressAnimation"><span class="nav-number">1.</span> <span class="nav-text">ProgressAnimation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#圆形进度条"><span class="nav-number">1.1.</span> <span class="nav-text">圆形进度条</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#扇形进度条"><span class="nav-number">1.2.</span> <span class="nav-text">扇形进度条</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#弧形进度条"><span class="nav-number">1.3.</span> <span class="nav-text">弧形进度条</span></a></li></ol></li></ol></div>
             
 
           </div>
