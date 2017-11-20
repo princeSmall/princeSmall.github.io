@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-11-19T02:40:44.558Z</updated>
+  <updated>2017-11-20T02:41:15.418Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,14 +20,34 @@
     <link href="http://yoursite.com/2017/11/19/Animation-ProgressAnimation/"/>
     <id>http://yoursite.com/2017/11/19/Animation-ProgressAnimation/</id>
     <published>2017-11-19T02:32:16.000Z</published>
-    <updated>2017-11-19T02:40:44.558Z</updated>
+    <updated>2017-11-20T02:41:15.418Z</updated>
     
     <content type="html"><![CDATA[<p>Welcome to my blog. Thanks.</p>
 <p>Dome: <a href="https://github.com/princeSmall/Full-animation-details" target="_blank" rel="external">github地址</a></p>
-<p>今天主要讲一些动画的运用，也就是进度条，有弧形的，扇形的，圆形的。<br>其实没什么难点，我封装在一个个View里，直接调用就行，弧度跟着进度条走就OK的。</p>
-<h3 id="ProgressAnimation"><a href="#ProgressAnimation" class="headerlink" title="ProgressAnimation"></a>ProgressAnimation</h3><ol>
-<li>懒加载UISlider</li>
-</ol>
+<p>今天主要讲一些动画的运用，也就是进度条，有弧形的，扇形的，圆形的。<br>其实没什么难点，我封装在一个个View里，直接调用就行，弧度跟着进度条走就OK的。<br>饮水思源，喜欢或者用得上就github给个Star</p>
+<p><img src="/2017/11/19/Animation-ProgressAnimation/Progress.gif" alt=""></p>
+<h3 id="ProgressAnimation"><a href="#ProgressAnimation" class="headerlink" title="ProgressAnimation"></a>ProgressAnimation</h3><h4 id="UIBezierPath方法详解"><a href="#UIBezierPath方法详解" class="headerlink" title="UIBezierPath方法详解"></a>UIBezierPath方法详解</h4><p>UIBezierPath 顾名思义，这是用贝塞尔曲线的方式来构建一段弧线，你可以用任意条弧线来组成你想要的形状</p>
+<pre><code>-(void)addArcWithCenter:(CGPoint)center radius:(CGFloat)radius startAngle:(CGFloat)startAngle endAngle:(CGFloat)endAngle clockwise:(BOOL)clockwise
+center 圆弧圆心
+radius 圆弧半径
+startAngle 开始弧度
+endAngle 结束弧度
+closewise 是否顺时针
+
+-(void)fill
+填充颜色
+-(void)stroke
+线条颜色
+</code></pre><p>注: 使用UIBezierPath绘画的代码写在自定义视图的drawRect:方法中</p>
+<h4 id="CAShaperLayer"><a href="#CAShaperLayer" class="headerlink" title="CAShaperLayer"></a>CAShaperLayer</h4><p>CAShaperLayer也就是在现有的图层上再次添加或覆盖一层以达到界面在显示时会呈现出不同形状的效果   </p>
+<pre><code>fillColor 填充颜色
+strokeColor 边框颜色
+lineWidth 线条宽度
+path 线条曲线
+strokeStart 开始角度
+strokeEnd 结束角度
+</code></pre><p>注：进度条主要就以上方法</p>
+<h4 id="应用界面调用"><a href="#应用界面调用" class="headerlink" title="应用界面调用"></a>应用界面调用</h4><p>懒加载UISlider</p>
 <pre>- (UISlider *)sectorSlider{
     if (_sectorSlider == nil) {
         _sectorSlider = [[UISlider alloc]initWithFrame:CGRectMake(winWidth/2.0 - 100, 100, 200, 10)];
@@ -40,19 +60,20 @@
 }
 </pre>
 
-<ol>
-<li>点击调用UISlider方法</li>
-</ol>
+<p>点击调用UISlider方法</p>
 <pre>-(void)sliderValueChanged:(UISlider *)slider{
     NSLog(@"---%f", slider.value);
     self.percentLable.text = [NSString stringWithFormat:@"%.2f",slider.value * 100];
-     [self.animationView  setStartMove:slider.value];
+    [self.animationView  setStartMove:slider.value];
     [self.animationBallView setStartMove:slider.value];
     [self.animationTimeView setStartMove:slider.value];
 }
 </pre>
 
-<h4 id="圆形进度条"><a href="#圆形进度条" class="headerlink" title="圆形进度条"></a>圆形进度条</h4><pre>
+<h4 id="圆形进度条生成"><a href="#圆形进度条生成" class="headerlink" title="圆形进度条生成"></a>圆形进度条生成</h4><ol>
+<li>UIBezierPath根据进度条随时改变开始弧度和结束弧度，不设置中心point</li>
+</ol>
+<pre>
 - (void)drawRect:(CGRect)rect {
     CGPoint point = CGPointMake(100, 100);
     CGFloat radius = 95.0f;
@@ -79,11 +100,13 @@
 }
 </pre>
 
-<h4 id="扇形进度条"><a href="#扇形进度条" class="headerlink" title="扇形进度条"></a>扇形进度条</h4><pre>
+<h4 id="扇形进度条生成"><a href="#扇形进度条生成" class="headerlink" title="扇形进度条生成"></a>扇形进度条生成</h4><ol>
+<li>UIBezierPath根据进度条随时改变结束弧度，设置中心point</li>
+</ol>
+<pre>
 -(void)drawRect:(CGRect)rect{
     CGPoint point = CGPointMake(100 , 100);
     CGFloat radius = 95.0f;
-//    开始的角度
     CGFloat startAngle = - M_PI_2;
     CGFloat endAngle = startAngle + self.endAngle;
     UIBezierPath * path = [UIBezierPath bezierPathWithArcCenter:point radius:radius startAngle:startAngle endAngle:endAngle clockwise:YES];
@@ -101,8 +124,42 @@
 }
 </pre>
 
-<h4 id="弧形进度条"><a href="#弧形进度条" class="headerlink" title="弧形进度条"></a>弧形进度条</h4><pre>
-电脑没电，待续。。。。。
+<h4 id="弧形进度条生成"><a href="#弧形进度条生成" class="headerlink" title="弧形进度条生成"></a>弧形进度条生成</h4><ol>
+<li>先画一个封闭的背景圆self.backShaperLayer</li>
+<li>根据圆弧先设置self.shaperLayer的开始，根据进度条的改变随时改变结束弧度</li>
+</ol>
+<pre>
+- (void)drawRect:(CGRect)rect{
+
+    self.shapeLayer = [CAShapeLayer layer];
+    self.shapeLayer.fillColor = [UIColor clearColor].CGColor;
+    self.shapeLayer.lineWidth = 6.0f;
+    self.shapeLayer.strokeColor = [UIColor greenColor].CGColor;
+
+
+    self.backShapeLayer = [CAShapeLayer layer];
+    self.backShapeLayer.fillColor = [UIColor clearColor].CGColor;
+    self.backShapeLayer.lineWidth = 6.0f;
+    self.backShapeLayer.strokeColor = [UIColor darkGrayColor].CGColor;
+
+
+    UIBezierPath * path = [UIBezierPath bezierPath];
+    [path addArcWithCenter:CGPointMake(50, 50) radius:40 startAngle:0 endAngle:M_PI * 2 clockwise:YES];
+
+    self.shapeLayer.path = path.CGPath;
+    self.shapeLayer.strokeStart = 0;
+    self.shapeLayer.strokeEnd = self.toValue;
+    self.backShapeLayer.path = path.CGPath;
+    self.backShapeLayer.strokeStart = 0;
+    self.backShapeLayer.strokeEnd = 1;
+    [self.layer addSublayer:self.backShapeLayer];
+    [self.layer addSublayer:self.shapeLayer];
+
+}
+- (void)setStartMove:(CGFloat)value{
+    self.toValue = value;
+    [self setNeedsDisplay];
+}
 </pre>
 ]]></content>
     
