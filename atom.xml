@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-11-21T08:17:23.574Z</updated>
+  <updated>2017-11-21T08:28:46.443Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2017/11/21/Animation-ViewAnimation/"/>
     <id>http://yoursite.com/2017/11/21/Animation-ViewAnimation/</id>
     <published>2017-11-21T07:57:57.000Z</published>
-    <updated>2017-11-21T08:17:23.574Z</updated>
+    <updated>2017-11-21T08:28:46.443Z</updated>
     
     <content type="html"><![CDATA[<p>Welcome to my blog. Thanks.</p>
 <p>Dome: <a href="https://github.com/princeSmall/UIViewControllerAnimation.git" target="_blank" rel="external">github地址</a></p>
@@ -128,62 +128,45 @@
 
 
 <h4 id="PushAnimation"><a href="#PushAnimation" class="headerlink" title="PushAnimation"></a>PushAnimation</h4><p>动画添加新的view，type和subType不同，动画方式就不一样。这里只写一个不累赘</p>
-<pre>
-+ (void)pushView:(UIView *)View subView:(UIView *)subView AndAnimationType:(NSString *)type AndsubType:(NSString *)subType{  
-    CATransition *transition = [CATransition animation];
-    transition.duration = 1.0f;
-    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-    transition.type = type;
-    transition.subtype = subType;
-    [View.layer addAnimation:transition forKey:@"pushTransitionAnimation"];
-    [View addSubview:subView];
-}
-</pre>
-关于CATransition的type和subType的介绍，前两篇博客已经介绍过，这里有[github地址](https://github.com/princeSmall/Full-animation-details.git)
-
-#### PopAnimation
-动画移除新的view
-<pre>
-+ (void)popView:(UIView *)View subView:(UIView *)subView AndAnimationType:(NSString *)type AndsubType:(NSString *)subType {
-    CATransition *transition = [CATransition animation];
-    transition.duration = 1.0f;
-    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-    transition.type = type;
-    transition.subtype = subType;
-    [View.superview.layer addAnimation:transition forKey:@"popTransitionAnimation"];
-    [subView removeFromSuperview];
-}
-</pre>
-关于CATransition的type和subType的介绍，前两篇博客已经介绍过，这里有[github地址](https://github.com/princeSmall/Full-animation-details.git)
-
-#### ScaleViewAnimation
-
-CGAffineTransform 主要用于形变，位移和旋转，可用于动画展示
-
-##### transform属性介绍，这里介绍最常用和好用的，其他属性去看CGAffineTransform
-
-* 位移X,Y
-
-        CGAffineTransformMakeTranslation(CGFloat tx, CGFloat ty)
-* 伸缩X,Y
-
-        CGAffineTransformMakeScale(CGFloat sx, CGFloat sy)
-* 旋转M_PI
-
-        CGAffineTransformMakeRotation(CGFloat angle)
-
-* 组合
-
-        CGAffineTransformConcat(CGAffineTransform t1,CGAffineTransform t2)
-
-* 回到原位
-
-        CGAffineTransformIdentity
-
-
- ##### 动画调用，包括动画时间，动画完成后回调
-
- <pre>
+<pre><code> +(void)pushView:(UIView *)View subView:(UIView *)subView AndAnimationType:(NSString *)type AndsubType:(NSString *)subType{  
+CATransition *transition = [CATransition animation];
+transition.duration = 1.0f;
+transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+transition.type = type;
+transition.subtype = subType;
+[View.layer addAnimation:transition forKey:@&quot;pushTransitionAnimation&quot;];
+[View addSubview:subView];
+  }
+</code></pre><h4 id="PopAnimation"><a href="#PopAnimation" class="headerlink" title="PopAnimation"></a>PopAnimation</h4><p>动画移除新的view</p>
+<pre><code> +(void)popView:(UIView *)View subView:(UIView *)subView AndAnimationType:(NSString *)type AndsubType:(NSString *)subType {
+CATransition *transition = [CATransition animation];
+transition.duration = 1.0f;
+transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+transition.type = type;
+transition.subtype = subType;
+[View.superview.layer addAnimation:transition forKey:@&quot;popTransitionAnimation&quot;];
+[subView removeFromSuperview];
+ }
+</code></pre><p>注：关于CATransition的type和subType的介绍，前两篇博客已经介绍过，看Animation_CATransition这篇。</p>
+<h4 id="ScaleViewAnimation"><a href="#ScaleViewAnimation" class="headerlink" title="ScaleViewAnimation"></a>ScaleViewAnimation</h4><p>CGAffineTransform 主要用于形变，位移和旋转，可用于动画展示</p>
+<h5 id="transform属性介绍，这里介绍最常用和好用的，其他属性去看CGAffineTransform"><a href="#transform属性介绍，这里介绍最常用和好用的，其他属性去看CGAffineTransform" class="headerlink" title="transform属性介绍，这里介绍最常用和好用的，其他属性去看CGAffineTransform"></a>transform属性介绍，这里介绍最常用和好用的，其他属性去看CGAffineTransform</h5><ul>
+<li><p>位移X,Y</p>
+<pre><code>CGAffineTransformMakeTranslation(CGFloat tx, CGFloat ty)
+</code></pre></li>
+<li><p>伸缩X,Y</p>
+<pre><code>CGAffineTransformMakeScale(CGFloat sx, CGFloat sy)
+</code></pre></li>
+<li><p>旋转M_PI</p>
+<pre><code>CGAffineTransformMakeRotation(CGFloat angle)
+</code></pre></li>
+<li><p>组合</p>
+<pre><code>CGAffineTransformConcat(CGAffineTransform t1,CGAffineTransform t2)
+</code></pre></li>
+<li><p>回到原位</p>
+<pre><code>CGAffineTransformIdentity
+</code></pre></li>
+</ul>
+<h5 id="动画调用，包括动画时间，动画完成后回调"><a href="#动画调用，包括动画时间，动画完成后回调" class="headerlink" title="动画调用，包括动画时间，动画完成后回调"></a>动画调用，包括动画时间，动画完成后回调</h5> <pre>
   -(void)scaleView:(UIView *)view CGFloatX:(CGFloat)x CGFloatY:(CGFloat)y CGFloatW:(CGFloat)w CGFloatH:(CGFloat)h{
     CGFloat scaleW = self.window.frame.size.width / w;
     CGFloat scaleH = self.window.frame.size.height / h;
