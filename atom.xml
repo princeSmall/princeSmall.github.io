@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-11-21T08:28:46.443Z</updated>
+  <updated>2017-11-22T12:48:31.993Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,11 +16,179 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>[Animation_ViewAnimation应用]</title>
+    <link href="http://yoursite.com/2017/11/22/Animation-ViewAnimation%E5%BA%94%E7%94%A8/"/>
+    <id>http://yoursite.com/2017/11/22/Animation-ViewAnimation应用/</id>
+    <published>2017-11-22T11:42:14.000Z</published>
+    <updated>2017-11-22T12:48:31.993Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to my blog. Thanks.</p>
+<p>Dome:<a href="https://github.com/princeSmall/CellAnimation.git" target="_blank" rel="external">github地址</a></p>
+<p>最近各式各样的动画也是被我玩坏了，今天直接拿来结合需求用。今天主要整理了UIView的动画方法，跟present，push不同，但又很相似，可以满足日常所需动画。话不多说，直接上码。</p>
+<p><img src="/2017/11/22/Animation-ViewAnimation应用/AnimationView.gif" alt=""></p>
+<h3 id="Animation"><a href="#Animation" class="headerlink" title="Animation"></a>Animation</h3><pre>
++(void)animateWithDuration:(NSTimeInterval)duration delay:(NSTimeInterval)delay options:(UIViewAnimationOptions)options animations:(void (^)(void))animations completion:(void (^ __nullable)(BOOL finished))completion;
+duration : 动画时间
+delay : 延迟时间
+options : 动画的方式，so much...
+animation : 需要执行的动作
+completion : 完成后的方法，可以为空
+</pre>
+
+<h4 id="案例，登录注册的左移，右移和透明"><a href="#案例，登录注册的左移，右移和透明" class="headerlink" title="案例，登录注册的左移，右移和透明"></a>案例，登录注册的左移，右移和透明</h4><pre><code>[UIView animateWithDuration:1 animations:^{
+    CGFloat x = self.nameTextField.frame.origin.x;
+    x += Width - 40;
+    self.nameTextField.alpha = 1.0;
+    [self.nameTextField setFrame:CGRectMake(x, 100, Width - 80, 50)];
+} completion:^(BOOL finished) {
+
+}];
+[UIView animateWithDuration:1 delay:0.5 options:(UIViewAnimationOptionCurveEaseInOut) animations:^{
+    CGFloat x = self.passwordTextField.frame.origin.x;
+    x -= Width - 40;
+    self.passwordTextField.alpha = 1.0;
+    [self.passwordTextField setFrame:CGRectMake(x, 200, Width - 80, 50)];
+} completion:^(BOOL finished) {
+
+}];
+[UIView animateWithDuration:1 delay:1 options:(UIViewAnimationOptionCurveEaseInOut) animations:^{
+    self.loginBtn.alpha =1.0;
+    [self.loginBtn setTitle:@&quot;Login&quot; forState:UIControlStateNormal];
+} completion:^(BOOL finished) {
+
+}];
+
+目前动画实现登录注册就好了
+</code></pre><h3 id="Transition"><a href="#Transition" class="headerlink" title="Transition"></a>Transition</h3><pre>
++(void)transitionWithView:(UIView *)view duration:(NSTimeInterval)duration options:(UIViewAnimationOptions)options animations:(void (^ __nullable)(void))animations completion:(void (^ __nullable)(BOOL finished))completion;
+view : 需要变换的视图
+duration : 动画的时间
+options : 动画的方式， so much...
+animation : 需要执行的动作
+completion : 完成后的方法，可以为空
+</pre>
+
+<h4 id="案例，点击切换图片"><a href="#案例，点击切换图片" class="headerlink" title="案例，点击切换图片"></a>案例，点击切换图片</h4><pre><code>[UIView transitionWithView:cell.imageView duration:1 options:UIViewAnimationOptionTransitionFlipFromLeft animations:^{
+    if ([cell.imageView.image isEqual:[UIImage imageNamed:@&quot;two&quot;]]) {
+        cell.imageView.image = [UIImage imageNamed:@&quot;one&quot;];
+    }else{
+        cell.imageView.image = [UIImage imageNamed:@&quot;two&quot;];
+    }
+} completion:^(BOOL finished) {
+
+}];
+
+目前点击动画翻页就好了
+</code></pre><h4 id="KeyFrame"><a href="#KeyFrame" class="headerlink" title="KeyFrame"></a>KeyFrame</h4><pre>
++(void)animateKeyframesWithDuration:(NSTimeInterval)duration delay:(NSTimeInterval)delay options:(UIViewKeyframeAnimationOptions)options animations:(void (^)(void))animations completion:(void (^ __nullable)(BOOL finished))completion;
+duration : 动画时间
+delay : 延迟时间
+options : 动画方式， so much...
+animation : 需要执行的动作
+completion : 完成后的方法，可以为空
+</pre>
+
+<h4 id="案例，移动画线"><a href="#案例，移动画线" class="headerlink" title="案例，移动画线"></a>案例，移动画线</h4><pre><code>[UIView animateKeyframesWithDuration:1 delay:0 options:(UIViewKeyframeAnimationOptionCalculationModeLinear) animations:^{
+        CAShapeLayer * shapelayer = [CAShapeLayer layer];
+        self.path = [UIBezierPath bezierPath];
+        [self.path moveToPoint:CGPointMake(50, 200)];
+        [self.path addLineToPoint:CGPointMake(200, 200)];
+        [self.path addLineToPoint:CGPointMake(200, 350)];
+        [self.path addLineToPoint:CGPointMake(350, 350)];
+        shapelayer.path = self.path.CGPath;
+        shapelayer.fillColor = [UIColor clearColor].CGColor;
+        shapelayer.lineWidth = 4.0f;
+        shapelayer.strokeColor = [UIColor redColor].CGColor;
+        [self.view.layer addSublayer:shapelayer];
+        CABasicAnimation *pathAnima = [CABasicAnimation animationWithKeyPath:@&quot;strokeEnd&quot;];
+        pathAnima.duration = 3.0f;
+        pathAnima.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        pathAnima.fromValue = [NSNumber numberWithFloat:0.0f];
+        pathAnima.toValue = [NSNumber numberWithFloat:1.0f];
+        pathAnima.fillMode = kCAFillModeForwards;
+        pathAnima.removedOnCompletion = NO;
+        [shapelayer addAnimation:pathAnima forKey:@&quot;strokeEndAnimation&quot;];
+    } completion:^(BOOL finished) {      
+    }];
+
+目前一条移动的线条就好了
+</code></pre><h3 id="炫酷的TableViewCell出场动画"><a href="#炫酷的TableViewCell出场动画" class="headerlink" title="炫酷的TableViewCell出场动画"></a>炫酷的TableViewCell出场动画</h3><p>这里只给出前几条，代码里已经全部封装好了</p>
+<h4 id="Animation类，遍历改变alpha"><a href="#Animation类，遍历改变alpha" class="headerlink" title="Animation类，遍历改变alpha"></a>Animation类，遍历改变alpha</h4><pre><code>+(void)alphaAnimationWithTableView:(UITableView *)tableView {  
+NSArray *cells = tableView.visibleCells;
+for (int i = 0; i &lt; cells.count; i++) {
+    UITableViewCell *cell = [tableView.visibleCells objectAtIndex:i];
+    cell.alpha = 0.0;
+    [UIView animateWithDuration:0.3 delay:i*0.05 options:0 animations:^{
+        cell.alpha = 1.0;
+    } completion:^(BOOL finished) {
+
+    }];
+}
+}
+</code></pre><h4 id="Transition类"><a href="#Transition类" class="headerlink" title="Transition类"></a>Transition类</h4><h5 id="遍历移动x"><a href="#遍历移动x" class="headerlink" title="遍历移动x"></a>遍历移动x</h5><pre><code>+(void)moveAnimationWithTableView:(UITableView *)tableView {
+NSArray *cells = tableView.visibleCells;
+for (int i = 0; i &lt; cells.count; i++) {
+    CGFloat totalTime = 0.4;
+    UITableViewCell *cell = [tableView.visibleCells objectAtIndex:i];
+    cell.transform = CGAffineTransformMakeTranslation(-XS_SCREEN_WIDTH, 0);
+    [UIView animateWithDuration:0.4 delay:i*(totalTime/cells.count) usingSpringWithDamping:0.7 initialSpringVelocity:1/0.7 options:UIViewAnimationOptionCurveEaseIn animations:^{
+        cell.transform = CGAffineTransformIdentity;
+    } completion:^(BOOL finished) {
+
+    }];
+}
+}
+</code></pre><h5 id="遍历交叉移动x"><a href="#遍历交叉移动x" class="headerlink" title="遍历交叉移动x"></a>遍历交叉移动x</h5><pre><code>+(void)shakeAnimationWithTableView:(UITableView *)tableView {
+NSArray *cells = tableView.visibleCells;
+for (int i = 0; i &lt; cells.count; i++) {
+    UITableViewCell *cell = [cells objectAtIndex:i];
+    if (i%2 == 0) {
+        cell.transform = CGAffineTransformMakeTranslation(-XS_SCREEN_WIDTH,0);
+    }else {
+        cell.transform = CGAffineTransformMakeTranslation(XS_SCREEN_WIDTH,0);
+    }
+    [UIView animateWithDuration:0.4 delay:i*0.03 usingSpringWithDamping:0.75 initialSpringVelocity:1/0.75 options:0 animations:^{
+        cell.transform = CGAffineTransformIdentity;
+    } completion:^(BOOL finished) {
+
+    }];
+}
+ }
+</code></pre><h5 id="遍历移动y"><a href="#遍历移动y" class="headerlink" title="遍历移动y"></a>遍历移动y</h5><pre><code>+(void)fallAnimationWithTableView:(UITableView *)tableView {
+NSArray *cells = tableView.visibleCells;   
+NSTimeInterval totalTime = 0.8;  
+for (int i = 0; i &lt; cells.count; i++) {
+    UITableViewCell *cell = [tableView.visibleCells objectAtIndex:i];
+    cell.transform = CGAffineTransformMakeTranslation(0, - XS_SCREEN_HEIGHT);
+    [UIView animateWithDuration:0.3 delay:(cells.count - i)*(totalTime/cells.count) options:0 animations:^{
+        cell.transform = CGAffineTransformIdentity;
+    } completion:^(BOOL finished) {
+
+    }];
+}
+</code></pre><p>}</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Welcome to my blog. Thanks.&lt;/p&gt;
+&lt;p&gt;Dome:&lt;a href=&quot;https://github.com/princeSmall/CellAnimation.git&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;github地
+    
+    </summary>
+    
+      <category term="Animation" scheme="http://yoursite.com/categories/Animation/"/>
+    
+    
+      <category term="6" scheme="http://yoursite.com/tags/6/"/>
+    
+  </entry>
+  
+  <entry>
     <title>[Animation_ViewAnimation]</title>
     <link href="http://yoursite.com/2017/11/21/Animation-ViewAnimation/"/>
     <id>http://yoursite.com/2017/11/21/Animation-ViewAnimation/</id>
     <published>2017-11-21T07:57:57.000Z</published>
-    <updated>2017-11-21T08:28:46.443Z</updated>
+    <updated>2017-11-21T08:34:40.709Z</updated>
     
     <content type="html"><![CDATA[<p>Welcome to my blog. Thanks.</p>
 <p>Dome: <a href="https://github.com/princeSmall/UIViewControllerAnimation.git" target="_blank" rel="external">github地址</a></p>
@@ -3383,130 +3551,6 @@ self.hamburgerButton?.addSubview(bottom!)
     
       &lt;p&gt;Welcome to my blog. Thanks.&lt;/p&gt;
 &lt;p&gt;Dome: &lt;a href=&quot;https://github.com/princeSmall/TongPopInstall&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;github地址&lt;
-    
-    </summary>
-    
-      <category term="Swift" scheme="http://yoursite.com/categories/Swift/"/>
-    
-    
-      <category term="3" scheme="http://yoursite.com/tags/3/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>[Swift_popAnimation初级]</title>
-    <link href="http://yoursite.com/2017/08/25/popAnimation%E5%88%9D%E7%BA%A7/"/>
-    <id>http://yoursite.com/2017/08/25/popAnimation初级/</id>
-    <published>2017-08-25T07:35:01.000Z</published>
-    <updated>2017-08-25T08:16:33.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>Welcome to my blog. Thanks.</p>
-<p>Dome: <a href="https://github.com/princeSmall/RedBall" target="_blank" rel="external">github地址</a></p>
-<p><img src="/2017/08/25/popAnimation初级/redBall.gif" alt="GIF"></p>
-<p>先初尝popAnimation一些环境配置和方法调用，下篇会写实例应用</p>
-<h3 id="Pods-pop"><a href="#Pods-pop" class="headerlink" title="Pods pop"></a>Pods pop</h3><ol>
-<li>vim podfile</li>
-</ol>
-<pre>
-platform :ios,'8.0'
-
-target "RedBall" do
-
-pod 'pop'
-
-end
-</pre>
-
-<ol>
-<li>pod install</li>
-</ol>
-<h3 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h3><ol>
-<li>宏定义</li>
-</ol>
-<pre>
-let TLspin = "spin"
-let TLmove = "move"
-let TLcolor = "color"
-let TLscale = "scale"
-</pre>
-
-<ol>
-<li>属性定义</li>
-</ol>
-<pre>
-    let redBall = UIView(frame: CGRect(x: 100, y: 200, width: 100, height: 100))
-    let scale = POPSpringAnimation(propertyNamed:kPOPViewScaleXY)
-    let move = POPSpringAnimation(propertyNamed: kPOPLayerPositionY)
-    let spin = POPSpringAnimation(propertyNamed: kPOPLayerRotation)
-    let color = POPSpringAnimation(propertyNamed: kPOPViewBackgroundColor)
-
-</pre>
-
-<ol>
-<li><p>segmentContol创建</p>
-<pre><code>let array = [&quot;放大&quot;,&quot;旋转&quot;,&quot;移动&quot;,&quot;变色&quot;,&quot;归位&quot;]
-
-let segmentedControl = UISegmentedControl.init(items:array)
-
-segmentedControl.frame = CGRect(x:50,y:50,width:self.view.frame.size.width-100 ,height:30)
-
-segmentedControl.tintColor = UIColor.green
-
-segmentedControl.backgroundColor = UIColor.red
-
-segmentedControl.addTarget(self, action:#selector(segmentedControlChanged(segmented:)), for: UIControlEvents.valueChanged)
-
-self.view .addSubview(segmentedControl);
-</code></pre></li>
-<li><p>动画代码</p>
-<ol>
-<li>pop放大，旋转，移动，变色，还原动画</li>
-<li>springBounciness: 弹性振幅，范围0-20</li>
-<li>springSpeed: 震动速度</li>
-<li>pop_add: 加载动画</li>
-</ol>
-</li>
-</ol>
-<pre> 
-    func redBallScale()  {
-        // 放大动画
-        scale?.toValue = NSValue(cgPoint:CGPoint(x: 2, y: 2))
-        scale?.springBounciness = 20
-        scale?.springSpeed = 1
-        redBall.pop_add(scale, forKey: TLscale)
-    }
-    func redBallSpin()  {
-        //旋转动画
-        spin?.toValue = Double.pi * 4
-        spin?.springBounciness = 20
-        spin?.springSpeed = 5
-        redBall.layer.pop_add(spin, forKey: TLspin)
-
-    }
-    func redBallMove()  {
-        //y坐标位移动画
-        move?.toValue = 500
-        move?.springBounciness = 20
-        move?.springSpeed = 5
-        redBall.layer.pop_add(move, forKey: TLmove)
-    }
-    func redBallColor()  {
-        //背景颜色变化
-        color?.toValue = UIColor.green
-        color?.springBounciness = 20
-        color?.springSpeed = 5
-        redBall.pop_add(color, forKey: TLcolor)
-
-    }
-</pre>
-
-
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Welcome to my blog. Thanks.&lt;/p&gt;
-&lt;p&gt;Dome: &lt;a href=&quot;https://github.com/princeSmall/RedBall&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;github地址&lt;/a&gt;&lt;/p&gt;
     
     </summary>
     
