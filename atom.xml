@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-11-24T08:02:12.014Z</updated>
+  <updated>2017-11-24T08:19:29.430Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2017/11/24/iOS-%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/"/>
     <id>http://yoursite.com/2017/11/24/iOS-排序算法/</id>
     <published>2017-11-24T06:36:37.000Z</published>
-    <updated>2017-11-24T08:02:12.014Z</updated>
+    <updated>2017-11-24T08:19:29.430Z</updated>
     
     <content type="html"><![CDATA[<p>本篇博客主要对快速排序，冒泡排序和简单选择排序进行改进，在时间处理上降低1/2。</p>
 <h4 id="QuickSort-快速升序排序"><a href="#QuickSort-快速升序排序" class="headerlink" title="QuickSort - 快速升序排序"></a>QuickSort - 快速升序排序</h4><p>快速排序是通常被认为在同数量级（O(nlog2n)）的排序方法中平均性能最好的。但若初始序列按关键码有序或基本有序时，快排序反而蜕化为冒泡排序。为改进之，通常以“三者取中法”来选取基准记录，即将排序区间的两个端点与中点三个记录关键码居中的调整为支点记录。快速排序是一个不稳定的排序方法</p>
@@ -139,7 +139,7 @@ return arr;
     
     </summary>
     
-      <category term="iOS" scheme="http://yoursite.com/categories/iOS/"/>
+      <category term="OC" scheme="http://yoursite.com/categories/OC/"/>
     
     
   </entry>
