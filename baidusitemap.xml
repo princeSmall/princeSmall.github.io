@@ -4,6 +4,44 @@
 
     
   <url>
+    <loc>http://yoursite.com/2017/11/24/iOS-%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/</loc>
+    <lastmod>2017-11-24T08:02:12.014Z</lastmod>
+    <data>
+        <display>
+        <title>[iOS_排序算法]</title>
+        <pubTime>2017-11-24T06:36:37.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="iOS" url="http://yoursite.com/categories/iOS/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2017/11/15/Animation-BasicAnimation/</loc>
+    <lastmod>2017-11-23T04:45:24.317Z</lastmod>
+    <data>
+        <display>
+        <title>[Animation_BasicAnimation]</title>
+        <pubTime>2017-11-15T06:10:33.000Z</pubTime>
+        
+        <tag>6</tag>
+         
+         
+           
+             
+              <breadCrumb title="Animation" url="http://yoursite.com/categories/Animation/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2017/11/22/Animation-ViewAnimation%E5%BA%94%E7%94%A8/</loc>
     <lastmod>2017-11-22T12:48:31.993Z</lastmod>
     <data>
@@ -130,26 +168,6 @@
         <display>
         <title>[Animation_SpringAnimation]</title>
         <pubTime>2017-11-16T00:04:58.000Z</pubTime>
-        
-        <tag>6</tag>
-         
-         
-           
-             
-              <breadCrumb title="Animation" url="http://yoursite.com/categories/Animation/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/2017/11/15/Animation-BasicAnimation/</loc>
-    <lastmod>2017-11-15T06:16:57.799Z</lastmod>
-    <data>
-        <display>
-        <title>[Animation_BasicAnimation]</title>
-        <pubTime>2017-11-15T06:10:33.000Z</pubTime>
         
         <tag>6</tag>
          
