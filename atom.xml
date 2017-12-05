@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-12-04T03:15:07.384Z</updated>
+  <updated>2017-12-05T12:12:56.917Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,369 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>[DuerOS_小度]</title>
+    <link href="http://yoursite.com/2017/12/05/DuerOS-%E5%B0%8F%E5%BA%A6/"/>
+    <id>http://yoursite.com/2017/12/05/DuerOS-小度/</id>
+    <published>2017-12-05T12:10:49.000Z</published>
+    <updated>2017-12-05T12:12:56.917Z</updated>
+    
+    <content type="html"><![CDATA[<p>智能家居方向，DuerHomeSDK研究及开发</p>
+<h2 id="DuerHomeSDK具备的功能"><a href="#DuerHomeSDK具备的功能" class="headerlink" title="DuerHomeSDK具备的功能"></a>DuerHomeSDK具备的功能</h2><h4 id="BDuerAbility-h"><a href="#BDuerAbility-h" class="headerlink" title="BDuerAbility.h"></a>BDuerAbility.h</h4><p>获取各能力状态，如播放器状态，扬声器状态等，由各子类分别调用</p>
+<h4 id="BDuerAlerts-h"><a href="#BDuerAlerts-h" class="headerlink" title="BDuerAlerts.h"></a>BDuerAlerts.h</h4><p>提醒事件</p>
+<ul>
+<li>设置成功（SetAlertSucceeded）、</li>
+<li>设置失败（SetAlertFailed）、</li>
+<li>删除成功（DeleteAlertSucceeded）、</li>
+<li>删除失败（DeleteAlertFailed）、</li>
+<li>响铃开始（AlertStarted）、</li>
+<li>响铃结束（AlertStopped）、</li>
+<li>响铃打断其他事件（AlertEnteredForeground）、</li>
+<li>响铃事件被打断（AlertEnteredBackground）</li>
+</ul>
+<ol>
+<li>提醒ID</li>
+<li>提醒类型type</li>
+<li>提醒时间scheduledTime</li>
+<li>是否正在提醒isActive</li>
+</ol>
+<h4 id="BDuerAudioPlayer-h"><a href="#BDuerAudioPlayer-h" class="headerlink" title="BDuerAudioPlayer.h"></a>BDuerAudioPlayer.h</h4><ol>
+<li>获取播放器状态</li>
+<li>播放指定音频</li>
+<li><p>音箱状态事件</p>
+<ul>
+<li>开始（PlaybackStarted）、</li>
+<li>完成（PlaybackFinished）、</li>
+<li>失败（PlaybackFailed）、</li>
+<li>停止（PlaybackStopped）、</li>
+<li>暂停（PlaybackPaused）、</li>
+<li>恢复（PlaybackResumed）、</li>
+<li>状态（PlaybackState）、</li>
+<li>进度上报（ProgressReportIntervalElapsed）</li>
+</ul>
+</li>
+</ol>
+<h4 id="BDuerAuthentication-H"><a href="#BDuerAuthentication-H" class="headerlink" title="BDuerAuthentication.H"></a>BDuerAuthentication.H</h4><ol>
+<li>对设备做授权配对操作</li>
+<li>百度账号登录，第三方登录等</li>
+<li>登录信息获取</li>
+</ol>
+<h4 id="BDuerBLEDevice-H"><a href="#BDuerBLEDevice-H" class="headerlink" title="BDuerBLEDevice.H"></a>BDuerBLEDevice.H</h4><ol>
+<li>BLE设备</li>
+</ol>
+<h4 id="BDuerBTDiscoverService-h"><a href="#BDuerBTDiscoverService-h" class="headerlink" title="BDuerBTDiscoverService.h"></a>BDuerBTDiscoverService.h</h4><ol>
+<li>发现待配网的DuserBTD设备</li>
+<li>开始扫描</li>
+<li>停止扫描</li>
+</ol>
+<h4 id="BDuerDevice-h"><a href="#BDuerDevice-h" class="headerlink" title="BDuerDevice.h"></a>BDuerDevice.h</h4><ol>
+<li>设备传给app的数据</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>类名</th>
+<th>获取的信息</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> BDuerAudioPlayer * audioPlayer;</td>
+<td>//播放器</td>
+</tr>
+<tr>
+<td> BDuerSpeaker * speaker;</td>
+<td>//扬声器</td>
+</tr>
+<tr>
+<td> BDuerAlerts * alerts;</td>
+<td>//提醒</td>
+</tr>
+<tr>
+<td> BDuerSystemInfo * systemInfo;</td>
+<td>//硬件设备属性</td>
+</tr>
+<tr>
+<td> BDuerScreenMsg * screenMsg;</td>
+<td>//绘制界面</td>
+</tr>
+<tr>
+<td>BDuerLocation * location;</td>
+<td>//地理位置</td>
+</tr>
+<tr>
+<td>BDuerAuthentication * authentication;</td>
+<td>//设备授权</td>
+</tr>
+<tr>
+<td>BDuerTVLink * tvLink;</td>
+<td>//音箱连接电视</td>
+</tr>
+<tr>
+<td>BDuerTTSInfo * ttsInfo;</td>
+<td>//修改设备tts播报的音色</td>
+</tr>
+<tr>
+<td>BDuerPlaybackController * playbackController;</td>
+<td>//简单播放控制</td>
+</tr>
+</tbody>
+</table>
+<h4 id="BDuerDeviceDiscoverService-h"><a href="#BDuerDeviceDiscoverService-h" class="headerlink" title="BDuerDeviceDiscoverService.h"></a>BDuerDeviceDiscoverService.h</h4><ol>
+<li>发现已配好网的DuserOS设备（同一局域网线）</li>
+<li>开始发现</li>
+<li>停止发现</li>
+</ol>
+<h4 id="BDuerDeviceListenService-h"><a href="#BDuerDeviceListenService-h" class="headerlink" title="BDuerDeviceListenService.h"></a>BDuerDeviceListenService.h</h4><ol>
+<li>DuserOS设备上线后，会通知SDK，SDK会将监听到的该设备抛出</li>
+<li>开始监听</li>
+<li>停止监听</li>
+</ol>
+<h4 id="BDuerErrorCodes-h"><a href="#BDuerErrorCodes-h" class="headerlink" title="BDuerErrorCodes.h"></a>BDuerErrorCodes.h</h4><ol>
+<li>错误数据码</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>错误码</th>
+<th>错误信息</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>    BDuerBLEConnectionFail              = 1001,</td>
+<td>// 蓝牙连接失败</td>
+</tr>
+<tr>
+<td>    BDuerAPConnectionFail               = 1002,</td>
+<td>// AP连接失败</td>
+</tr>
+<tr>
+<td>    BDuerNetDataExchangeFail            = 1003,</td>
+<td>// 配网数据交换失败</td>
+</tr>
+<tr>
+<td>    BDuerDuerDeviceDiscoverFail         = 1004,</td>
+<td>// 未发现小度之家设备</td>
+</tr>
+<tr>
+<td>    BDuerParamError                     = 1008,</td>
+<td>// 参数缺失</td>
+</tr>
+<tr>
+<td>    BDuerVersionNotSupportError         = 1009,</td>
+<td>// 版本不支持</td>
+</tr>
+<tr>
+<td>    BDuerUnDefinedError                 = 1010,</td>
+<td>// 未定义错误，详细错误请见error的description</td>
+</tr>
+<tr>
+<td>    BDuerDuerDeviceListenFail           = 1011,</td>
+<td>// 监听失败</td>
+</tr>
+</tbody>
+</table>
+<h4 id="BDuserHomeSDKInterface-h"><a href="#BDuserHomeSDKInterface-h" class="headerlink" title="BDuserHomeSDKInterface.h"></a>BDuserHomeSDKInterface.h</h4><ol>
+<li><p>与设备无关的属性</p>
+<ul>
+<li>BDuerBTDiscoverService * btDiscoverService;//蓝牙发现，发现多台蓝牙设备</li>
+<li>BDuerDeviceDiscoverService * deviceDiscoverService;//局域网发现，发现多台DuerOS设备</li>
+<li>BDuerDeviceListenService * deviceListenService;//局域网监听，设备上线会通知外部</li>
+<li>BDuerNetConfigure * netConfigure;//配网</li>
+<li>BDuerLogin * login;//用户登录信息，跳转登录页等</li>
+</ul>
+</li>
+<li><p>厂商指定的设备列表</p>
+<ul>
+<li>添加授权</li>
+<li>解除授权</li>
+</ul>
+</li>
+</ol>
+<h4 id="BDuerLocation-H"><a href="#BDuerLocation-H" class="headerlink" title="BDuerLocation.H"></a>BDuerLocation.H</h4><ol>
+<li>获取地理位置</li>
+<li>设置地理位置</li>
+</ol>
+<h4 id="BDuerLogin-H"><a href="#BDuerLogin-H" class="headerlink" title="BDuerLogin.H"></a>BDuerLogin.H</h4><ol>
+<li>用户登录</li>
+<li>多用户登录，切换</li>
+<li>退出登录</li>
+<li>获取登录信息</li>
+</ol>
+<h4 id="BDuerNetConfigure-H"><a href="#BDuerNetConfigure-H" class="headerlink" title="BDuerNetConfigure.H"></a>BDuerNetConfigure.H</h4><ol>
+<li>配网类（蓝牙和渡鸦科技））</li>
+</ol>
+<h4 id="BDuerPlaybackController-H"><a href="#BDuerPlaybackController-H" class="headerlink" title="BDuerPlaybackController.H"></a>BDuerPlaybackController.H</h4><ol>
+<li><p>设备控制指令</p>
+<ul>
+<li>PlayCommandIssued（播放）、</li>
+<li>PauseCommandIssued（暂停）、</li>
+<li>NextCommandIssued（下一首）、</li>
+<li>PreviousCommandIssued（上一首）</li>
+</ul>
+</li>
+</ol>
+<h4 id="BDuerScreenMsg-h"><a href="#BDuerScreenMsg-h" class="headerlink" title="BDuerScreenMsg.h"></a>BDuerScreenMsg.h</h4><ol>
+<li>获取播放器页面信息，还很多</li>
+<li>歌曲信息</li>
+<li>卡片信息</li>
+<li>文本信息</li>
+</ol>
+<h4 id="BDuerSpeaker-h"><a href="#BDuerSpeaker-h" class="headerlink" title="BDuerSpeaker.h"></a>BDuerSpeaker.h</h4><ol>
+<li>获取扬声器状态</li>
+<li>设置音量大小</li>
+<li>是否静音</li>
+<li>注册时间回调</li>
+<li><p>音量事件：</p>
+<ul>
+<li>音量改变（VolumeChanged）、</li>
+<li>静音状态改变（MuteChanged）</li>
+<li>扬声器状态（VolumeState）</li>
+</ul>
+</li>
+</ol>
+<h4 id="BDuerSystemInfo"><a href="#BDuerSystemInfo" class="headerlink" title="BDuerSystemInfo"></a>BDuerSystemInfo</h4><ol>
+<li>从音响中获取设备系统信息</li>
+<li>请求硬重置</li>
+<li>设置设备名称</li>
+<li>获取设备状态</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>信息</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NSString * ssid;</td>
+<td>//wifi热点名字</td>
+</tr>
+<tr>
+<td>NSString * mac;</td>
+<td>//mac地址</td>
+</tr>
+<tr>
+<td>NSString * bleMac;</td>
+<td>//蓝牙mac地址</td>
+</tr>
+<tr>
+<td>NSString * sn;</td>
+<td>//序列号</td>
+</tr>
+<tr>
+<td>NSString * ip;</td>
+<td>//ip地址</td>
+</tr>
+<tr>
+<td>NSString * clientID;</td>
+<td>//开发者账号</td>
+</tr>
+<tr>
+<td>NSString * deviceID;</td>
+<td>//</td>
+</tr>
+<tr>
+<td>NSString * appID;</td>
+<td>//产品AppID，已废弃</td>
+</tr>
+<tr>
+<td>NSString * deviceVersion;</td>
+<td></td>
+</tr>
+<tr>
+<td>NSString * softwareVersion;</td>
+<td></td>
+</tr>
+<tr>
+<td>NSString * protocolVersion;</td>
+<td></td>
+</tr>
+<tr>
+<td>NSString * onlineStatus;</td>
+<td>//是否能连上公网，0 是能连上</td>
+</tr>
+<tr>
+<td>NSString * name;</td>
+<td>//可选，设备的名称，调用fetchSystemInfoFromServer会返回</td>
+</tr>
+<tr>
+<td>NSString * tone;</td>
+<td>//可选，设备的音色，调用fetchSystemInfoFromServer会返回</td>
+</tr>
+</tbody>
+</table>
+<h4 id="BDuerTTSInfo-h"><a href="#BDuerTTSInfo-h" class="headerlink" title="BDuerTTSInfo.h"></a>BDuerTTSInfo.h</h4><ol>
+<li><p>TTS音色</p>
+<ul>
+<li>获取TTS状态</li>
+<li>更新TTS音色</li>
+<li>注册音色改变</li>
+</ul>
+<p>属性                      |取值<br>—————————-|——–<br>NSString <em> tts_volume;  |//可选，声音大小 0-9，默认为 5<br>NSString </em> tts_speed;|//可选，语速 0-9，默认为 5<br>NSString <em> tts_pitch;|//可选，语调0-9，默认为 5<br>SString </em> tts_speaker;|//可选，声音0:普通女声 1:普通男生 2:特别男生 3:情感男生&lt;度逍遥&gt; 4:情感儿童生&lt;度丫丫&gt;，默认为 0<br>NSString <em> tts_aue;|//可选，音频格式<br>NSString </em> tts_rate;|//可选，码率<br>NSString * tts_xml;|//可选，是不是xml</p>
+</li>
+</ol>
+<h4 id="BDuerTVLink-h"><a href="#BDuerTVLink-h" class="headerlink" title="BDuerTVLink.h"></a>BDuerTVLink.h</h4><ol>
+<li>控制音箱去发送Link指令给电视</li>
+<li>控制音箱去发送UnLink指令给电视</li>
+<li>注册音箱与电视连接状态回调</li>
+<li>获取连接状态和信息</li>
+</ol>
+<h2 id="DomeAPP做了些什么"><a href="#DomeAPP做了些什么" class="headerlink" title="DomeAPP做了些什么"></a>DomeAPP做了些什么</h2><h4 id="登录接口测试"><a href="#登录接口测试" class="headerlink" title="登录接口测试"></a>登录接口测试</h4><ol>
+<li><p>登录</p>
+<p>网页登录并授权，返回OAuthCode，进入DUEROS</p>
+</li>
+<li><p>是否登录</p>
+<p>若已登录，显示登录，否则显示未登录</p>
+</li>
+<li><p>注销登录</p>
+<p>注销成功</p>
+</li>
+<li><p>授权度秘</p>
+<p>对话式人工智能系统：影音娱乐，生活服务，交通出行，信息查询等</p>
+<p>测试 返回授权结果： data，登录IDloginID，信息msg和状态码status</p>
+</li>
+<li><p>获取用户信息</p>
+<p>一直出现错误null</p>
+</li>
+<li><p>切换用户</p>
+<p>切换用户显示：60194486，无可操作-&gt;back。界面显示切换用户错误</p>
+</li>
+<li><p>登出指定用户</p>
+<p>无反应</p>
+</li>
+<li><p>移除指定用户</p>
+<p>无反应</p>
+</li>
+</ol>
+<h4 id="配网接口测试"><a href="#配网接口测试" class="headerlink" title="配网接口测试"></a>配网接口测试</h4><ol>
+<li><p>蓝牙配网测试</p>
+<p>电脑手机蓝牙均不可被发现（需要先登录）</p>
+</li>
+<li><p>AP配网测试</p>
+<p>无音响AP，点击确定到设置界面</p>
+</li>
+</ol>
+<h4 id="获取云端设备"><a href="#获取云端设备" class="headerlink" title="获取云端设备"></a>获取云端设备</h4><p>   无反应（代码中有TV，audio）应该都没获取到</p>
+<h4 id="百度取消对产品的授权"><a href="#百度取消对产品的授权" class="headerlink" title="百度取消对产品的授权"></a>百度取消对产品的授权</h4><p>   返回data数据，loginID ，msg ，status</p>
+<h4 id="版本号：-0-1-5"><a href="#版本号：-0-1-5" class="headerlink" title="版本号： 0.1.5"></a>版本号： 0.1.5</h4>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;智能家居方向，DuerHomeSDK研究及开发&lt;/p&gt;
+&lt;h2 id=&quot;DuerHomeSDK具备的功能&quot;&gt;&lt;a href=&quot;#DuerHomeSDK具备的功能&quot; class=&quot;headerlink&quot; title=&quot;DuerHomeSDK具备的功能&quot;&gt;&lt;/a&gt;DuerHom
+    
+    </summary>
+    
+      <category term="OC" scheme="http://yoursite.com/categories/OC/"/>
+    
+    
+      <category term="2" scheme="http://yoursite.com/tags/2/"/>
+    
+  </entry>
   
   <entry>
     <title>[Python_scrapy基础爬虫]</title>
@@ -3121,359 +3484,6 @@ void ProviderReleaseData (void *info, const void *data, size_t size){
     
     
       <category term="2" scheme="http://yoursite.com/tags/2/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>[iOS物理动画引擎_UIDynamic]</title>
-    <link href="http://yoursite.com/2017/09/05/iOS%E7%89%A9%E7%90%86%E5%8A%A8%E7%94%BB%E5%BC%95%E6%93%8E-UIDynamic/"/>
-    <id>http://yoursite.com/2017/09/05/iOS物理动画引擎-UIDynamic/</id>
-    <published>2017-09-05T05:52:22.000Z</published>
-    <updated>2017-11-24T08:14:36.640Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="Welcome-to-my-blog-Thanks"><a href="#Welcome-to-my-blog-Thanks" class="headerlink" title="Welcome to my blog. Thanks."></a>Welcome to my blog. Thanks.</h3><p>Dome: <a href="https://github.com/princeSmall/UIDynamic" target="_blank" rel="external">github地址</a></p>
-<p>iOS物理动画引擎-UIDynamic</p>
-<p><img src="/2017/09/05/iOS物理动画引擎-UIDynamic/UIDynamic.gif" alt="UIDynamic"></p>
-<h3 id="UIDynamicBehavior-仿真行为"><a href="#UIDynamicBehavior-仿真行为" class="headerlink" title="UIDynamicBehavior 仿真行为"></a>UIDynamicBehavior 仿真行为</h3><ol>
-<li>创建一个仿真者,用来仿真所有的物理行为</li>
-</ol>
-<pre>
- animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view]
- </pre>
-2. 创建具体的物理仿真行为
-
-<pre>
-gravity = [[UIGravityBehavior alloc]init]
-collision = [[UICollisionBehavior alloc]init]
-snapBehavior = [[UISnapBehavior alloc] init]
-itemBehavior = [[UIDynamicItemBehavior alloc] init]
-</pre>
-3. 将物理仿真行为添加给仿真者实现仿真效果。
-
-<pre>
- -(void)addBehavior:(UIDynamicBehavior *)behavior;
- -(void)removeBehavior:(UIDynamicBehavior *)behavior;
- -(void)removeAllBehaviors;
-</pre>
-
-<h3 id="UIGravityBehavior-重力行为"><a href="#UIGravityBehavior-重力行为" class="headerlink" title="UIGravityBehavior 重力行为"></a>UIGravityBehavior 重力行为</h3><ul>
-<li>创建仿真者</li>
-</ul>
-<pre>
- self.animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
-</pre>
-
-<ul>
-<li>创建仿真行为</li>
-</ul>
-<pre>
--(UIGravityBehavior *)gravity{
-    if (_gravity == nil) {
-        _gravity = [[UIGravityBehavior alloc]init];
-    }
-    return _gravity;
-}
--(UICollisionBehavior *)collision{
-    if (_collision == nil) {
-        _collision = [[UICollisionBehavior alloc]init];
-    }
-    return _collision;
-}
-</pre>
-
-<ul>
-<li>触碰屏幕生成重力小球</li>
-</ul>
-<pre>
--(void)touchesBegan:(NSSet<uitouch *=""> *)touches withEvent:(UIEvent *)event{
-    UITouch * touch = touches.anyObject;
-    CGPoint location = [touch locationInView:self.view];
-    self.redView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, widthRed, widthRed)];
-    self.redView.center = location;
-    [self.view addSubview:self.redView];
-
-    // 随机色方块
-    self.redView.backgroundColor = randomColor;
-
-    // 创建重力的物理仿真行为，并设置具体的items(需要仿真的view)
-    [self.gravity addItem:self.redView];
-
-    // 下落方向
-    // [gravity setAngle:0.5];
-
-    // 创建弹性的物理仿真行为，并设置具体的items(需要仿真的view)
-    [self.collision addItem:self.redView];
-    self.collision.translatesReferenceBoundsIntoBoundary = YES;
-
-    // 将重力仿真行为添加给仿真者实现仿真效果，开始仿真
-    [self.animator addBehavior:self.gravity];
-    [self.animator addBehavior:self.collision];
-
-}
-</uitouch></pre>
-
-<h3 id="UICollisionBehavior-碰撞行为"><a href="#UICollisionBehavior-碰撞行为" class="headerlink" title="UICollisionBehavior 碰撞行为"></a>UICollisionBehavior 碰撞行为</h3><ul>
-<li>创建仿真者</li>
-</ul>
-<pre>
- self.animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
-</pre>
-
-<ul>
-<li>创建碰撞对象</li>
-</ul>
-<pre>
-self.greenView = [[UIView alloc] initWithFrame:CGRectMake(100, 200, 100, 30)];
-self.greenView.backgroundColor = [UIColor greenColor];
-[self.view addSubview:self.greenView];
-
-self.blueView = [[UIView alloc] initWithFrame:CGRectMake(120, 300, 100, 30)];
-self.blueView.backgroundColor = [UIColor blueColor];
-[self.view addSubview:self.blueView];
-
-  //未绑定仿真对象  
-self.blackView = [[UIView alloc] initWithFrame:CGRectMake(140, 400, 100, 30)];
-self.blackView.backgroundColor = [UIColor blackColor];
-[self.view addSubview:self.blackView];
-
-  // 物体角度  
-self.blueView.transform =  CGAffineTransformMakeRotation(M_PI_4);
-self.greenView.transform = CGAffineTransformMakeRotation(-M_PI / 8);
-
-</pre>
-
-<ul>
-<li>创建仿真行为</li>
-</ul>
-<pre>
--(UIGravityBehavior *)gravity{
-    if (_gravity == nil) {
-        _gravity = [[UIGravityBehavior alloc]init];
-    }
-    return _gravity;
-}
--(UICollisionBehavior *)collision{
-    if (_collision == nil) {
-        _collision = [[UICollisionBehavior alloc]init];
-    }
-    return _collision;
-}
-</pre>
-
-<ul>
-<li>开始碰撞行为</li>
-</ul>
-<pre>
--(void)touchesBegan:(NSSet<uitouch *=""> *)touches withEvent:(UIEvent *)event{
-    // 获取点击位置，生成仿真者
-    UITouch * touch = touches.anyObject;
-    CGPoint location = [touch locationInView:self.view];
-    self.redView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, widthRed, widthRed)];
-    self.redView.center = location;
-    // pch中宏定义的随机色
-    self.redView.backgroundColor = randomColor;
-    [self.view addSubview:self.redView];
-    [self.gravity addItem:self.redView];
-    // 添加碰撞检测
-    [self.collision addItem:self.redView];
-    [self.collision addItem:self.greenView];
-    [self.collision  addItem:self.blueView];
-    self.collision.translatesReferenceBoundsIntoBoundary = YES;
-    self.collision.collisionDelegate = self;
-
-
-   __weak typeof(self) weakSelf = self;
-        // 获取方块运动轨迹坐标
-    self.collision.action = ^{
-        NSLog(@"%@", NSStringFromCGRect(weakSelf.redView.frame));
-
-    };
-
-    CGFloat Y = self.view.frame.size.height;
-    CGFloat X = self.view.frame.size.width;
-    CGFloat height = self.view.frame.size.height;
-
-    //设置红色的View为底边界,左边框跟右边框作为边界
-    [self.collision addBoundaryWithIdentifier:@"collision1" fromPoint:CGPointMake(0,Y) toPoint:CGPointMake(X, Y)];
-    [self.collision addBoundaryWithIdentifier:@"collision2" fromPoint:CGPointMake(0, 0) toPoint:CGPointMake(0, height)];
-    [self.collision addBoundaryWithIdentifier:@"collision3" fromPoint:CGPointMake(X,0) toPoint:CGPointMake(X, height)];
-    [self.animator addBehavior:self.collision];
-    [self.animator addBehavior:self.gravity];  
-}
-</uitouch></pre>
-
-<ul>
-<li>碰撞开始时给被碰撞的物体添加重力仿真</li>
-</ul>
-<pre>
-// UICollisionBehavior 代理行为
-- (void)collisionBehavior:(UICollisionBehavior*)behavior beganContactForItem:(id <uidynamicitem>)item withBoundaryIdentifier:(nullable id <nscopying>)identifier atPoint:(CGPoint)p{
-
-    if ([item isEqual:self.greenView]) {
-        UIGravityBehavior * gravity = [[UIGravityBehavior alloc] initWithItems:@[self.greenView]];
-        [self.animator addBehavior:gravity];
-    }else if ([item isEqual:self.blueView]){
-        UIGravityBehavior * gravity = [[UIGravityBehavior alloc] initWithItems:@[self.blueView]];
-        [self.animator addBehavior:gravity];
-    }
-
-}
-</nscopying></uidynamicitem></pre>
-
-<h3 id="UISnapBehavior-吸附行为"><a href="#UISnapBehavior-吸附行为" class="headerlink" title="UISnapBehavior 吸附行为"></a>UISnapBehavior 吸附行为</h3><ul>
-<li>创建仿真者</li>
-</ul>
-<pre>
-self.animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
-</pre>
-
-<ul>
-<li>创建吸附对象</li>
-</ul>
-<pre>
--(UIView *)redView{
-    if (_redView ==nil) {
-        _redView = [[UIView alloc]initWithFrame:CGRectMake(p.x, p.y, 50, 50)];
-        _redView.backgroundColor = [UIColor redColor];
-        [self.view addSubview:_redView];
-    }
-    return _redView;
-}
-</pre>
-
-<ul>
-<li>开始吸附行为</li>
-</ul>
-<pre>
--(void)touchesBegan:(NSSet<uitouch *=""> *)touches withEvent:(UIEvent *)event{
-
-    [self.animator removeAllBehaviors];
-    UITouch * touch = touches.anyObject;
-    CGPoint location = [touch locationInView:self.view];
-    p = location;
-    NSLog(@"%@",NSStringFromCGPoint(location));
-     // 3 添加吸附事件
-     UISnapBehavior *snap = [[UISnapBehavior alloc] initWithItem:self.redView snapToPoint:location];
-    // 改变震动幅度，0表示振幅最大，1振幅最小
-    snap.damping = 0.5;
-    // 4. 将吸附事件添加到仿真者行为中
-    [self.animator addBehavior:snap];
-
-}
-</uitouch></pre>
-
-<h3 id="UIDynamicItemBehavior-迅猛移动弹跳摆动行为"><a href="#UIDynamicItemBehavior-迅猛移动弹跳摆动行为" class="headerlink" title="UIDynamicItemBehavior 迅猛移动弹跳摆动行为"></a>UIDynamicItemBehavior 迅猛移动弹跳摆动行为</h3><ul>
-<li>创建仿真者</li>
-</ul>
-<pre>
-self.animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
-</pre>
-
-<ul>
-<li>创建仿真行为</li>
-</ul>
-<pre>
--(UIGravityBehavior *)gravity{
-    if (_gravity == nil) {
-        _gravity = [[UIGravityBehavior alloc]init];
-    }
-    return _gravity;
-}
--(UICollisionBehavior *)collision{
-    if (_collision == nil) {
-        _collision = [[UICollisionBehavior alloc]init];
-         [_collision addBoundaryWithIdentifier:@"barrier" forPath:[UIBezierPath bezierPathWithRect:self.view.bounds]];
-        _collision.translatesReferenceBoundsIntoBoundary = YES;
-    }
-    return _collision;
-}
--(UIDynamicItemBehavior *)itemBehavior{
-    if (_itemBehavior == nil) {
-        _itemBehavior = [[UIDynamicItemBehavior alloc] init];
-        _itemBehavior.elasticity = 1;
-    }
-    return _itemBehavior;
-}
-</pre>
-
-<ul>
-<li>生成小球，添加仿真事件</li>
-</ul>
-<pre>
--(void)touchesAddSquareView{
-    float  viewWidth = 20;
-    UIView * view = [[UIView alloc]initWithFrame:CGRectMake(p.x, p.y, viewWidth, viewWidth)];
-    view.layer.cornerRadius = viewWidth / 2.0;
-    view.backgroundColor = randomColor;
-    [self performSelector:@selector(removeView:) withObject:view afterDelay:10];
-    [self.view addSubview:view];
-    [self.collision addItem:view];
-    [self.itemBehavior addItem:view];
-    [self.gravity addItem:view];
-    [self.animator addBehavior:self.collision];
-    [self.animator addBehavior:self.itemBehavior];
-    [self.animator addBehavior:self.gravity];
-
-}
-</pre>
-
-<ul>
-<li>点触，移动和松开创建小球</li>
-</ul>
-<pre>
-- (void)touchesBegan:(NSSet<uitouch *=""> *)touches withEvent:(UIEvent *)event
-{
-    UITouch * touch = touches.anyObject;
-    CGPoint location = [touch locationInView:self.view];
-    p = location;
-    [self touchesAddSquareView];
-}
-
-- (void)touchesMoved:(NSSet<uitouch *=""> *)touches withEvent:(UIEvent *)event
-{
-    UITouch * touch = touches.anyObject;
-    CGPoint location = [touch locationInView:self.view];
-    p = location;
-   [self touchesAddSquareView];
-}
-- (void)touchesEnded:(NSSet<uitouch *=""> *)touches withEvent:(UIEvent *)event
-{
-    [self touchesAddSquareView];
-}
-</uitouch></uitouch></uitouch></pre>
-
-<ul>
-<li>10s后删除小球和其物理仿真行为</li>
-</ul>
-<pre>
--(void)removeView:(UIView *)view{
-    if (view == nil) {
-        return;
-    }
-    [UIView animateWithDuration:.5 animations:^{
-        view.alpha = 0;
-    } completion:^(BOOL finished) {
-        [view removeFromSuperview];
-        [self.collision removeItem:view];
-        [self.itemBehavior removeItem:view];
-        [self.gravity removeItem:view];
-    }];
-
-}
-</pre>
-
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;Welcome-to-my-blog-Thanks&quot;&gt;&lt;a href=&quot;#Welcome-to-my-blog-Thanks&quot; class=&quot;headerlink&quot; title=&quot;Welcome to my blog. Thanks.&quot;&gt;&lt;/a&gt;Welcome t
-    
-    </summary>
-    
-      <category term="OC" scheme="http://yoursite.com/categories/OC/"/>
-    
-    
-      <category term="1" scheme="http://yoursite.com/tags/1/"/>
     
   </entry>
   
