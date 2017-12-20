@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-12-20T00:51:57.333Z</updated>
+  <updated>2017-12-20T01:56:04.676Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,13 +16,132 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>[Python_scrapy图片爬取下载]</title>
+    <link href="http://yoursite.com/2017/12/20/Python-scrapy%E5%9B%BE%E7%89%87%E7%88%AC%E5%8F%96%E4%B8%8B%E8%BD%BD/"/>
+    <id>http://yoursite.com/2017/12/20/Python-scrapy图片爬取下载/</id>
+    <published>2017-12-20T01:53:34.000Z</published>
+    <updated>2017-12-20T01:56:04.676Z</updated>
+    
+    <content type="html"><![CDATA[<p>welcome to myblog</p>
+<p><a href="https://github.com/princeSmall/Python_Get-Car-Photo" target="_blank" rel="external">Dome地址</a></p>
+<h3 id="爬取某个车站的图片"><a href="#爬取某个车站的图片" class="headerlink" title="爬取某个车站的图片"></a>爬取某个车站的图片</h3><p><img src="/2017/12/20/Python-scrapy图片爬取下载/thumbs.png" alt=""><br><img src="/2017/12/20/Python-scrapy图片爬取下载/full.png" alt=""></p>
+<h4 id="item-py-中"><a href="#item-py-中" class="headerlink" title="item.py 中"></a>item.py 中</h4><p>1、申明item 的fields</p>
+<pre><code>class PhotoItem(scrapy.Item):
+     # define the fields for your item here like:
+     # name = scrapy.Field()
+     image_urls = scrapy.Field()
+     images = scrapy.Field()
+     pass
+</code></pre><h4 id="spider-的image-py"><a href="#spider-的image-py" class="headerlink" title="spider 的image.py"></a>spider 的image.py</h4><ol>
+<li><p>导入头文件</p>
+<pre><code>from Photo.items import PhotoItem
+
+from scrapy import Spider
+
+from scrapy import Selector
+
+from scrapy.http import Request
+</code></pre></li>
+<li><p>爬取代码</p>
+</li>
+</ol>
+<p>注：</p>
+<p>只需要爬取图片对应的url</p>
+<p>翻页爬取时加上爬取范围url</p>
+<pre><code>class imageSpider(Spider):
+      name = &apos;car&apos;
+      allowed_domains = [&apos;car.autohome.com.cn&apos;]
+      start_urls = [
+          &quot;https://car.autohome.com.cn/jingxuan/list-0-p1.html&quot;,
+      ]
+
+def parse(self, response):
+    item = PhotoItem()
+    sel = Selector(response)
+    item[&apos;image_urls&apos;] = sel.xpath(&apos;//ul[@class=&quot;content&quot;]/li/a/img/@src&apos;).extract()
+
+    print item[&apos;image_urls&apos;], &apos;..image_urls..&apos;
+    yield item
+
+    # 翻页
+    new_urls = response.xpath(&apos;//div[@class=&quot;pageindex&quot;]/a[9]/@href&apos;).extract_first()
+
+    new_url = &quot;https://car.autohome.com.cn&quot; + new_urls
+
+    print new_url, &apos;..new_url...&apos;
+    if new_url:
+
+       yield Request(new_url, callback=self.parse)        
+</code></pre><h4 id="settings-py-中"><a href="#settings-py-中" class="headerlink" title="settings.py 中"></a>settings.py 中</h4><h6 id="Configure-item-pipelines"><a href="#Configure-item-pipelines" class="headerlink" title="Configure item pipelines"></a>Configure item pipelines</h6><pre><code>ITEM_PIPELINES = {
+    &apos;Photo.pipelines.jandanPipeline&apos;: 200,
+    # &apos;Photo.pipelines.PhotoPipeline&apos;: 300,
+ }
+</code></pre><h5 id="存储下载图片所在位置"><a href="#存储下载图片所在位置" class="headerlink" title="存储下载图片所在位置"></a>存储下载图片所在位置</h5><pre><code>IMAGES_STORE = &apos;/Users/sansi/Desktop/Scrapy/Photo/Image&apos;
+DOWNLOAD_DELAY = 0.25
+</code></pre><h5 id="缩略图大小"><a href="#缩略图大小" class="headerlink" title="缩略图大小"></a>缩略图大小</h5><pre><code>IMAGES_THUMBS = {
+   &apos;small&apos;: (50, 50),
+   &apos;big&apos;: (200, 200),
+}
+</code></pre><h5 id="图片的失效期限"><a href="#图片的失效期限" class="headerlink" title="图片的失效期限"></a>图片的失效期限</h5><pre><code>IMAGES_EXPIRES = 90           
+</code></pre><h4 id="pipelines-py-中"><a href="#pipelines-py-中" class="headerlink" title="pipelines.py 中"></a>pipelines.py 中</h4><ol>
+<li><p>导入头文件</p>
+<pre><code>import os
+import urllib
+import scrapy
+from scrapy.exceptions import DropItem
+from scrapy.pipelines.images import ImagesPipeline
+from Photo import settings        
+</code></pre></li>
+<li><p>编写爬取下载</p>
+<pre>
+class PhotoPipeline(object):
+ def process_item(self, item, spider):
+     return item
+     </pre>
+
+</li>
+</ol>
+<h5 id="重写ImagesPipeline，对各个url返回Request"><a href="#重写ImagesPipeline，对各个url返回Request" class="headerlink" title="重写ImagesPipeline，对各个url返回Request"></a>重写ImagesPipeline，对各个url返回Request</h5><pre>
+class jandanPipeline(ImagesPipeline):
+    def get_media_requests(self, item, info):
+        for image_url in item['image_urls']:
+            yield scrapy.Request(image_url)
+
+</pre>
+
+<h5 id="当一个项目所有的请求完成时调用"><a href="#当一个项目所有的请求完成时调用" class="headerlink" title="当一个项目所有的请求完成时调用"></a>当一个项目所有的请求完成时调用</h5><pre><code>def item_completed(self, results, item, info):
+    image_paths = [x[&apos;path&apos;] for ok, x in results if ok]
+    if not image_paths:
+        raise DropItem(&quot;Item contains no images&quot;)
+    item[&apos;images&apos;] = image_paths
+    return item          
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;welcome to myblog&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/princeSmall/Python_Get-Car-Photo&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Dome地址&lt;/a&gt;&lt;/p&gt;
+&lt;h3 
+    
+    </summary>
+    
+      <category term="Python" scheme="http://yoursite.com/categories/Python/"/>
+    
+    
+      <category term="8" scheme="http://yoursite.com/tags/8/"/>
+    
+  </entry>
+  
+  <entry>
     <title>[Python_scrapy多数据及数据库存储]</title>
     <link href="http://yoursite.com/2017/12/19/Python-scrapy%E5%A4%9A%E6%95%B0%E6%8D%AE%E5%8F%8A%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%98%E5%82%A8/"/>
     <id>http://yoursite.com/2017/12/19/Python-scrapy多数据及数据库存储/</id>
     <published>2017-12-19T14:28:48.000Z</published>
-    <updated>2017-12-20T00:51:57.333Z</updated>
+    <updated>2017-12-20T01:57:17.033Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="Spiders"><a href="#Spiders" class="headerlink" title="Spiders"></a>Spiders</h1><p>使用scrapy的spiders进行多网页爬取保存到本地<br><img src="/2017/12/19/Python-scrapy多数据及数据库存储/mysql.png" alt="mysql"></p>
+    <content type="html"><![CDATA[<p>welcome to myblog</p>
+<p><a href="https://github.com/princeSmall/Python_Get-douban-s-Movies-Infromation" target="_blank" rel="external">Dome地址</a></p>
+<h1 id="Spiders"><a href="#Spiders" class="headerlink" title="Spiders"></a>Spiders</h1><p>使用scrapy的spiders进行多网页爬取保存到本地<br><img src="/2017/12/19/Python-scrapy多数据及数据库存储/mysql.png" alt="mysql"></p>
 <h3 id="Princesmall-py中-导入头文件"><a href="#Princesmall-py中-导入头文件" class="headerlink" title="Princesmall.py中 导入头文件"></a>Princesmall.py中 导入头文件</h3><p>注意：..items</p>
 <pre><code>from scrapy.spiders import Spider
 from scrapy.selector import Selector
@@ -174,7 +293,8 @@ def handle_error(self,e):
     
     <summary type="html">
     
-      &lt;h1 id=&quot;Spiders&quot;&gt;&lt;a href=&quot;#Spiders&quot; class=&quot;headerlink&quot; title=&quot;Spiders&quot;&gt;&lt;/a&gt;Spiders&lt;/h1&gt;&lt;p&gt;使用scrapy的spiders进行多网页爬取保存到本地&lt;br&gt;&lt;img src=&quot;/2017/12
+      &lt;p&gt;welcome to myblog&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/princeSmall/Python_Get-douban-s-Movies-Infromation&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;D
     
     </summary>
     
@@ -3100,247 +3220,6 @@ apt-get install python-pip
     
     
       <category term="3" scheme="http://yoursite.com/tags/3/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>[iOS_CellAnimation]</title>
-    <link href="http://yoursite.com/2017/09/12/iOS-CellAnimation/"/>
-    <id>http://yoursite.com/2017/09/12/iOS-CellAnimation/</id>
-    <published>2017-09-12T07:17:55.000Z</published>
-    <updated>2017-11-24T08:15:09.469Z</updated>
-    
-    <content type="html"><![CDATA[<p>Welcome to my blog. Thanks.</p>
-<p>Dome: <a href="https://github.com/princeSmall/CellAnimation" target="_blank" rel="external">github地址</a></p>
-<p>最近在用cell动画，就研究修改了别人的cell动画，整理了一下。</p>
-<p><img src="/2017/09/12/iOS-CellAnimation/CellAnimation.gif" alt="CellAnimation"></p>
-<h3 id="使用："><a href="#使用：" class="headerlink" title="使用："></a>使用：</h3><p>导入Animation类，直接用类调用,输入要动画的tableview和动画type，即可</p>
-<pre>
- [Animation addAnimationWithTableView:tableView andRow:self.type];
-</pre>
-
-<h3 id="UITableViewCell-出场动画："><a href="#UITableViewCell-出场动画：" class="headerlink" title="UITableViewCell 出场动画："></a>UITableViewCell 出场动画：</h3><p>简而明了的说就是利用cell的contentView来做一下出场动画animation</p>
-<pre>
- CGFloat width = [[UIScreen mainScreen] bounds].size.width - 40;
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(20, 10, width, 60)];
-    view.backgroundColor = [UIColor redColor];
-    view.layer.masksToBounds = YES;
-    view.layer.cornerRadius = 9.0;
-    [cell.contentView addSubview:view];
-</pre>
-
-<h3 id="UIView"><a href="#UIView" class="headerlink" title="UIView"></a>UIView</h3><h4 id="move动画"><a href="#move动画" class="headerlink" title="move动画"></a>move动画</h4><pre>
-+ (void)moveAnimationWithTableView:(UITableView *)tableView {
-
-    NSArray *cells = tableView.visibleCells;
-    for (int i = 0; i < cells.count; i++) {
-        CGFloat totalTime = 0.4;
-        UITableViewCell *cell = [tableView.visibleCells objectAtIndex:i];
-        cell.transform = CGAffineTransformMakeTranslation(-XS_SCREEN_WIDTH, 0);
-        [UIView animateWithDuration:0.4 delay:i*(totalTime/cells.count) usingSpringWithDamping:0.7 initialSpringVelocity:1/0.7 options:UIViewAnimationOptionCurveEaseIn animations:^{
-            cell.transform = CGAffineTransformIdentity;
-        } completion:^(BOOL finished) {
-
-        }];
-    }
-}
-</pre>
-
-<h4 id="alpha动画"><a href="#alpha动画" class="headerlink" title="alpha动画"></a>alpha动画</h4><pre>
-+ (void)alphaAnimationWithTableView:(UITableView *)tableView {
-
-    NSArray *cells = tableView.visibleCells;
-    for (int i = 0; i < cells.count; i++) {
-        UITableViewCell *cell = [tableView.visibleCells objectAtIndex:i];
-        cell.alpha = 0.0;
-        [UIView animateWithDuration:0.3 delay:i*0.05 options:0 animations:^{
-            cell.alpha = 1.0;
-        } completion:^(BOOL finished) {
-
-        }];
-    }
-}
-</pre>
-
-<h4 id="fall动画"><a href="#fall动画" class="headerlink" title="fall动画"></a>fall动画</h4><pre>
-+ (void)fallAnimationWithTableView:(UITableView *)tableView {
-
-    NSArray *cells = tableView.visibleCells;
-
-    NSTimeInterval totalTime = 0.8;
-
-    for (int i = 0; i < cells.count; i++) {
-        UITableViewCell *cell = [tableView.visibleCells objectAtIndex:i];
-        cell.transform = CGAffineTransformMakeTranslation(0, - XS_SCREEN_HEIGHT);
-        [UIView animateWithDuration:0.3 delay:(cells.count - i)*(totalTime/cells.count) options:0 animations:^{
-            cell.transform = CGAffineTransformIdentity;
-        } completion:^(BOOL finished) {
-
-        }];
-    }
-}
-</pre>
-
-<h4 id="shake动画"><a href="#shake动画" class="headerlink" title="shake动画"></a>shake动画</h4><pre>
-+ (void)shakeAnimationWithTableView:(UITableView *)tableView {
-
-    NSArray *cells = tableView.visibleCells;
-    for (int i = 0; i < cells.count; i++) {
-        UITableViewCell *cell = [cells objectAtIndex:i];
-        if (i%2 == 0) {
-            cell.transform = CGAffineTransformMakeTranslation(-XS_SCREEN_WIDTH,0);
-        }else {
-            cell.transform = CGAffineTransformMakeTranslation(XS_SCREEN_WIDTH,0);
-        }
-        [UIView animateWithDuration:0.4 delay:i*0.03 usingSpringWithDamping:0.75 initialSpringVelocity:1/0.75 options:0 animations:^{
-            cell.transform = CGAffineTransformIdentity;
-        } completion:^(BOOL finished) {
-
-        }];
-    }
-}
-</pre>
-
-<h4 id="overTurn动画"><a href="#overTurn动画" class="headerlink" title="overTurn动画"></a>overTurn动画</h4><pre>
-+ (void)overTurnAnimationWithTableView:(UITableView *)tableView {
-
-    NSArray *cells = tableView.visibleCells;
-    for (int i = 0; i < cells.count; i++) {
-        UITableViewCell *cell = [cells objectAtIndex:i];
-        cell.layer.opacity = 0.0;
-        cell.layer.transform = CATransform3DMakeRotation(M_PI, 1, 0, 0);
-        NSTimeInterval totalTime = 0.7;
-        [UIView animateWithDuration:0.3 delay:i*(totalTime/cells.count) options:0 animations:^{
-            cell.layer.opacity = 1.0;
-            cell.layer.transform = CATransform3DIdentity;
-        } completion:^(BOOL finished) {
-
-        }];
-
-    }
-}
-</pre>
-
-<h4 id="toTop动画"><a href="#toTop动画" class="headerlink" title="toTop动画"></a>toTop动画</h4><pre>
-+ (void)toTopAnimationWithTableView:(UITableView *)tableView {
-
-
-    NSArray *cells = tableView.visibleCells;
-
-    NSTimeInterval totalTime = 0.8;
-
-    for (int i = 0; i < cells.count; i++) {
-        UITableViewCell *cell = [tableView.visibleCells objectAtIndex:i];
-        cell.transform = CGAffineTransformMakeTranslation(0,  XS_SCREEN_HEIGHT);
-        [UIView animateWithDuration:0.35 delay:i*(totalTime/cells.count) options:UIViewAnimationOptionCurveEaseOut animations:^{
-            cell.transform = CGAffineTransformIdentity;
-        } completion:^(BOOL finished) {
-
-        }];
-    }
-}
-</pre>
-
-<h4 id="spring动画"><a href="#spring动画" class="headerlink" title="spring动画"></a>spring动画</h4><pre>
-+ (void)springListAnimationWithTableView:(UITableView *)tableView {
-
-    NSArray *cells = tableView.visibleCells;
-    for (int i = 0; i < cells.count; i++) {
-        UITableViewCell *cell = [cells objectAtIndex:i];
-        cell.layer.opacity = 0.7;
-        cell.layer.transform = CATransform3DMakeTranslation(0, -XS_SCREEN_HEIGHT, 20);
-        NSTimeInterval totalTime = 1.0;
-
-        [UIView animateWithDuration:0.4 delay:i*(totalTime/cells.count) usingSpringWithDamping:0.65 initialSpringVelocity:1/0.65 options:UIViewAnimationOptionCurveEaseIn animations:^{
-            cell.layer.opacity = 1.0;
-            cell.layer.transform = CATransform3DMakeTranslation(0, 0, 20);
-        } completion:^(BOOL finished) {
-
-        }];
-    }
-}
-</pre>
-
-<h4 id="shrink动画"><a href="#shrink动画" class="headerlink" title="shrink动画"></a>shrink动画</h4><pre>
-+ (void)shrinkToTopAnimationWithTableView:(UITableView *)tableView {
-    NSArray *cells = tableView.visibleCells;
-    for (int i = 0; i < cells.count; i++) {
-        UITableViewCell *cell = [cells objectAtIndex:i];
-        CGRect rect = [cell convertRect:cell.bounds fromView:tableView];
-        cell.transform = CGAffineTransformMakeTranslation(0, -rect.origin.y);
-        [UIView animateWithDuration:0.5 animations:^{
-            cell.transform = CGAffineTransformIdentity;
-        }];
-    }
-}
-</pre>
-
-<h3 id="laydown动画"><a href="#laydown动画" class="headerlink" title="laydown动画"></a>laydown动画</h3><pre>
-+ (void)layDownAnimationWithTableView:(UITableView *)tableView {
-    NSArray *cells = tableView.visibleCells;
-    NSMutableArray *rectArr = [[NSMutableArray alloc] init];
-    for (int i = 0; i < cells.count; i++) {
-        UITableViewCell *cell = [cells objectAtIndex:i];
-        CGRect rect = cell.frame;
-        [rectArr addObject:[NSValue valueWithCGRect:rect]];
-        rect.origin.y = i * 10;
-        cell.frame = rect;
-        cell.layer.transform = CATransform3DMakeTranslation(0, 0, i*5);
-    }
-    NSTimeInterval totalTime = 0.8;
-    for (int i = 0; i < cells.count; i++) {
-        UITableViewCell *cell = [cells objectAtIndex:i];
-        CGRect rect = [[rectArr objectAtIndex:i] CGRectValue];
-        [UIView animateWithDuration:(totalTime/cells.count) * i animations:^{
-            cell.frame = rect;
-        } completion:^(BOOL finished) {
-            cell.layer.transform = CATransform3DIdentity;
-        }];
-    }
-
-}
-</pre>
-
-<h4 id="rote动画"><a href="#rote动画" class="headerlink" title="rote动画"></a>rote动画</h4><pre>
-+ (void)roteAnimationWithTableView:(UITableView *)tableView {
-
-    NSArray *cells = tableView.visibleCells;
-    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.y"];
-    animation.fromValue = @(-M_PI);
-    animation.toValue = 0;
-    animation.duration = 0.3;
-    animation.removedOnCompletion = NO;
-    animation.repeatCount = 3;
-    animation.fillMode = kCAFillModeForwards;
-    animation.autoreverses = NO;
-
-    for (int i = 0; i < cells.count; i++) {
-        UITableViewCell *cell = [cells objectAtIndex:i];
-
-        cell.alpha = 0.0;
-        [UIView animateWithDuration:0.1 delay:i*0.25 options:0 animations:^{
-            cell.alpha = 1.0;
-        } completion:^(BOOL finished) {
-            [cell.layer addAnimation:animation forKey:@"rotationYkey"];
-        }];
-    }
-}
-</pre>
-
-
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Welcome to my blog. Thanks.&lt;/p&gt;
-&lt;p&gt;Dome: &lt;a href=&quot;https://github.com/princeSmall/CellAnimation&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;github地址&lt;/
-    
-    </summary>
-    
-      <category term="OC" scheme="http://yoursite.com/categories/OC/"/>
-    
-    
-      <category term="2" scheme="http://yoursite.com/tags/2/"/>
     
   </entry>
   
