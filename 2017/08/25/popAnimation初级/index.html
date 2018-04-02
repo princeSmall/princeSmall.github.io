@@ -419,7 +419,7 @@
 
       
         <p>Welcome to my blog. Thanks.</p>
-<p>Dome: <a href="https://github.com/princeSmall/RedBall" target="_blank" rel="external">github地址</a></p>
+<p>Dome: <a href="https://github.com/princeSmall/RedBall" target="_blank" rel="noopener">github地址</a></p>
 <p><img src="/2017/08/25/popAnimation初级/redBall.gif" alt="GIF"></p>
 <p>先初尝popAnimation一些环境配置和方法调用，下篇会写实例应用</p>
 <h3 id="Pods-pop"><a href="#Pods-pop" class="headerlink" title="Pods pop"></a>Pods pop</h3><ol>
@@ -435,7 +435,7 @@ pod 'pop'
 end
 </pre>
 
-<ol>
+<ol start="2">
 <li>pod install</li>
 </ol>
 <h3 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h3><ol>
@@ -448,7 +448,7 @@ let TLcolor = "color"
 let TLscale = "scale"
 </pre>
 
-<ol>
+<ol start="2">
 <li>属性定义</li>
 </ol>
 <pre>
@@ -460,7 +460,7 @@ let TLscale = "scale"
 
 </pre>
 
-<ol>
+<ol start="3">
 <li><p>segmentContol创建</p>
 <pre><code>let array = [&quot;放大&quot;,&quot;旋转&quot;,&quot;移动&quot;,&quot;变色&quot;,&quot;归位&quot;]
 
@@ -477,7 +477,7 @@ segmentedControl.addTarget(self, action:#selector(segmentedControlChanged(segmen
 self.view .addSubview(segmentedControl);
 </code></pre></li>
 <li><p>动画代码</p>
-<ol>
+<ol start="0">
 <li>pop放大，旋转，移动，变色，还原动画</li>
 <li>springBounciness: 弹性振幅，范围0-20</li>
 <li>springSpeed: 震动速度</li>
@@ -656,7 +656,7 @@ self.view .addSubview(segmentedControl);
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">35</span>
+                <span class="site-state-item-count">36</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

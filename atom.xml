@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-12-20T01:56:04.676Z</updated>
+  <updated>2018-04-02T08:44:17.674Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,14 +16,28 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>[iOS_测试]</title>
+    <link href="http://yoursite.com/2018/04/02/iOS-%E6%B5%8B%E8%AF%95/"/>
+    <id>http://yoursite.com/2018/04/02/iOS-测试/</id>
+    <published>2018-04-02T08:44:17.000Z</published>
+    <updated>2018-04-02T08:44:17.674Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>[Python_scrapy图片爬取下载]</title>
     <link href="http://yoursite.com/2017/12/20/Python-scrapy%E5%9B%BE%E7%89%87%E7%88%AC%E5%8F%96%E4%B8%8B%E8%BD%BD/"/>
     <id>http://yoursite.com/2017/12/20/Python-scrapy图片爬取下载/</id>
     <published>2017-12-20T01:53:34.000Z</published>
-    <updated>2017-12-20T01:56:04.676Z</updated>
+    <updated>2017-12-20T01:56:04.000Z</updated>
     
     <content type="html"><![CDATA[<p>welcome to myblog</p>
-<p><a href="https://github.com/princeSmall/Python_Get-Car-Photo" target="_blank" rel="external">Dome地址</a></p>
+<p><a href="https://github.com/princeSmall/Python_Get-Car-Photo" target="_blank" rel="noopener">Dome地址</a></p>
 <h3 id="爬取某个车站的图片"><a href="#爬取某个车站的图片" class="headerlink" title="爬取某个车站的图片"></a>爬取某个车站的图片</h3><p><img src="/2017/12/20/Python-scrapy图片爬取下载/thumbs.png" alt=""><br><img src="/2017/12/20/Python-scrapy图片爬取下载/full.png" alt=""></p>
 <h4 id="item-py-中"><a href="#item-py-中" class="headerlink" title="item.py 中"></a>item.py 中</h4><p>1、申明item 的fields</p>
 <pre><code>class PhotoItem(scrapy.Item):
@@ -120,7 +134,7 @@ class jandanPipeline(ImagesPipeline):
     <summary type="html">
     
       &lt;p&gt;welcome to myblog&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://github.com/princeSmall/Python_Get-Car-Photo&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Dome地址&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/princeSmall/Python_Get-Car-Photo&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Dome地址&lt;/a&gt;&lt;/p&gt;
 &lt;h3 
     
     </summary>
@@ -151,10 +165,10 @@ class jandanPipeline(ImagesPipeline):
     <link href="http://yoursite.com/2017/12/19/Python-scrapy%E5%A4%9A%E6%95%B0%E6%8D%AE%E5%8F%8A%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%98%E5%82%A8/"/>
     <id>http://yoursite.com/2017/12/19/Python-scrapy多数据及数据库存储/</id>
     <published>2017-12-19T14:28:48.000Z</published>
-    <updated>2017-12-20T01:57:17.033Z</updated>
+    <updated>2017-12-20T01:57:17.000Z</updated>
     
     <content type="html"><![CDATA[<p>welcome to myblog</p>
-<p><a href="https://github.com/princeSmall/Python_Get-douban-s-Movies-Infromation" target="_blank" rel="external">Dome地址</a></p>
+<p><a href="https://github.com/princeSmall/Python_Get-douban-s-Movies-Infromation" target="_blank" rel="noopener">Dome地址</a></p>
 <h1 id="Spiders"><a href="#Spiders" class="headerlink" title="Spiders"></a>Spiders</h1><p>使用scrapy的spiders进行多网页爬取保存到本地<br><img src="/2017/12/19/Python-scrapy多数据及数据库存储/mysql.png" alt="mysql"></p>
 <h3 id="Princesmall-py中-导入头文件"><a href="#Princesmall-py中-导入头文件" class="headerlink" title="Princesmall.py中 导入头文件"></a>Princesmall.py中 导入头文件</h3><p>注意：..items</p>
 <pre><code>from scrapy.spiders import Spider
@@ -308,7 +322,7 @@ def handle_error(self,e):
     <summary type="html">
     
       &lt;p&gt;welcome to myblog&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://github.com/princeSmall/Python_Get-douban-s-Movies-Infromation&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;D
+&lt;p&gt;&lt;a href=&quot;https://github.com/princeSmall/Python_Get-douban-s-Movies-Infromation&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;D
     
     </summary>
     
@@ -324,7 +338,7 @@ def handle_error(self,e):
     <link href="http://yoursite.com/2017/12/05/DuerOS-%E5%B0%8F%E5%BA%A6/"/>
     <id>http://yoursite.com/2017/12/05/DuerOS-小度/</id>
     <published>2017-12-05T12:10:49.000Z</published>
-    <updated>2017-12-05T12:12:56.917Z</updated>
+    <updated>2017-12-05T12:12:56.000Z</updated>
     
     <content type="html"><![CDATA[<p>智能家居方向，DuerHomeSDK研究及开发</p>
 <h2 id="DuerHomeSDK具备的功能"><a href="#DuerHomeSDK具备的功能" class="headerlink" title="DuerHomeSDK具备的功能"></a>DuerHomeSDK具备的功能</h2><h4 id="BDuerAbility-h"><a href="#BDuerAbility-h" class="headerlink" title="BDuerAbility.h"></a>BDuerAbility.h</h4><p>获取各能力状态，如播放器状态，扬声器状态等，由各子类分别调用</p>
@@ -687,10 +701,10 @@ def handle_error(self,e):
     <link href="http://yoursite.com/2017/12/04/Python-scrapy%E5%9F%BA%E7%A1%80%E7%88%AC%E8%99%AB/"/>
     <id>http://yoursite.com/2017/12/04/Python-scrapy基础爬虫/</id>
     <published>2017-12-04T03:07:29.000Z</published>
-    <updated>2017-12-04T03:15:07.384Z</updated>
+    <updated>2017-12-04T03:15:07.000Z</updated>
     
     <content type="html"><![CDATA[<p>welcome to my blog  thanks</p>
-<p>Dome: <a href="https://github.com/princeSmall/Scrapy" target="_blank" rel="external">github地址</a></p>
+<p>Dome: <a href="https://github.com/princeSmall/Scrapy" target="_blank" rel="noopener">github地址</a></p>
 <p>学习整理了两周时间开始写Python爬虫，完全出于自己的爱好</p>
 <h4 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h4><p>1、scrapy startproject tutorial （你的项目名称）</p>
 <ol>
@@ -771,7 +785,7 @@ class TutorialPipeline(object):
     <summary type="html">
     
       &lt;p&gt;welcome to my blog  thanks&lt;/p&gt;
-&lt;p&gt;Dome: &lt;a href=&quot;https://github.com/princeSmall/Scrapy&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;github地址&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Dome: &lt;a href=&quot;https://github.com/princeSmall/Scrapy&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;github地址&lt;/a&gt;&lt;/p&gt;
 &lt;
     
     </summary>
@@ -788,7 +802,7 @@ class TutorialPipeline(object):
     <link href="http://yoursite.com/2017/11/24/iOS-%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/"/>
     <id>http://yoursite.com/2017/11/24/iOS-排序算法/</id>
     <published>2017-11-24T06:36:37.000Z</published>
-    <updated>2017-11-24T08:19:29.430Z</updated>
+    <updated>2017-11-24T08:19:29.000Z</updated>
     
     <content type="html"><![CDATA[<p>本篇博客主要对快速排序，冒泡排序和简单选择排序进行改进，在时间处理上降低1/2。</p>
 <h4 id="QuickSort-快速升序排序"><a href="#QuickSort-快速升序排序" class="headerlink" title="QuickSort - 快速升序排序"></a>QuickSort - 快速升序排序</h4><p>快速排序是通常被认为在同数量级（O(nlog2n)）的排序方法中平均性能最好的。但若初始序列按关键码有序或基本有序时，快排序反而蜕化为冒泡排序。为改进之，通常以“三者取中法”来选取基准记录，即将排序区间的两个端点与中点三个记录关键码居中的调整为支点记录。快速排序是一个不稳定的排序方法</p>
@@ -917,10 +931,10 @@ return arr;
     <link href="http://yoursite.com/2017/11/22/Animation-ViewAnimation%E5%BA%94%E7%94%A8/"/>
     <id>http://yoursite.com/2017/11/22/Animation-ViewAnimation应用/</id>
     <published>2017-11-22T11:42:14.000Z</published>
-    <updated>2017-11-22T12:48:31.993Z</updated>
+    <updated>2017-11-22T12:48:31.000Z</updated>
     
     <content type="html"><![CDATA[<p>Welcome to my blog. Thanks.</p>
-<p>Dome:<a href="https://github.com/princeSmall/CellAnimation.git" target="_blank" rel="external">github地址</a></p>
+<p>Dome:<a href="https://github.com/princeSmall/CellAnimation.git" target="_blank" rel="noopener">github地址</a></p>
 <p>最近各式各样的动画也是被我玩坏了，今天直接拿来结合需求用。今天主要整理了UIView的动画方法，跟present，push不同，但又很相似，可以满足日常所需动画。话不多说，直接上码。</p>
 <p><img src="/2017/11/22/Animation-ViewAnimation应用/AnimationView.gif" alt=""></p>
 <h3 id="Animation"><a href="#Animation" class="headerlink" title="Animation"></a>Animation</h3><pre>
@@ -1069,7 +1083,7 @@ for (int i = 0; i &lt; cells.count; i++) {
     <summary type="html">
     
       &lt;p&gt;Welcome to my blog. Thanks.&lt;/p&gt;
-&lt;p&gt;Dome:&lt;a href=&quot;https://github.com/princeSmall/CellAnimation.git&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;github地
+&lt;p&gt;Dome:&lt;a href=&quot;https://github.com/princeSmall/CellAnimation.git&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;github地
     
     </summary>
     
@@ -1085,10 +1099,10 @@ for (int i = 0; i &lt; cells.count; i++) {
     <link href="http://yoursite.com/2017/11/21/Animation-ViewAnimation/"/>
     <id>http://yoursite.com/2017/11/21/Animation-ViewAnimation/</id>
     <published>2017-11-21T07:57:57.000Z</published>
-    <updated>2017-11-21T08:34:40.709Z</updated>
+    <updated>2017-11-21T08:34:40.000Z</updated>
     
     <content type="html"><![CDATA[<p>Welcome to my blog. Thanks.</p>
-<p>Dome: <a href="https://github.com/princeSmall/UIViewControllerAnimation.git" target="_blank" rel="external">github地址</a></p>
+<p>Dome: <a href="https://github.com/princeSmall/UIViewControllerAnimation.git" target="_blank" rel="noopener">github地址</a></p>
 <p><img src="/2017/11/21/Animation-ViewAnimation/ViewAnimations.gif" alt="ViewAnimation"></p>
 <h3 id="ViewControllerAnimation"><a href="#ViewControllerAnimation" class="headerlink" title="ViewControllerAnimation"></a>ViewControllerAnimation</h3><p>注：所有的动画我都封装起来了，这里不仅有present和dismiss在viewController中跳转，还有各种动画push和pop，当然view的动画出场也是必不可少的。拿了直接用即可，简单粗暴看代码，这里可以让你知其然，知其所以然。</p>
 <h4 id="PresentAnimation"><a href="#PresentAnimation" class="headerlink" title="PresentAnimation"></a>PresentAnimation</h4><p>实现UIViewControllerTransitioningDelegate的代理方法，把present从下面出来的view从右边动画出来，具体代码看github代码，具体方法如下：</p>
@@ -1251,7 +1265,7 @@ transition.subtype = subType;
     <summary type="html">
     
       &lt;p&gt;Welcome to my blog. Thanks.&lt;/p&gt;
-&lt;p&gt;Dome: &lt;a href=&quot;https://github.com/princeSmall/UIViewControllerAnimation.git&quot; target=&quot;_blank&quot; rel=&quot;exte
+&lt;p&gt;Dome: &lt;a href=&quot;https://github.com/princeSmall/UIViewControllerAnimation.git&quot; target=&quot;_blank&quot; rel=&quot;noop
     
     </summary>
     
@@ -1267,10 +1281,10 @@ transition.subtype = subType;
     <link href="http://yoursite.com/2017/11/20/Amimation-GroupAnimation/"/>
     <id>http://yoursite.com/2017/11/20/Amimation-GroupAnimation/</id>
     <published>2017-11-20T06:36:52.000Z</published>
-    <updated>2017-11-20T06:52:36.133Z</updated>
+    <updated>2017-11-20T06:52:36.000Z</updated>
     
     <content type="html"><![CDATA[<p>Welcome to my blog. Thanks.</p>
-<p>Dome: <a href="https://github.com/princeSmall/Full-animation-details" target="_blank" rel="external">github地址</a></p>
+<p>Dome: <a href="https://github.com/princeSmall/Full-animation-details" target="_blank" rel="noopener">github地址</a></p>
 <p>CAAnimation大家族的最后一个组合动画，所有复杂的动画都是有组合动画合成的，也可以说是最简单的。其实没什么可说的，就上一个炫酷的心形组合动画好了，其余的可以在我的代码中看到，简单到你怀疑自己。</p>
 <p><img src="/2017/11/20/Amimation-GroupAnimation/GroupAnimation.gif" alt="GroupAnimation"></p>
 <h3 id="GroupAnimation"><a href="#GroupAnimation" class="headerlink" title="GroupAnimation"></a>GroupAnimation</h3><pre><code>animations：动画集合数组
@@ -1315,7 +1329,7 @@ transition.subtype = subType;
     <summary type="html">
     
       &lt;p&gt;Welcome to my blog. Thanks.&lt;/p&gt;
-&lt;p&gt;Dome: &lt;a href=&quot;https://github.com/princeSmall/Full-animation-details&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;g
+&lt;p&gt;Dome: &lt;a href=&quot;https://github.com/princeSmall/Full-animation-details&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;g
     
     </summary>
     
@@ -1331,10 +1345,10 @@ transition.subtype = subType;
     <link href="http://yoursite.com/2017/11/19/Animation-ProgressAnimation/"/>
     <id>http://yoursite.com/2017/11/19/Animation-ProgressAnimation/</id>
     <published>2017-11-19T02:32:16.000Z</published>
-    <updated>2017-11-20T02:41:15.418Z</updated>
+    <updated>2017-11-20T02:41:15.000Z</updated>
     
     <content type="html"><![CDATA[<p>Welcome to my blog. Thanks.</p>
-<p>Dome: <a href="https://github.com/princeSmall/Full-animation-details" target="_blank" rel="external">github地址</a></p>
+<p>Dome: <a href="https://github.com/princeSmall/Full-animation-details" target="_blank" rel="noopener">github地址</a></p>
 <p>今天主要讲一些动画的运用，也就是进度条，有弧形的，扇形的，圆形的。<br>其实没什么难点，我封装在一个个View里，直接调用就行，弧度跟着进度条走就OK的。<br>饮水思源，喜欢或者用得上就github给个Star</p>
 <p><img src="/2017/11/19/Animation-ProgressAnimation/Progress.gif" alt=""></p>
 <h3 id="ProgressAnimation"><a href="#ProgressAnimation" class="headerlink" title="ProgressAnimation"></a>ProgressAnimation</h3><h4 id="UIBezierPath方法详解"><a href="#UIBezierPath方法详解" class="headerlink" title="UIBezierPath方法详解"></a>UIBezierPath方法详解</h4><p>UIBezierPath 顾名思义，这是用贝塞尔曲线的方式来构建一段弧线，你可以用任意条弧线来组成你想要的形状</p>
@@ -1477,7 +1491,7 @@ strokeEnd 结束角度
     <summary type="html">
     
       &lt;p&gt;Welcome to my blog. Thanks.&lt;/p&gt;
-&lt;p&gt;Dome: &lt;a href=&quot;https://github.com/princeSmall/Full-animation-details&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;g
+&lt;p&gt;Dome: &lt;a href=&quot;https://github.com/princeSmall/Full-animation-details&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;g
     
     </summary>
     
@@ -1493,10 +1507,10 @@ strokeEnd 结束角度
     <link href="http://yoursite.com/2017/11/18/Animation-TransitionAnimation/"/>
     <id>http://yoursite.com/2017/11/18/Animation-TransitionAnimation/</id>
     <published>2017-11-18T02:58:25.000Z</published>
-    <updated>2017-11-18T03:02:26.558Z</updated>
+    <updated>2017-11-18T03:02:26.000Z</updated>
     
     <content type="html"><![CDATA[<p>Welcome to my blog. Thanks.</p>
-<p>Dome: <a href="https://github.com/princeSmall/Full-animation-details" target="_blank" rel="external">github地址</a></p>
+<p>Dome: <a href="https://github.com/princeSmall/Full-animation-details" target="_blank" rel="noopener">github地址</a></p>
 <p>今天周末也没有工作要去加班正好可以好好地整理CATransition动画属性的讲解和应用，以及UIView翻页的实例，简单上手。</p>
 <h3 id="TransitionAnimation"><a href="#TransitionAnimation" class="headerlink" title="TransitionAnimation"></a>TransitionAnimation</h3><ul>
 <li>duration</li>
@@ -1584,7 +1598,7 @@ if (subtype != nil) {
     <summary type="html">
     
       &lt;p&gt;Welcome to my blog. Thanks.&lt;/p&gt;
-&lt;p&gt;Dome: &lt;a href=&quot;https://github.com/princeSmall/Full-animation-details&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;g
+&lt;p&gt;Dome: &lt;a href=&quot;https://github.com/princeSmall/Full-animation-details&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;g
     
     </summary>
     
@@ -1600,10 +1614,10 @@ if (subtype != nil) {
     <link href="http://yoursite.com/2017/11/17/Animation-keyFrameAnimation/"/>
     <id>http://yoursite.com/2017/11/17/Animation-keyFrameAnimation/</id>
     <published>2017-11-17T00:00:31.000Z</published>
-    <updated>2017-11-20T03:16:29.501Z</updated>
+    <updated>2017-11-20T03:16:29.000Z</updated>
     
     <content type="html"><![CDATA[<p>Welcome to my blog. Thanks.</p>
-<p>Dome: <a href="https://github.com/princeSmall/Full-animation-details" target="_blank" rel="external">github地址</a></p>
+<p>Dome: <a href="https://github.com/princeSmall/Full-animation-details" target="_blank" rel="noopener">github地址</a></p>
 <p>CAPropertyAnimation 的子类有CABsicAnimation 和 CAKeyframeAnimation。<br>今天要说的就是CAKeyframeAnimation关键帧动画，毫无疑问一切复杂的动画都是由简单的动画拼接来的，知其所以然，需要的时候必定能写出好的动画</p>
 <p><img src="/2017/11/17/Animation-keyFrameAnimation/keyFrame.gif" alt="keyFrameAnimation"></p>
 <h3 id="keyFrameAnimation"><a href="#keyFrameAnimation" class="headerlink" title="keyFrameAnimation"></a>keyFrameAnimation</h3><h4 id="属性值了解"><a href="#属性值了解" class="headerlink" title="属性值了解"></a>属性值了解</h4><p>1、关键帧值数组,一组变化值</p>
@@ -1676,7 +1690,7 @@ width = height
     <summary type="html">
     
       &lt;p&gt;Welcome to my blog. Thanks.&lt;/p&gt;
-&lt;p&gt;Dome: &lt;a href=&quot;https://github.com/princeSmall/Full-animation-details&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;g
+&lt;p&gt;Dome: &lt;a href=&quot;https://github.com/princeSmall/Full-animation-details&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;g
     
     </summary>
     
@@ -1692,10 +1706,10 @@ width = height
     <link href="http://yoursite.com/2017/11/16/Animation-SpringAnimation/"/>
     <id>http://yoursite.com/2017/11/16/Animation-SpringAnimation/</id>
     <published>2017-11-16T00:04:58.000Z</published>
-    <updated>2017-11-18T03:01:53.638Z</updated>
+    <updated>2017-11-18T03:01:53.000Z</updated>
     
     <content type="html"><![CDATA[<p>Welcome to my blog. Thanks.</p>
-<p>Dome: <a href="https://github.com/princeSmall/Full-animation-details" target="_blank" rel="external">github地址</a></p>
+<p>Dome: <a href="https://github.com/princeSmall/Full-animation-details" target="_blank" rel="noopener">github地址</a></p>
 <p>昨天整理了BasicAnimation，昨晚对SpringAnimation也进行了梳理。说白了，它的父类也是BasicAnimation，也增加了UIView 实例方法的应用。明天将会整理CATransition动画使用方法和应用实例。</p>
 <h3 id="SpringAnimation"><a href="#SpringAnimation" class="headerlink" title="SpringAnimation"></a>SpringAnimation</h3><p>1、</p>
 <pre><code>mass:
@@ -1746,7 +1760,7 @@ springAnimation.duration = springAnimation.settlingDuration;
     <summary type="html">
     
       &lt;p&gt;Welcome to my blog. Thanks.&lt;/p&gt;
-&lt;p&gt;Dome: &lt;a href=&quot;https://github.com/princeSmall/Full-animation-details&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;g
+&lt;p&gt;Dome: &lt;a href=&quot;https://github.com/princeSmall/Full-animation-details&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;g
     
     </summary>
     
@@ -1762,10 +1776,10 @@ springAnimation.duration = springAnimation.settlingDuration;
     <link href="http://yoursite.com/2017/11/15/Animation-BasicAnimation/"/>
     <id>http://yoursite.com/2017/11/15/Animation-BasicAnimation/</id>
     <published>2017-11-15T06:10:33.000Z</published>
-    <updated>2017-11-23T04:45:24.317Z</updated>
+    <updated>2017-11-23T04:45:24.000Z</updated>
     
     <content type="html"><![CDATA[<p>Welcome to my blog. Thanks.</p>
-<p>Dome: <a href="https://github.com/princeSmall/Full-animation-details" target="_blank" rel="external">github地址</a></p>
+<p>Dome: <a href="https://github.com/princeSmall/Full-animation-details" target="_blank" rel="noopener">github地址</a></p>
 <p>由于下班的时候出了事故，导致卧病休息了一个月左右，天天根本没时间更新博客，觉得没有记录就没有进步，很难过。好歹前段时间完成了公司的任务，现在有时间整理点东西。关于Animation明天会陆续整理出来，今天就是最简单的BasicAnimation。</p>
 <h3 id="BasicAnimation"><a href="#BasicAnimation" class="headerlink" title="BasicAnimation"></a>BasicAnimation</h3><p><img src="/2017/11/15/Animation-BasicAnimation/Animation.gif" alt="animation"></p>
 <p>1、keyPath</p>
@@ -1862,7 +1876,7 @@ Shadow Key Path: 阴影
     <summary type="html">
     
       &lt;p&gt;Welcome to my blog. Thanks.&lt;/p&gt;
-&lt;p&gt;Dome: &lt;a href=&quot;https://github.com/princeSmall/Full-animation-details&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;g
+&lt;p&gt;Dome: &lt;a href=&quot;https://github.com/princeSmall/Full-animation-details&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;g
     
     </summary>
     
@@ -1878,7 +1892,7 @@ Shadow Key Path: 阴影
     <link href="http://yoursite.com/2017/09/30/iOS-%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86/"/>
     <id>http://yoursite.com/2017/09/30/iOS-零碎知识点整理/</id>
     <published>2017-09-30T07:54:23.000Z</published>
-    <updated>2017-11-24T08:12:49.531Z</updated>
+    <updated>2017-11-24T08:12:49.000Z</updated>
     
     <content type="html"><![CDATA[<p>Welcome to my blog. Thanks.</p>
 <p>明天就十一，项目也告一段路，今天就把以前的零碎知识点整理下，备忘录好几页找都不好找了</p>
@@ -2012,7 +2026,7 @@ self.label.text = @&quot;New&quot;;
              }];
 </code></pre></li>
 </ol>
-<ol>
+<ol start="4">
 <li><p>播放一张张连续的图片</p>
 <pre><code>加入现在有三张图片分别为animate_1、animate_2、animate_3
 方法一：
@@ -2278,7 +2292,7 @@ name = [name stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacter
 name = [name stringByReplacingOccurrencesOfString:@&quot; &quot; withString:@&quot;&quot;];//中间空格
 return name;
 }
-</code></pre><ol>
+</code></pre><ol start="5">
 <li><p>获取邮箱用户部分和域名部分</p>
 <pre><code>- (BOOL)validateEmail:(NSString *)email {
     if ((0 != [email rangeOfString:@&quot;@&quot;].length) &amp;&amp;
@@ -2337,7 +2351,7 @@ return NO;
     <link href="http://yoursite.com/2017/09/25/iOS-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
     <id>http://yoursite.com/2017/09/25/iOS-正则表达式/</id>
     <published>2017-09-25T07:17:23.000Z</published>
-    <updated>2017-11-24T08:12:37.268Z</updated>
+    <updated>2017-11-24T08:12:37.000Z</updated>
     
     <content type="html"><![CDATA[<p>Welcome to my blog. Thanks.</p>
 <p>新的项目用户名、邮箱和密码等要用到正则，所以就把以前整理的拿出来用了，不要太方便，索性就打个flag吧。嗯，我以前笔记做的还是比较清楚的</p>
@@ -2547,7 +2561,7 @@ HTML标签          |&lt;(.*)(.*)&gt;.*&lt;\/\1&gt;|&lt;(.*) \/&gt;
     <link href="http://yoursite.com/2017/09/22/GIT-%E7%89%88%E6%9C%AC%E5%BA%93%E7%AE%A1%E7%90%86/"/>
     <id>http://yoursite.com/2017/09/22/GIT-版本库管理/</id>
     <published>2017-09-22T02:14:17.000Z</published>
-    <updated>2017-09-22T07:36:55.084Z</updated>
+    <updated>2017-09-22T07:36:55.000Z</updated>
     
     <content type="html"><![CDATA[<p>今天新同事不会用git，着实让我惊讶了，还好我有做笔记的习惯。就把我A long time ago 学习整理的git给他了，上手简单，很快就会成为git 大神，啊哈哈</p>
 <h3 id="Git-小技能"><a href="#Git-小技能" class="headerlink" title="Git 小技能"></a>Git 小技能</h3><p>多人开发Git版本库的管理是再好不过的了，首先你要会把远程仓库的代码clone到你的电脑里，其次建立本地你的分支，写上你的code，然后添加到暂存区，没有问题就提交到修改区。既然是同时开发，肯能你同事也修改了，那就要把他的code先从远程仓库pull下来，不管你知不知道他们是否提交，避免冲突，先pull再push。然后无误后在merge到master分支，一切一气呵成。</p>
@@ -2671,7 +2685,7 @@ git push origin —tags：（推送所有本地标签到远程）
     <updated>2017-09-21T02:22:53.000Z</updated>
     
     <content type="html"><![CDATA[<p>Welcome to my blog. Thanks.</p>
-<p>Dome:<a href="https://github.com/princeSmall/CoreML_Inceptionv3" target="_blank" rel="external">github地址</a></p>
+<p>Dome:<a href="https://github.com/princeSmall/CoreML_Inceptionv3" target="_blank" rel="noopener">github地址</a></p>
 <p>一直直接用图片给.mlmodel去识别，觉得没有直接调用相机来的方便，一直看的都是swift版本的，所以想写一个oc的，立个flag。</p>
 <h1 id="CoreML-Inceptionv3"><a href="#CoreML-Inceptionv3" class="headerlink" title="CoreML_Inceptionv3"></a>CoreML_Inceptionv3</h1><p><img src="/2017/09/21/机器学习-CoreML-Inceptionv3/Inceptionv3.gif" alt="Inceptionv3"></p>
 <h3 id="相机调用"><a href="#相机调用" class="headerlink" title="相机调用"></a>相机调用</h3><ol>
@@ -2803,7 +2817,7 @@ dispatch_queue_t queue = dispatch_queue_create("CMSampleBufferRef", NULL);
     <summary type="html">
     
       &lt;p&gt;Welcome to my blog. Thanks.&lt;/p&gt;
-&lt;p&gt;Dome:&lt;a href=&quot;https://github.com/princeSmall/CoreML_Inceptionv3&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;github
+&lt;p&gt;Dome:&lt;a href=&quot;https://github.com/princeSmall/CoreML_Inceptionv3&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;github
     
     </summary>
     
@@ -2822,11 +2836,11 @@ dispatch_queue_t queue = dispatch_queue_create("CMSampleBufferRef", NULL);
     <updated>2017-09-20T09:06:18.000Z</updated>
     
     <content type="html"><![CDATA[<p>Welcome to my blog. Thanks.</p>
-<p>Dome:<a href="https://github.com/princeSmall/CoreML_MobileNet" target="_blank" rel="external">github地址</a></p>
+<p>Dome:<a href="https://github.com/princeSmall/CoreML_MobileNet" target="_blank" rel="noopener">github地址</a></p>
 <h1 id="CoreML-MobileNet"><a href="#CoreML-MobileNet" class="headerlink" title="CoreML_MobileNet"></a>CoreML_MobileNet</h1><p>接着上面再写一个MobileNet.mlmodel,这次这个直接拿来用。</p>
 <p>GoogLeNetPlaces.mlmodel 和 Resnet50都可以识别人物和静态物体。不过这个才24M，小多了，所以就简尔处理给张特定的image，然后输出结果</p>
 <p><img src="/2017/09/20/Python-CoreML-MobileNet/pool.png" alt=""></p>
-<h3 id="Download-Core-ML-Model"><a href="#Download-Core-ML-Model" class="headerlink" title="Download Core ML Model"></a>Download Core ML Model</h3><p><a href="https://developer.apple.com/machine-learning/" target="_blank" rel="external">GoogLeNetPlaces.mlmodel下载地址</a></p>
+<h3 id="Download-Core-ML-Model"><a href="#Download-Core-ML-Model" class="headerlink" title="Download Core ML Model"></a>Download Core ML Model</h3><p><a href="https://developer.apple.com/machine-learning/" target="_blank" rel="noopener">GoogLeNetPlaces.mlmodel下载地址</a></p>
 <h3 id="导入头文件"><a href="#导入头文件" class="headerlink" title="导入头文件"></a>导入头文件</h3><pre>
  #import < CoreML/CoreML.h>
  #import < Vision/Vision.h>
@@ -2890,134 +2904,7 @@ dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), di
     <summary type="html">
     
       &lt;p&gt;Welcome to my blog. Thanks.&lt;/p&gt;
-&lt;p&gt;Dome:&lt;a href=&quot;https://github.com/princeSmall/CoreML_MobileNet&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;github地址
-    
-    </summary>
-    
-      <category term="机器学习" scheme="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-      <category term="3" scheme="http://yoursite.com/tags/3/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>[机器学习_CoreML_Resnet50]</title>
-    <link href="http://yoursite.com/2017/09/20/Python-CoreML-Resnet50/"/>
-    <id>http://yoursite.com/2017/09/20/Python-CoreML-Resnet50/</id>
-    <published>2017-09-20T02:18:31.000Z</published>
-    <updated>2017-09-21T02:21:40.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>Welcome to my blog. Thanks.</p>
-<p>Dome:<a href="https://github.com/princeSmall/CoreML_Resnet50" target="_blank" rel="external">github地址</a></p>
-<h1 id="CoreML-Resnet50"><a href="#CoreML-Resnet50" class="headerlink" title="CoreML_Resnet50"></a>CoreML_Resnet50</h1><p>把玩了几天的CoreML，现在上手就写很是方便啊，所以研究透之后再来些例子就简单了。<br>这次用的是苹果提供的resnet50.mlmodel。</p>
-<p><img src="/2017/09/20/Python-CoreML-Resnet50/cat.png" alt="举例图片" width="250" height="500"><br><img src="/2017/09/20/Python-CoreML-Resnet50/dog.png" alt="举例图片" width="250" height="500"><br><img src="/2017/09/20/Python-CoreML-Resnet50/mouse.png" alt="举例图片" width="250" height="500"><br><img src="/2017/09/20/Python-CoreML-Resnet50/panda.png" alt="举例图片" width="250" height="500"></p>
-<h3 id="Download-Core-ML-Model"><a href="#Download-Core-ML-Model" class="headerlink" title="Download Core ML Model"></a>Download Core ML Model</h3><p><a href="https://developer.apple.com/machine-learning/" target="_blank" rel="external">Resnet50.mlmodel下载地址</a></p>
-<h3 id="导入"><a href="#导入" class="headerlink" title="导入"></a>导入</h3><ol>
-<li>把下载后的mlmodel放入Xcode里面，绑定target，会自动生成.h和.m文件</li>
-<li>导入头文件</li>
-</ol>
-<pre>
- #import < CoreML/CoreML.h>
- #import < Vision/Vision.h>
- #import "Resnet50.h"
-</pre>
-
-<h3 id="添加UIScrollView和UIPageControl"><a href="#添加UIScrollView和UIPageControl" class="headerlink" title="添加UIScrollView和UIPageControl"></a>添加UIScrollView和UIPageControl</h3><pre>
-self.scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, viewWidth, 250)];
-    self.scrollView.delegate = self;
-    self.scrollView.bounces = YES;
-    self.scrollView.contentSize = CGSizeMake(5 * viewWidth, 250);
-    self.scrollView.pagingEnabled = YES;
-    self.scrollView.showsHorizontalScrollIndicator = NO;
-    [self.view addSubview:self.scrollView];
-
-    self.pageControl = [[UIPageControl alloc]init];
-    [self.pageControl setCenter:CGPointMake(viewWidth / 2 - 20, 250 - 10)];
-    self.pageControl.numberOfPages = 5;
-    self.pageControl.pageIndicatorTintColor = [UIColor blackColor];
-    self.pageControl.currentPageIndicatorTintColor = [UIColor redColor];
-    for (int i = 0; i < 5; i ++) {
-        UIImageView * imageView = [[UIImageView alloc]initWithFrame:CGRectMake(i * viewWidth, 0, viewWidth, 250)];
-        imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%d.jpg",i + 1]];
-        [self.scrollView addSubview:imageView];
-    }
-
-    [self.view addSubview:self.pageControl];
- </pre>
-
-<h4 id="滚动到开头或末尾"><a href="#滚动到开头或末尾" class="headerlink" title="滚动到开头或末尾"></a>滚动到开头或末尾</h4> <pre>
-if (scrollView.contentOffset.x > 4 * viewWidth) 
-{
-        self.scrollView.contentOffset = CGPointMake(0, 0);
-    }else if (scrollView.contentOffset.x < 0){
-        self.scrollView.contentOffset = CGPointMake(4 * viewWidth, 0);
- }
- </pre> 
-
-<h4 id="滚动结束后识别图片"><a href="#滚动结束后识别图片" class="headerlink" title="滚动结束后识别图片"></a>滚动结束后识别图片</h4> <pre>
-  self.currentImage =[UIImage imageNamed:[NSString stringWithFormat:@"%d.jpg",(int)(self.pageControl.currentPage)]];
-   [self openResnet50];
- </pre>
-
-<h3 id="图片识别"><a href="#图片识别" class="headerlink" title="图片识别"></a>图片识别</h3><ol>
-<li><p>创建Resnet对象，加载CoreMLModel</p>
-<pre>
-Resnet50 *resnetModel = [[Resnet50 alloc] init];
-VNCoreMLModel * vnCoreModel = [VNCoreMLModel modelForMLModel:resnetModel.model error:nil];
-</pre>
-</li>
-<li><p>创建Vision请求，带有completion handle</p>
-<pre>
-VNCoreMLRequest * vnCoreMlRequest = [[VNCoreMLRequest alloc] initWithModel:vnCoreModel completionHandler:^(VNRequest * _Nonnull request, NSError * _Nullable error) {
-   CGFloat confidence = 0.0f;
-   VNClassificationObservation * tempClassification = nil;
-   for (VNClassificationObservation *classification in request.results) {
-       if (classification.confidence > confidence) {
-           confidence = classification.confidence;
-           tempClassification = classification;
-       }
-   }        
-}];
-</pre>
-</li>
-<li><p>VNClassificationObservation对象两个属性</p>
-<ul>
-<li>identifier：识别对象 </li>
-<li>confidence：识别率</li>
-</ul>
-</li>
-<li><p>发送图片识别请求</p>
-<pre>
-dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-  VNImageRequestHandler * vnImageRequestHandler = [[VNImageRequestHandler alloc] initWithCGImage:image.CGImage options:nil];   
-   NSError *error = nil;
-   [vnImageRequestHandler performRequests:@[vnCoreMlRequest] error:&error]; 
-   if (error) {
-       NSLog(@"%@",error.localizedDescription);
-   }
-});
-</pre>
-</li>
-<li><p>回调在主线程更新UI</p>
-<pre>
-dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-       self.resultLable.text = [NSString stringWithFormat:@"识别结果:%@",tempClassification.identifier];
-       self.confidenceLabel.text = [NSString stringWithFormat:@"匹配率:%@",@(tempClassification.confidence)];
-   });
-</pre>
-
-
-
-
-</li>
-</ol>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Welcome to my blog. Thanks.&lt;/p&gt;
-&lt;p&gt;Dome:&lt;a href=&quot;https://github.com/princeSmall/CoreML_Resnet50&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;github地址&lt;
+&lt;p&gt;Dome:&lt;a href=&quot;https://github.com/princeSmall/CoreML_MobileNet&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;github地址
     
     </summary>
     
