@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-04-02T08:44:17.674Z</updated>
+  <updated>2017-12-20T01:56:04.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,20 +14,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>[iOS_测试]</title>
-    <link href="http://yoursite.com/2018/04/02/iOS-%E6%B5%8B%E8%AF%95/"/>
-    <id>http://yoursite.com/2018/04/02/iOS-测试/</id>
-    <published>2018-04-02T08:44:17.000Z</published>
-    <updated>2018-04-02T08:44:17.674Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
   
   <entry>
     <title>[Python_scrapy图片爬取下载]</title>
@@ -143,20 +129,6 @@ class jandanPipeline(ImagesPipeline):
     
     
       <category term="8" scheme="http://yoursite.com/tags/8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>图片爬取下载]</title>
-    <link href="http://yoursite.com/2017/12/20/%E5%9B%BE%E7%89%87%E7%88%AC%E5%8F%96%E4%B8%8B%E8%BD%BD/"/>
-    <id>http://yoursite.com/2017/12/20/图片爬取下载/</id>
-    <published>2017-12-20T01:51:46.000Z</published>
-    <updated>2017-12-20T01:51:46.000Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
     
   </entry>
   
@@ -2905,6 +2877,342 @@ dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), di
     
       &lt;p&gt;Welcome to my blog. Thanks.&lt;/p&gt;
 &lt;p&gt;Dome:&lt;a href=&quot;https://github.com/princeSmall/CoreML_MobileNet&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;github地址
+    
+    </summary>
+    
+      <category term="机器学习" scheme="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="3" scheme="http://yoursite.com/tags/3/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>[机器学习_CoreML_Resnet50]</title>
+    <link href="http://yoursite.com/2017/09/20/Python-CoreML-Resnet50/"/>
+    <id>http://yoursite.com/2017/09/20/Python-CoreML-Resnet50/</id>
+    <published>2017-09-20T02:18:31.000Z</published>
+    <updated>2017-09-21T02:21:40.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to my blog. Thanks.</p>
+<p>Dome:<a href="https://github.com/princeSmall/CoreML_Resnet50" target="_blank" rel="noopener">github地址</a></p>
+<h1 id="CoreML-Resnet50"><a href="#CoreML-Resnet50" class="headerlink" title="CoreML_Resnet50"></a>CoreML_Resnet50</h1><p>把玩了几天的CoreML，现在上手就写很是方便啊，所以研究透之后再来些例子就简单了。<br>这次用的是苹果提供的resnet50.mlmodel。</p>
+<p><img src="/2017/09/20/Python-CoreML-Resnet50/cat.png" alt="举例图片" width="250" height="500"><br><img src="/2017/09/20/Python-CoreML-Resnet50/dog.png" alt="举例图片" width="250" height="500"><br><img src="/2017/09/20/Python-CoreML-Resnet50/mouse.png" alt="举例图片" width="250" height="500"><br><img src="/2017/09/20/Python-CoreML-Resnet50/panda.png" alt="举例图片" width="250" height="500"></p>
+<h3 id="Download-Core-ML-Model"><a href="#Download-Core-ML-Model" class="headerlink" title="Download Core ML Model"></a>Download Core ML Model</h3><p><a href="https://developer.apple.com/machine-learning/" target="_blank" rel="noopener">Resnet50.mlmodel下载地址</a></p>
+<h3 id="导入"><a href="#导入" class="headerlink" title="导入"></a>导入</h3><ol>
+<li>把下载后的mlmodel放入Xcode里面，绑定target，会自动生成.h和.m文件</li>
+<li>导入头文件</li>
+</ol>
+<pre>
+ #import < CoreML/CoreML.h>
+ #import < Vision/Vision.h>
+ #import "Resnet50.h"
+</pre>
+
+<h3 id="添加UIScrollView和UIPageControl"><a href="#添加UIScrollView和UIPageControl" class="headerlink" title="添加UIScrollView和UIPageControl"></a>添加UIScrollView和UIPageControl</h3><pre>
+self.scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, viewWidth, 250)];
+    self.scrollView.delegate = self;
+    self.scrollView.bounces = YES;
+    self.scrollView.contentSize = CGSizeMake(5 * viewWidth, 250);
+    self.scrollView.pagingEnabled = YES;
+    self.scrollView.showsHorizontalScrollIndicator = NO;
+    [self.view addSubview:self.scrollView];
+
+    self.pageControl = [[UIPageControl alloc]init];
+    [self.pageControl setCenter:CGPointMake(viewWidth / 2 - 20, 250 - 10)];
+    self.pageControl.numberOfPages = 5;
+    self.pageControl.pageIndicatorTintColor = [UIColor blackColor];
+    self.pageControl.currentPageIndicatorTintColor = [UIColor redColor];
+    for (int i = 0; i < 5; i ++) {
+        UIImageView * imageView = [[UIImageView alloc]initWithFrame:CGRectMake(i * viewWidth, 0, viewWidth, 250)];
+        imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%d.jpg",i + 1]];
+        [self.scrollView addSubview:imageView];
+    }
+
+    [self.view addSubview:self.pageControl];
+ </pre>
+
+<h4 id="滚动到开头或末尾"><a href="#滚动到开头或末尾" class="headerlink" title="滚动到开头或末尾"></a>滚动到开头或末尾</h4> <pre>
+if (scrollView.contentOffset.x > 4 * viewWidth) 
+{
+        self.scrollView.contentOffset = CGPointMake(0, 0);
+    }else if (scrollView.contentOffset.x < 0){
+        self.scrollView.contentOffset = CGPointMake(4 * viewWidth, 0);
+ }
+ </pre> 
+
+<h4 id="滚动结束后识别图片"><a href="#滚动结束后识别图片" class="headerlink" title="滚动结束后识别图片"></a>滚动结束后识别图片</h4> <pre>
+  self.currentImage =[UIImage imageNamed:[NSString stringWithFormat:@"%d.jpg",(int)(self.pageControl.currentPage)]];
+   [self openResnet50];
+ </pre>
+
+<h3 id="图片识别"><a href="#图片识别" class="headerlink" title="图片识别"></a>图片识别</h3><ol>
+<li><p>创建Resnet对象，加载CoreMLModel</p>
+<pre>
+Resnet50 *resnetModel = [[Resnet50 alloc] init];
+VNCoreMLModel * vnCoreModel = [VNCoreMLModel modelForMLModel:resnetModel.model error:nil];
+</pre>
+</li>
+<li><p>创建Vision请求，带有completion handle</p>
+<pre>
+VNCoreMLRequest * vnCoreMlRequest = [[VNCoreMLRequest alloc] initWithModel:vnCoreModel completionHandler:^(VNRequest * _Nonnull request, NSError * _Nullable error) {
+   CGFloat confidence = 0.0f;
+   VNClassificationObservation * tempClassification = nil;
+   for (VNClassificationObservation *classification in request.results) {
+       if (classification.confidence > confidence) {
+           confidence = classification.confidence;
+           tempClassification = classification;
+       }
+   }        
+}];
+</pre>
+</li>
+<li><p>VNClassificationObservation对象两个属性</p>
+<ul>
+<li>identifier：识别对象 </li>
+<li>confidence：识别率</li>
+</ul>
+</li>
+<li><p>发送图片识别请求</p>
+<pre>
+dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+  VNImageRequestHandler * vnImageRequestHandler = [[VNImageRequestHandler alloc] initWithCGImage:image.CGImage options:nil];   
+   NSError *error = nil;
+   [vnImageRequestHandler performRequests:@[vnCoreMlRequest] error:&error]; 
+   if (error) {
+       NSLog(@"%@",error.localizedDescription);
+   }
+});
+</pre>
+</li>
+<li><p>回调在主线程更新UI</p>
+<pre>
+dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+       self.resultLable.text = [NSString stringWithFormat:@"识别结果:%@",tempClassification.identifier];
+       self.confidenceLabel.text = [NSString stringWithFormat:@"匹配率:%@",@(tempClassification.confidence)];
+   });
+</pre>
+
+
+
+
+</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Welcome to my blog. Thanks.&lt;/p&gt;
+&lt;p&gt;Dome:&lt;a href=&quot;https://github.com/princeSmall/CoreML_Resnet50&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;github地址&lt;
+    
+    </summary>
+    
+      <category term="机器学习" scheme="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="3" scheme="http://yoursite.com/tags/3/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>[机器学习_Python_mlmodel]</title>
+    <link href="http://yoursite.com/2017/09/20/Python-mlmodel/"/>
+    <id>http://yoursite.com/2017/09/20/Python-mlmodel/</id>
+    <published>2017-09-20T00:47:12.000Z</published>
+    <updated>2017-09-20T09:07:28.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to my blog. Thanks.</p>
+<p>Dome:<a href="https://github.com/princeSmall/CoreMLModel" target="_blank" rel="noopener">github地址</a></p>
+<h1 id="CoreMLModel"><a href="#CoreMLModel" class="headerlink" title="CoreMLModel"></a>CoreMLModel</h1><p><img src="/2017/09/20/Python-mlmodel/mlmodel.png" alt=""><br>把玩CoreML创建自己的.mlmodel的心酸历程，足足摆弄了半天，各种坑。立个flag</p>
+<h3 id="Permission-denied-问题"><a href="#Permission-denied-问题" class="headerlink" title="[Permission denied]问题"></a>[Permission denied]问题</h3><p><img src="/2017/09/20/Python-mlmodel/coremltoolsbug.png" alt="tools"></p>
+<ul>
+<li><p>pip install -U coremltools</p>
+</li>
+<li><p>从图也可以看出coremltools包含numpy,six,protobuf,coremltools。<br>因为权限问题导致失败</p>
+</li>
+</ul>
+<p><img src="/2017/09/20/Python-mlmodel/coremltools.png" alt=""></p>
+<ul>
+<li>sudo pip install -U coremltools</li>
+<li>遇到[Permission denied]都要加sudo</li>
+</ul>
+<h3 id="ImportError-No-module-named-pkg-resources-问题"><a href="#ImportError-No-module-named-pkg-resources-问题" class="headerlink" title="ImportError: No module named pkg_resources 问题"></a>ImportError: No module named pkg_resources 问题</h3><ul>
+<li><p>Step: 1 Login in root user.</p>
+<pre>
+sudo su root
+</pre>
+</li>
+<li><p>Step: 2 Uninstall python-pip package if existing.</p>
+<pre>
+apt-get purge -y python-pip
+</pre>
+</li>
+<li><p>Step: 3 Download files using wget command(File download in pwd )</p>
+<pre>
+wget https://bootstrap.pypa.io/get-pip.py
+</pre>
+</li>
+<li><p>Step: 4 Run python file.</p>
+<pre>
+python ./get-pip.py
+</pre>
+</li>
+<li><p>Step: 5 Finaly exicute installation command.</p>
+<pre>
+apt-get install python-pip
+</pre>
+
+</li>
+</ul>
+<p><div><span style="color:red">Note: User must be root.</span></div></p>
+<p>好吧，这两个问题遍布整个流程，期间各种小问题我已经不记得了，接下来就开始正文了</p>
+<ol>
+<li><p>下载coremltools</p>
+<pre>sudo pip install -U coremltools</pre>
+</li>
+<li><p>下载pip.py文件</p>
+<pre>sudo python get-pip.py</pre>
+</li>
+<li><p>下载scikit-learn</p>
+<pre>sudo pip install -U numpy scipy scikit-learn</pre>
+</li>
+<li><p>下载panda</p>
+<pre>sudo pip install pandas</pre>
+
+</li>
+</ol>
+<p>准备就绪，开工</p>
+<h4 id="创建csv文件"><a href="#创建csv文件" class="headerlink" title="创建csv文件"></a>创建csv文件</h4><ol>
+<li>csv文件属性Square_Feet，Price</li>
+<li>记录文件所存储位置，调用的时候需要</li>
+</ol>
+<h4 id="在终端输入生成-mlmodel文件"><a href="#在终端输入生成-mlmodel文件" class="headerlink" title="在终端输入生成.mlmodel文件"></a>在终端输入生成.mlmodel文件</h4><ol>
+<li>导入需要的类</li>
+<li>调用csv文件</li>
+<li>coremltools转换成.mlmodel文件</li>
+<li>author,license,description描述</li>
+<li>输入Square_Feet，输出Price，保存</li>
+</ol>
+<ul>
+<li><blockquote>
+<blockquote>
+<blockquote>
+<p>import coremltools</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+<p>from sklearn.linear_model import LinearRegression</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+<p>import pandas as pd</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+<p>data = pd.read_csv(‘/Users/sansi/Desktop/CoreMLModel/input_data.csv’)</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+<p>model = LinearRegression()</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+<p>model.fit(data[[“Square_Feet”]], data[“Price”])</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+<p>coreml_model = coremltools.converters.sklearn.convert(model, “Square_Feet”, “Price”)</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+<p>coreml_model.author = ‘tongle’</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+<p>coreml_model.license = ‘BSD’</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+<p>coreml_model.short_description = ‘Predicts the price of a house in the Seattle area.’</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+<p>coreml_model.input_description[‘Square_Feet’] = ‘Size (in square feet)’</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+<p>coreml_model.output_description[‘Price’] = ‘Price of the house’</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+<p>coreml_model.save(‘HousePricer.mlmodel’)</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+<p>如果没有一点python功底，我都要死在电脑前了，哈哈</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Welcome to my blog. Thanks.&lt;/p&gt;
+&lt;p&gt;Dome:&lt;a href=&quot;https://github.com/princeSmall/CoreMLModel&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;github地址&lt;/a&gt;&lt;
     
     </summary>
     
